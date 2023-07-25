@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon_cat.png">
+  <link rel="icon" href="/img/icon_cat.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yunru Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一些使用技巧和操作命令整理合集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu使用技巧">
+<meta property="og:url" content="http://zoechen04616.github.io/2023/07/25/Ubuntu%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一些使用技巧和操作命令整理合集">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-25T15:08:47.000Z">
+<meta property="article:modified_time" content="2023-07-25T15:29:06.751Z">
+<meta property="article:author" content="Yunru Chen">
+<meta property="article:tag" content="my technology stack">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Ubuntu使用技巧 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zoechen04616.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>My Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E7%99%BD%E5%A4%A9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Ubuntu使用技巧"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-25 23:08" pubdate>
+          2023年7月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          26 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Ubuntu使用技巧</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>一些使用技巧和操作命令整理合集</p>
+<span id="more"></span> 
+<h3 id="在-Ubuntu-Linux-上安装-Deb-文件的-3-种方法"><a href="#在-Ubuntu-Linux-上安装-Deb-文件的-3-种方法" class="headerlink" title="在 Ubuntu Linux 上安装 Deb 文件的 3 种方法"></a>在 Ubuntu Linux 上安装 <code>Deb</code> 文件的 3 种方法</h3><blockquote>
+<ol>
+<li>使用软件中心安装</li>
+<li>使用命令行安装：</li>
+</ol>
+</blockquote>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">sudo apt install path<span class="hljs-emphasis">_to_deb_file</span><br><span class="hljs-emphasis">或者</span><br><span class="hljs-emphasis">sudo dpkg -i path_to_deb_</span>file<br></code></pre></td></tr></table></figure>
+<p>在这两个命令中，使用已下载的 deb 文件的路径和名称来替换 path_to_deb_file 。</p>
+<h3 id="关于权限和存储"><a href="#关于权限和存储" class="headerlink" title="关于权限和存储"></a>关于权限和存储</h3><p>访问权限：</p>
+<ul>
+<li><p>读取 <code>r</code> ：数字表示 4，允许查看、下载文件内容、显示目录列表；</p>
+</li>
+<li><p>写入 <code>w</code> ：数字表示 2，允许修改文件内容，允许在目录中新建、移动、删除文件或子目录；</p>
+</li>
+<li><p>可执行 <code>x</code> ：数字表示 1，允许运行程序、切换目录。</p>
+</li>
+</ul>
+<p>归属（所有权）</p>
+<ul>
+<li>属主：拥有该文件或目录的用户帐号；</li>
+<li>属组：拥有该文件或目录的组帐号。</li>
+</ul>
+<p>操作对象</p>
+<pre><code class="hljs">u 文件属主权限
+g 同组用户权限
+o 其它用户权限
+a 所有用户（包括以上三种）
+s（setuid）：该位是让普通用户可以以 root 用户的角色运行只有 root 帐号才能运行的程序或命令
+</code></pre>
+<p>权限设定</p>
+<pre><code class="hljs">+ 增加权限
+- 取消权限
+= 设置权限
+</code></pre>
+<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><h4 id="相对路径的表现形式"><a href="#相对路径的表现形式" class="headerlink" title="相对路径的表现形式"></a>相对路径的表现形式</h4><ul>
+<li>绝对路径：从 &#x2F; （根目录）为起点的路径。</li>
+<li>相对路径：以当前目录为起点（当前文件所在的路径相对于其它文件或文件夹的路径关系）。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令行</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直接使用目录名或文件名</td>
+<td>表示当前工作目录中的子目录、文件的位置</td>
+</tr>
+<tr>
+<td>.开头</td>
+<td>表示以当前的工作目录作为起点，如 .&#x2F;etc</td>
+</tr>
+<tr>
+<td>..开头</td>
+<td>表示以当前目录的上一级目录（父目录）作为起点，如 ..&#x2F;etc</td>
+</tr>
+<tr>
+<td>以 “~用户名” 形式开头</td>
+<td>表示以指定用户名的宿主目录作为起点</td>
+</tr>
+<tr>
+<td>以 “~” 形式开头</td>
+<td>表示以当前用户的宿主目录作为起点</td>
+</tr>
+</tbody></table>
+<h4 id="cd-命令"><a href="#cd-命令" class="headerlink" title="cd 命令"></a><code>cd</code> 命令</h4><table>
+<thead>
+<tr>
+<th>命令行</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd&#x2F;</td>
+<td>切换到系统根目录</td>
+</tr>
+<tr>
+<td>cd~或cd</td>
+<td>切换到当前用户的宿主目录（家目录）</td>
+</tr>
+<tr>
+<td>cd-</td>
+<td>切换到 上一次执行cd命令 之前所在的目录</td>
+</tr>
+</tbody></table>
+<h4 id="ls-命令：用于显示指定工作目录下的文件及子目录"><a href="#ls-命令：用于显示指定工作目录下的文件及子目录" class="headerlink" title="ls 命令：用于显示指定工作目录下的文件及子目录"></a><code>ls</code> 命令：用于显示指定工作目录下的文件及子目录</h4><p>可使用命令 ls –help、man ls 查看所有参数。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/duanbaoke/article/details/115462030">https://blog.csdn.net/duanbaoke/article/details/115462030</a></p>
+<blockquote>
+<p>3.1  通配符:参数可结合通配符一起使用。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令行</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>？</td>
+<td>代表任意一个字符，只能占一个字符；</td>
+</tr>
+<tr>
+<td>*</td>
+<td>代表任意数个字符，可以是0个或多个；</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>表示可以匹配字符组中的任意一个字符，每个通配符只匹配一次，多个通配符可一起使用，不区分大小写。如ls [abc]，ls [a-c]，ls [1ab][1ab]。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>3.2 ls-l:查看某一个目录会得到一个7个字段的列表。</p>
+</blockquote>
+<h4 id="alias：设置命令的别名"><a href="#alias：设置命令的别名" class="headerlink" title="alias：设置命令的别名"></a><code>alias</code>：设置命令的别名</h4><p><code>alias [别名]=‘指令名称’ </code>，等于号左右不能有空格，指令名称必须是可执行的完整的命令；</p>
+<p>参数：若不加任何参数，则列出目前所有的别名设置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">type</span> 命令别名      <span class="hljs-comment">#查看别名</span><br><br><span class="hljs-built_in">unalias</span> 命令别名   <span class="hljs-comment">#取消命令别名</span><br></code></pre></td></tr></table></figure>
+<h4 id="du-选项-文件或目录"><a href="#du-选项-文件或目录" class="headerlink" title="du [选项] [文件或目录...] \"></a><code>du [选项] [文件或目录...] </code>\</h4><p>统计指定目录（或文件）所占用磁盘空间的大小。</p>
+<p>有-a,-s,-h,-c,–math-depth&#x3D;n等选项，要用自己查</p>
+<h4 id="修改权限命令：chmod"><a href="#修改权限命令：chmod" class="headerlink" title="修改权限命令：chmod"></a>修改权限命令：<code>chmod</code></h4><p>命令格式：<code>chmod [ugoa][+-=][rwx]文件或目录 </code>；<br>或用数字表示：<code>chmod [777] </code>文件或目录 ，默认为操作所有用户a；</p>
+<p> 常用格式： <code>-R</code>：递归修改指定目录下所有子项的权限；</p>
+<h4 id="设置目录和文件的默认权限-umask"><a href="#设置目录和文件的默认权限-umask" class="headerlink" title="设置目录和文件的默认权限 umask"></a>设置目录和文件的默认权限 <code>umask</code></h4><p>umask查看：umask<br>umask设置：umask 000，umask 022 #新建目录或者文件，再查看权限</p>
+<p>umask（权限反码） 作用：</p>
+<ul>
+<li>控制新建的文件或者目录的权限默认值</li>
+<li>默认权限去除umask的权限为新建的文件或者目录的权限</li>
+</ul>
+<p>新建的文件或者目录的权限为默认最大权限减去umask权限。<br>umask 默认值为 <code>022</code>，普通文件的最大默认权限.为 <code>666</code>，目录的最大默认权限为 <code>777</code>;</p>
+<h4 id="ln"><a href="#ln" class="headerlink" title="ln - \"></a><code>ln -</code> \</h4><p>为文件或目录创建链接文件，在文件之间建立连接。</p>
+<p>链接文件类型：</p>
+<ul>
+<li>软链接（符号链接）(symbolic link):产生一个特殊的档案，该档案的内容是指向另一个档案的位置</li>
+<li>硬链接(hard link):一个档案可以有多个文件名（一个文件可以有好几个文件名，只有将最后一个文件名从 磁盘上删除，才能把这个文件删掉）</li>
+</ul>
+<p>知识点：<br>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/duanbaoke/article/details/115485100">https://blog.csdn.net/duanbaoke/article/details/115485100</a></p>
+<ul>
+<li>在Linux中，文件名和文件类型是分开存储的，</li>
+<li>在Linux中，只有文件的<code>硬链接数==0</code> 才会被删除</li>
+<li>使用 ls -l 可以查看一个文件的硬链接数量<br>在日常工作中，几乎不会创建文件的硬链接，只有超级用户才能建立目录的硬连接。</li>
+<li>硬链接是存在同一个档案系统中，而软链接却可以跨越不同的档案系统</li>
+<li>ln- 在文件间产生连接。默认产生硬链接，有-s选项，则产生软链接：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">创建硬链接：<span class="hljs-built_in">ln</span> 源文件 目标位置<br><span class="hljs-built_in">ln</span> -s 源文件或目录名... 链接文件或目标位置<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp\"></a><code>cp</code>\</h4><p>将需要复制的文件或目录（源）重建一份，并保存为新的文件或目录。</p>
+<p><code>cp[选项]...源文件或目录.…目标文件或目录...</code><br>-f,-i,-p,-r四个选项。<br>注：复制多个文件或目录时，目标位置必须是目录，且目标目录必须已存在。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> -p test.rb /home/test <br><span class="hljs-comment">#将test.rb copy到test目录，并且保留原文件的属性</span><br><br><span class="hljs-built_in">cp</span> -p test.rb /home/test/haha.rp  <br><span class="hljs-comment">#将test.rb copy到test目录，并将文件名修改为haha.rp</span><br><br><span class="hljs-built_in">cp</span> -r Dir/ /home/test      <br><span class="hljs-comment">#将Dir目录copy到test目录下</span><br><br><span class="hljs-built_in">cp</span> -fr Dir/* /home/test    <br><span class="hljs-comment">#将Dir下面的所有文件强制copy到test目录下</span><br><br><span class="hljs-built_in">cp</span> /root/&#123;1,2,3&#125;.txt ./    <br><span class="hljs-comment">#批量复制三个同扩展文件到当前目录</span><br><br><span class="hljs-built_in">cp</span> test.rb&#123;,.bak&#125;          <br><span class="hljs-comment">#备份test.rb，并在尾部加上.bak后缀</span><br></code></pre></td></tr></table></figure>
+<h4 id="rm-删除-unlink-文件"><a href="#rm-删除-unlink-文件" class="headerlink" title="rm :删除 (unlink) 文件"></a><code>rm</code> :删除 (unlink) 文件</h4><p>常用选项：-f,-i,-r</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> test.php        <span class="hljs-comment">#删除文件需要确认</span><br><br><span class="hljs-built_in">rm</span> -f test.php     <span class="hljs-comment">#强制删除文件不确认</span><br><br><span class="hljs-built_in">rm</span> -rfv ./test     <span class="hljs-comment">#递归强制删除当前的test目录，并显示删除的详细过程</span><br><br><span class="hljs-built_in">rm</span> -rf aa/         <span class="hljs-comment">#递归强制删除aa目录下的所有</span><br></code></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>删除文件可以直接使用 rm 命令，若删除目录则必须配合选项 “ -r “，因为目录下有 . 和 .. 两个隐藏子目录；</li>
+<li>不要直接删除系统中已有的目录或配置文件，以避免出现意外故障；</li>
+<li>删除目录下文件时建议最好先切换到目录下再执行 rm -rf 命令 <br>（ 1 . cd aa 2 . rm -rf aa&#x2F;）</li>
+</ul>
+<h4 id="mv：-移动文件或目录、对单个文件进行重命名。"><a href="#mv：-移动文件或目录、对单个文件进行重命名。" class="headerlink" title="mv： 移动文件或目录、对单个文件进行重命名。\"></a><code>mv</code>： 移动文件或目录、对单个文件进行重命名。\</h4><p><code>mv [选项] 源文件或目录 目标文件或目录</code></p>
+<ul>
+<li>将指定的文件或目录转移位置；</li>
+<li>如果目标位置与源位置相同，则相当于重命名操作。</li>
+</ul>
+<h4 id="rename-批量修改文件名"><a href="#rename-批量修改文件名" class="headerlink" title="rename:批量修改文件名"></a><code>rename</code>:批量修改文件名</h4><p><code>rename 旧字符 新字符 文件名</code><br><code>rename 旧文件 新文件 目标文件</code></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-built_in">rename</span> <span class="hljs-keyword">abc</span> def <span class="hljs-keyword">abc</span>    # 修改 <span class="hljs-keyword">abc</span> 名字为 dec<br></code></pre></td></tr></table></figure>
+<h4 id="tree：在终端输入下面的指令查看文件结构"><a href="#tree：在终端输入下面的指令查看文件结构" class="headerlink" title="tree：在终端输入下面的指令查看文件结构"></a><code>tree</code>：在终端输入下面的指令查看文件结构</h4><p>安装tree:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> tree<br></code></pre></td></tr></table></figure>
+
+<h3 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h3><p> linux 系统下 <code>github 仓库的克隆</code>可以直接在终端通过指令克隆。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/ttroy50/</span>cmake-examples.git cmake-examples<br></code></pre></td></tr></table></figure>
+
+<p>第一行是跳转至 home 目录，第二行是将github链接地址的内容克隆到 cmake-example 目录下，输入后会自动新建一个cmake-example 目录并把下载的代码放进去，十分方便。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/my-technology-stack/" class="print-no-link">#my technology stack</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Ubuntu使用技巧</div>
+      <div>http://zoechen04616.github.io/2023/07/25/Ubuntu使用技巧/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yunru Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年7月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/25/CMakeLists-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="CMakeLists 学习指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CMakeLists 学习指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/25/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A/" title="相机标定">
+                        <span class="hidden-mobile">相机标定</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
