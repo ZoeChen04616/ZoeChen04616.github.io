@@ -16,22 +16,22 @@
   <meta name="author" content="Yunru Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="几步完成相机标定！（图传也有相机，也可以标定）">
+    <meta name="description" content="一些opencv的函数积累，还有传统opencv处理项目的流程整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="相机标定">
-<meta property="og:url" content="http://zoechen04616.github.io/2023/07/25/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A/index.html">
+<meta property="og:title" content="openCV学习指南">
+<meta property="og:url" content="http://zoechen04616.github.io/2023/07/26/openCV%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="几步完成相机标定！（图传也有相机，也可以标定）">
+<meta property="og:description" content="一些opencv的函数积累，还有传统opencv处理项目的流程整理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-25T15:06:34.000Z">
-<meta property="article:modified_time" content="2023-07-26T06:09:16.228Z">
+<meta property="article:published_time" content="2023-07-26T06:04:29.000Z">
+<meta property="article:modified_time" content="2023-07-26T06:07:51.560Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="CV">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>相机标定 - Hexo</title>
+  <title>openCV学习指南 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -224,7 +224,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="相机标定"></span>
+            <span id="subtitle" data-typed-text="openCV学习指南"></span>
           
         </div>
 
@@ -235,8 +235,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-25 23:06" pubdate>
-          2023年7月25日 晚上
+        <time datetime="2023-07-26 14:04" pubdate>
+          2023年7月26日 下午
         </time>
       </span>
     
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          956 字
+          1.4k 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -295,28 +295,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">相机标定</h1>
+            <h1 id="seo-header">openCV学习指南</h1>
             
             
               <div class="markdown-body">
                 
-                <p>几步完成相机标定！（图传也有相机，也可以标定）</p>
+                <p>一些opencv的函数积累，还有传统opencv处理项目的流程整理</p>
 <span id="more"></span> 
-<ul>
-<li>step 1:打印标定板（不能有折痕，要哑光纸打印，A3大小），贴在碳板上，一定要平整。</li>
-<li>step 2:用需要标定的相机拍照，设定好需要的分辨率，拍20-30张不同角度的标定板照片，要求标定板要占大部分相片区域（80%以上）</li>
-<li>step 3:使用matlab进行标定。<br>关于options：<ul>
-<li>(1)Radial Distortion：径向畸变<br> 2 Coefficients选项:使用四次多项式来估计透镜的径向畸变,适用于一般相机<br> 3 Coefficients选项:使用六次多项式来估计透镜的径向畸变,仅适用于大视场相机</li>
-<li>(2)Compute：<br> 关于Skew:假设X轴和Y轴不垂直。这意味着图像像素不是矩形的。所以，Skew选项一般不需要选择<br> 关于Tangential Distortion：当镜头的主轴与相机传感器不垂直时，会发生切向失真<br><code>选择options的要求是使平均误差尽量小，低于0.5为可用</code></li>
-</ul>
-</li>
-<li>step 4：将matlab标定得到的畸变参数写成opencv可用的畸变系数的排列（k<sub>1</sub>,k<sub>2</sub>,p<sub>1</sub>,p<sub>2</sub>,k<sub>3</sub>）,其中三个径向畸变，两个切向畸变<ul>
-<li>RadialDistortion里面的两个参数对应k<sub>1</sub>和k<sub>2</sub>，k<sub>3</sub>为0（对于鱼眼镜头等径向畸变特别大的才需要计算k3）</li>
-<li>TangentialDistortion里面的两个参数对应p<sub>1</sub>,p<sub>2</sub></li>
-<li>记录大疆图传相机数据：<br>  畸变系数：（-0.285400532140372、0.106341621768377、 0、0、   -0.0203255154424868）<br>  内参矩阵:(matlab直接计算得到)<br>$$\begin{matrix}<br>870.536594077599&amp;0&amp;0\<br>0&amp;871.002811118890&amp;0\<br>959.879173875982&amp;554.055610210946&amp;1\<br>\end{matrix}$$<br>需要将上方的内参矩阵转置之后才能给opencv使用：<br>$$\begin{matrix}<br>870.536594077599&amp;0&amp;959.879173875982\<br>0&amp;871.00281111889&amp;554.055610210946\<br>0&amp;0&amp;1\<br>\end{matrix}$$</li>
-</ul>
-</li>
-</ul>
+<h3 id="pnp解算"><a href="#pnp解算" class="headerlink" title="pnp解算"></a>pnp解算</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">bool solvePnP(InputArray objectPoints, InputArray imagePoints, <br>               InputArray cameraMatrix, InputArray distCoeffs, <br>               OutputArray rvec, OutputArray tvec, bool <span class="hljs-attribute">useExtrinsicGuess</span>=<span class="hljs-literal">false</span>, <br>               int <span class="hljs-attribute">flags</span>=ITERATIVE )<br></code></pre></td></tr></table></figure>
+<p>函数solvepnp接收一组对应的3D坐标和2D坐标，计算得到两组坐标对应的几何变换（旋转矩阵rvec，平移矩阵tvec）,从而建立相机拍摄2D图像中物体坐标和3D世界坐标系中物体坐标的映射关系。</p>
+<h3 id="重映射"><a href="#重映射" class="headerlink" title="重映射"></a>重映射</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">void projectPoints(InputArray objectPoints, InputArray rvec, InputArray tvec,<br>                   InputArray cameraMatrix, InputArray distCoeffs, <br>                   OutputArray imagePoints, OutputArray <span class="hljs-attribute">jacobian</span>=noArray(), <br>                   double <span class="hljs-attribute">aspectRatio</span>=0 )                  <br></code></pre></td></tr></table></figure>
+<p>根据所给的3D坐标和已知的几何变换来求解投影后的2D坐标</p>
+<h3 id="同时标定两个摄像头"><a href="#同时标定两个摄像头" class="headerlink" title="同时标定两个摄像头"></a>同时标定两个摄像头</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">double stereoCalibrate(<span class="hljs-title class_">InputArrayOfArrays</span> objectPoints, <span class="hljs-title class_">InputArrayOfArrays</span> imagePoints1,<br>　　　　　　　　　　　　　<span class="hljs-title class_">InputArrayOfArrays</span> imagePoints2, <br>                       <span class="hljs-title class_">InputOutputArray</span> cameraMatrix1,<span class="hljs-title class_">InputOutputArray</span> distCoeffs1, <br>                       <span class="hljs-title class_">InputOutputArray</span> cameraMatrix2, <span class="hljs-title class_">InputOutputArray</span> distCoeffs2, <br>                       <span class="hljs-title class_">Size</span> imageSize,<span class="hljs-title class_">OutputArray</span> R,<span class="hljs-title class_">OutputArray</span> T, <span class="hljs-title class_">OutputArray</span> E, <br>                       <span class="hljs-title class_">OutputArray</span> F,<br>                       <span class="hljs-title class_">TermCriteria</span>  criteria=<span class="hljs-title class_">TermCriteria</span>(<span class="hljs-title class_">TermCriteria</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:COUNT+TermCriteria</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:EPS</span>, <span class="hljs-number">30</span>, <span class="hljs-number">1e-6</span>),<br>                       int flags=<span class="hljs-variable constant_">CALIB_FIX_INTRINSIC</span> )<br></code></pre></td></tr></table></figure>
+<p>能够求出两个摄像头的内外参数矩阵，还能够得出两个摄像头的位置关系R,T</p>
+<h3 id="立体矫正"><a href="#立体矫正" class="headerlink" title="立体矫正"></a>立体矫正</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">void stereoRectify(InputArray cameraMatrix1, InputArray distCoeffs1, <br>                   InputArray cameraMatrix2, InputArray distCoeffs2, Size imageSize, <br>                   InputArray R, InputArray T,OutputArray R1, OutputArray R2, <br>                   OutputArray P1, OutputArray P2,OutputArray Q, <br>                   int <span class="hljs-attribute">flags</span>=CALIB_ZERO_DISPARITY, double <span class="hljs-attribute">alpha</span>=-1,<br>                   Size <span class="hljs-attribute">newImageSize</span>=Size(), Rect* <span class="hljs-attribute">validPixROI1</span>=0, <br>                   Rect* <span class="hljs-attribute">validPixROI2</span>=0 )<br></code></pre></td></tr></table></figure>
+<p>计算每个摄像机(实际上)的旋转矩阵，从而使两个摄像机图像平面成为同一平面。因此，这使得所有的外极线平行，从而简化了稠密立体对应问题。</p>
 
                 
               </div>
@@ -341,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>相机标定</div>
-      <div>http://zoechen04616.github.io/2023/07/25/相机标定/</div>
+      <div>openCV学习指南</div>
+      <div>http://zoechen04616.github.io/2023/07/26/openCV学习指南/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月25日</div>
+          <div>2023年7月26日</div>
         </div>
       
       
@@ -386,18 +379,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/25/Ubuntu%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title="Ubuntu使用技巧">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Ubuntu使用技巧</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/25/vim/" title="vim">
-                        <span class="hidden-mobile">vim</span>
+                      <a href="/2023/07/25/CMakeLists-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="CMakeLists 学习指南">
+                        <span class="hidden-mobile">CMakeLists 学习指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

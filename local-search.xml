@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>openCV学习指南</title>
+    <link href="/2023/07/26/openCV%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
+    <url>/2023/07/26/openCV%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
+    
+    <content type="html"><![CDATA[<p>一些opencv的函数积累，还有传统opencv处理项目的流程整理</p><span id="more"></span> <h3 id="pnp解算"><a href="#pnp解算" class="headerlink" title="pnp解算"></a>pnp解算</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">bool solvePnP(InputArray objectPoints, InputArray imagePoints, <br>               InputArray cameraMatrix, InputArray distCoeffs, <br>               OutputArray rvec, OutputArray tvec, bool <span class="hljs-attribute">useExtrinsicGuess</span>=<span class="hljs-literal">false</span>, <br>               int <span class="hljs-attribute">flags</span>=ITERATIVE )<br></code></pre></td></tr></table></figure><p>函数solvepnp接收一组对应的3D坐标和2D坐标，计算得到两组坐标对应的几何变换（旋转矩阵rvec，平移矩阵tvec）,从而建立相机拍摄2D图像中物体坐标和3D世界坐标系中物体坐标的映射关系。</p><h3 id="重映射"><a href="#重映射" class="headerlink" title="重映射"></a>重映射</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">void projectPoints(InputArray objectPoints, InputArray rvec, InputArray tvec,<br>                   InputArray cameraMatrix, InputArray distCoeffs, <br>                   OutputArray imagePoints, OutputArray <span class="hljs-attribute">jacobian</span>=noArray(), <br>                   double <span class="hljs-attribute">aspectRatio</span>=0 )                  <br></code></pre></td></tr></table></figure><p>根据所给的3D坐标和已知的几何变换来求解投影后的2D坐标</p><h3 id="同时标定两个摄像头"><a href="#同时标定两个摄像头" class="headerlink" title="同时标定两个摄像头"></a>同时标定两个摄像头</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">double stereoCalibrate(<span class="hljs-title class_">InputArrayOfArrays</span> objectPoints, <span class="hljs-title class_">InputArrayOfArrays</span> imagePoints1,<br>　　　　　　　　　　　　　<span class="hljs-title class_">InputArrayOfArrays</span> imagePoints2, <br>                       <span class="hljs-title class_">InputOutputArray</span> cameraMatrix1,<span class="hljs-title class_">InputOutputArray</span> distCoeffs1, <br>                       <span class="hljs-title class_">InputOutputArray</span> cameraMatrix2, <span class="hljs-title class_">InputOutputArray</span> distCoeffs2, <br>                       <span class="hljs-title class_">Size</span> imageSize,<span class="hljs-title class_">OutputArray</span> R,<span class="hljs-title class_">OutputArray</span> T, <span class="hljs-title class_">OutputArray</span> E, <br>                       <span class="hljs-title class_">OutputArray</span> F,<br>                       <span class="hljs-title class_">TermCriteria</span>  criteria=<span class="hljs-title class_">TermCriteria</span>(<span class="hljs-title class_">TermCriteria</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:COUNT+TermCriteria</span><span class="hljs-symbol">:</span><span class="hljs-symbol">:EPS</span>, <span class="hljs-number">30</span>, <span class="hljs-number">1e-6</span>),<br>                       int flags=<span class="hljs-variable constant_">CALIB_FIX_INTRINSIC</span> )<br></code></pre></td></tr></table></figure><p>能够求出两个摄像头的内外参数矩阵，还能够得出两个摄像头的位置关系R,T</p><h3 id="立体矫正"><a href="#立体矫正" class="headerlink" title="立体矫正"></a>立体矫正</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">void stereoRectify(InputArray cameraMatrix1, InputArray distCoeffs1, <br>                   InputArray cameraMatrix2, InputArray distCoeffs2, Size imageSize, <br>                   InputArray R, InputArray T,OutputArray R1, OutputArray R2, <br>                   OutputArray P1, OutputArray P2,OutputArray Q, <br>                   int <span class="hljs-attribute">flags</span>=CALIB_ZERO_DISPARITY, double <span class="hljs-attribute">alpha</span>=-1,<br>                   Size <span class="hljs-attribute">newImageSize</span>=Size(), Rect* <span class="hljs-attribute">validPixROI1</span>=0, <br>                   Rect* <span class="hljs-attribute">validPixROI2</span>=0 )<br></code></pre></td></tr></table></figure><p>计算每个摄像机(实际上)的旋转矩阵，从而使两个摄像机图像平面成为同一平面。因此，这使得所有的外极线平行，从而简化了稠密立体对应问题。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CV</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CMakeLists 学习指南</title>
     <link href="/2023/07/25/CMakeLists-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
     <url>/2023/07/25/CMakeLists-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
@@ -52,7 +71,7 @@
     
     <tags>
       
-      <tag>some skills about cv</tag>
+      <tag>CV</tag>
       
     </tags>
     
@@ -113,9 +132,7 @@
     
     <tags>
       
-      <tag>杂七杂八</tag>
-      
-      <tag>some tips about cv</tag>
+      <tag>CV</tag>
       
     </tags>
     
