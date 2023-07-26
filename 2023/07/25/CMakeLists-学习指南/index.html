@@ -16,15 +16,15 @@
   <meta name="author" content="Yunru Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="三天速通！结合UGAS的CMakeLists食用更香捏！">
+    <meta name="description" content="CMake是一个元（meta）构建系统，可用于为许多其他构建工具创建构建文件。三天速通！结合UGAS的CMakeLists食用更香捏！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMakeLists 学习指南">
 <meta property="og:url" content="http://zoechen04616.github.io/2023/07/25/CMakeLists-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="三天速通！结合UGAS的CMakeLists食用更香捏！">
+<meta property="og:description" content="CMake是一个元（meta）构建系统，可用于为许多其他构建工具创建构建文件。三天速通！结合UGAS的CMakeLists食用更香捏！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-25T15:12:59.000Z">
-<meta property="article:modified_time" content="2023-07-26T11:37:28.536Z">
+<meta property="article:modified_time" content="2023-07-26T14:18:20.500Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k 字
+          6.5k 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          47 分钟
+          54 分钟
         
       </span>
     
@@ -318,7 +318,7 @@
             
               <div class="markdown-body">
                 
-                <p>三天速通！结合UGAS的CMakeLists食用更香捏！</p>
+                <p>CMake是一个元（meta）构建系统，可用于为许多其他构建工具创建构建文件。<br>三天速通！结合UGAS的CMakeLists食用更香捏！</p>
 <span id="more"></span> 
 <h4 id="上交教程："><a href="#上交教程：" class="headerlink" title="上交教程："></a>上交教程：</h4><p><a target="_blank" rel="noopener" href="https://sjtu-robomaster-team.github.io/vision-learning-4-cmake-introduction/">https://sjtu-robomaster-team.github.io/vision-learning-4-cmake-introduction/</a></p>
 <h4 id="完整教程："><a href="#完整教程：" class="headerlink" title="完整教程："></a>完整教程：</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/367808125">https://zhuanlan.zhihu.com/p/367808125</a></p>
@@ -395,6 +395,30 @@
 </ul>
 <p>UGAS的CMakeLists.txt参考：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.12</span>)<br><span class="hljs-keyword">project</span>(ugas VERSION <span class="hljs-number">1.0</span> LANGUAGES C CXX)<br><br><span class="hljs-comment"># Set compilation flags</span><br><span class="hljs-keyword">set</span>(CMAKE_BUILD_TYPE Release)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)<br><span class="hljs-keyword">set</span>(CMAKE_C_STANDARD <span class="hljs-number">11</span>)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_FLAGS <span class="hljs-string">&quot;$&#123;CMAKE_CXX_FLAGS&#125; -O3&quot;</span>)<br><br><span class="hljs-keyword">if</span>(CMAKE_COMPILER_IS_GNUCXX <span class="hljs-keyword">OR</span> CMAKE_CXX_COMPILER_ID <span class="hljs-keyword">MATCHES</span> <span class="hljs-string">&quot;Clang&quot;</span>)<br>    <span class="hljs-keyword">add_compile_options</span>(-Wall -Wextra -Wpedantic)<br><span class="hljs-keyword">endif</span>()<br><br><span class="hljs-keyword">set</span>(CMAKE_MODULE_PATH <span class="hljs-variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/cmake)<br><br><span class="hljs-comment"># Set configure_file</span><br><span class="hljs-keyword">set</span> (CONFIGURE_DIR_PATH <span class="hljs-variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/build/config)<br><span class="hljs-keyword">configure_file</span> (<br>        <span class="hljs-string">&quot;$&#123;PROJECT_SOURCE_DIR&#125;/src/config.h.in&quot;</span><br>        <span class="hljs-string">&quot;$&#123;CONFIGURE_DIR_PATH&#125;/config.h&quot;</span>)<br><br><span class="hljs-comment"># Initialize custom options</span><br><span class="hljs-keyword">option</span> (ENABLE_DEBUG_CANVAS <span class="hljs-string">&quot;Enable debug canvas to draw debug image&quot;</span> <span class="hljs-keyword">OFF</span>)<br><span class="hljs-keyword">option</span> (ENABLE_RECORDING <span class="hljs-string">&quot;Enable recording of raw camera image&quot;</span> <span class="hljs-keyword">OFF</span>)<br><span class="hljs-keyword">option</span> (ENABLE_OPENVINO <span class="hljs-string">&quot;Enable openvino to identify buff&quot;</span> <span class="hljs-keyword">OFF</span>)<br><span class="hljs-keyword">option</span> (ENABLE_ROS <span class="hljs-string">&quot;Enable ROS to visualize positions&quot;</span> <span class="hljs-keyword">OFF</span>)<br><br><span class="hljs-comment"># Set the output executable file name:</span><br><span class="hljs-comment"># When compiling in the ROS environment, the output executable file name will be the node name.</span><br><span class="hljs-comment"># Otherwise, the output file name will be the project name.</span><br><span class="hljs-keyword">if</span> (ENABLE_ROS)<br>    <span class="hljs-keyword">set</span>(EXECUTABLE_NAME main)<br><span class="hljs-keyword">else</span> ()<br>    <span class="hljs-keyword">set</span>(EXECUTABLE_NAME <span class="hljs-variable">$&#123;PROJECT_NAME&#125;</span>)<br>    <span class="hljs-keyword">set</span>(EXECUTABLE_OUTPUT_PATH <span class="hljs-variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/build)<br><span class="hljs-keyword">endif</span>()<br><br><span class="hljs-comment"># Find non-ros packages</span><br><span class="hljs-keyword">find_package</span>(OpenCV <span class="hljs-number">4.7</span> REQUIRED)<br><span class="hljs-keyword">find_package</span>(HikCameraSDK REQUIRED)<br><br><span class="hljs-keyword">if</span> (ENABLE_OPENVINO)<br>    <span class="hljs-keyword">find_package</span>(OpenVINO REQUIRED)<br>    <span class="hljs-keyword">set</span>(OpenVINO_LIB openvino::runtime)<br><span class="hljs-keyword">endif</span> (ENABLE_OPENVINO)<br><br><span class="hljs-comment"># Include project source directory</span><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/src <span class="hljs-variable">$&#123;CONFIGURE_DIR_PATH&#125;</span>)<br><br><span class="hljs-comment"># Recursively search for all source files under the &#x27;src&#x27; folder and store them into UGAS_SOURCE variable</span><br><span class="hljs-comment"># Flag &#x27;CONFIGURE_DEPENDS&#x27; asks cmake to detect GLOB result changes so no need to rerun cmake when adding a new source file.</span><br><span class="hljs-keyword">file</span>(GLOB_RECURSE UGAS_SOURCE CONFIGURE_DEPENDS<br>        <span class="hljs-variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/src/*.cpp<br>        <span class="hljs-variable">$&#123;PROJECT_SOURCE_DIR&#125;</span>/src/*.cc)<br><br><span class="hljs-comment"># Find ros packages &amp; add source files to compilation</span><br><span class="hljs-keyword">if</span> (ENABLE_ROS)<br>    <span class="hljs-keyword">find_package</span> (ament_cmake_auto REQUIRED)<br>    ament_auto_find_build_dependencies ()<br>    ament_auto_add_executable(<span class="hljs-variable">$&#123;EXECUTABLE_NAME&#125;</span> <span class="hljs-variable">$&#123;UGAS_SOURCE&#125;</span>)<br><span class="hljs-keyword">else</span>()<br>    <span class="hljs-keyword">add_executable</span>(<span class="hljs-variable">$&#123;EXECUTABLE_NAME&#125;</span> <span class="hljs-variable">$&#123;UGAS_SOURCE&#125;</span>)<br><span class="hljs-keyword">endif</span>()<br><br><span class="hljs-comment"># Link libraries</span><br><span class="hljs-keyword">target_link_libraries</span>(<span class="hljs-variable">$&#123;EXECUTABLE_NAME&#125;</span> <span class="hljs-variable">$&#123;OpenCV_LIBS&#125;</span> <span class="hljs-variable">$&#123;HikCameraSDK_LIB&#125;</span> <span class="hljs-variable">$&#123;OpenVINO_LIB&#125;</span> -lpthread)<br><br><span class="hljs-comment"># Install package</span><br><span class="hljs-keyword">if</span> (ENABLE_ROS)<br>    ament_auto_package()<br><span class="hljs-keyword">endif</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用ninja构建"><a href="#使用ninja构建" class="headerlink" title="使用ninja构建"></a>使用ninja构建</h3><h4 id="概念——生成器"><a href="#概念——生成器" class="headerlink" title="概念——生成器"></a>概念——生成器</h4><p>CMake生成器负责为底层构建系统编写输入文件(例如Makefile)。<br>运行<code>cmake--help</code>将显示可用的生成器。<br>CMake包括不同类型的生成器，如命令行生成器、IDE生成器和其他生成器。</p>
+<ol>
+<li>命令行生成工具生成器<br>这些生成器用于命令行构建工具，如Make和Ninja。</li>
+<li>IDE构建工具生成器<br>这些生成器用于集成开发环境，其中包括它们自己的编译器。例如Visual Studio和Xcode，它们本身就包含一个编译器。</li>
+<li>其他生成器<br>这些生成器创建配置并与其他IDE工具共同工作，并且必须包含在IDE或命令行生成器中。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Note</th>
+<th>在本例中，ninja是通过命令sudo apt-get install ninja-build安装的。</th>
+</tr>
+</thead>
+</table>
+<h4 id="调用生成器"><a href="#调用生成器" class="headerlink" title="调用生成器"></a>调用生成器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> cmake .. <span class="hljs-literal">-G</span> Ninja<br><br><span class="hljs-variable">$</span> <span class="hljs-built_in">ls</span><br>build.ninja  CMakeCache.txt  CMakeFiles  cmake_install.cmake  rules.ninja<br></code></pre></td></tr></table></figure>
+<p>CMake将生成所需的Ninja构建文件，这些文件可以通过使用Ninja命令运行。</p>
+<h4 id="实例：使用Ninja编译UGAS"><a href="#实例：使用Ninja编译UGAS" class="headerlink" title="实例：使用Ninja编译UGAS"></a>实例：使用Ninja编译UGAS</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/ros2_ws/src &amp; <span class="hljs-built_in">cd</span> ~/ros2_ws                   <span class="hljs-comment">#创建工作区文件夹</span><br><span class="hljs-built_in">cp</span> -r ~/Desktop/UGAS ./src/ugas                         <span class="hljs-comment">#拷贝目录</span><br>colcon build --packages-select ugas --cmake-args  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DENABLE_ROS=ON -GNinja<br><span class="hljs-built_in">source</span> ./install/local_setup.bash                       <span class="hljs-comment">#配置该功能包环境</span><br>ros2 run ugas main                                      <span class="hljs-comment">#运行一个节点</span><br></code></pre></td></tr></table></figure>
+<p>tips:</p>
+<ul>
+<li>colcon：使用colcon构建ros包，相当于ros1中的catkin工具</li>
+<li>cp -r Dir&#x2F; &#x2F;home&#x2F;test ：将Dir目录copy到test目录下</li>
+</ul>
+
                 
               </div>
             
