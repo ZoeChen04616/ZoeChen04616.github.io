@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="记录python的学习过程~">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png">
 <meta property="article:published_time" content="2023-07-28T06:13:23.000Z">
-<meta property="article:modified_time" content="2023-07-28T16:10:30.296Z">
+<meta property="article:modified_time" content="2023-07-29T08:41:46.426Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -249,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          6.6k 字
         
       </span>
     
@@ -260,7 +262,7 @@
         
         
         
-          40 分钟
+          55 分钟
         
       </span>
     
@@ -310,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年7月29日 凌晨
+                    本文最后更新于：2023年7月29日 下午
                   
                 
               </p>
@@ -385,8 +387,7 @@
 </li>
 <li>更新列表：使用<code>append()</code>添加列表项</li>
 <li>列表脚本操作符:<br>列表对 + 和 * 的操作符与字符串相似。+ 号用于组合列表，* 号用于重复列表。</li>
-<li>常用列表函数：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(<span class="hljs-built_in">list</span>)               <span class="hljs-comment">#列表元素个数</span><br>   <span class="hljs-built_in">max</span>(<span class="hljs-built_in">list</span>)<br>   <span class="hljs-built_in">min</span>(<span class="hljs-built_in">list</span>)<br>   <span class="hljs-built_in">list</span>(seq)               <span class="hljs-comment">#将元组转换为列表</span><br>   <span class="hljs-built_in">list</span>.count(obj)         <span class="hljs-comment">#统计某个元素在列表中出现的次数</span><br>   <span class="hljs-built_in">list</span>.index(obj)         <span class="hljs-comment">#从列表中找出某个值第一个匹配项的索引位置</span><br>   <span class="hljs-built_in">list</span>.insert(index, obj) <span class="hljs-comment">#将对象插入列表</span><br>   <span class="hljs-built_in">list</span>.sort(cmp=<span class="hljs-literal">None</span>, key=<span class="hljs-literal">None</span>, reverse=<span class="hljs-literal">False</span>) <br>   <span class="hljs-comment">#对原列表进行排序</span><br></code></pre></td></tr></table></figure>
-详细参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-lists.html">https://www.runoob.com/python/python-lists.html</a></li>
+<li>常用列表函数：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-lists.html">https://www.runoob.com/python/python-lists.html</a></li>
 </ol>
 <h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><p>Python 的元组与列表类似，不同之处在于元组的元素不能修改。</p>
 <p>元组使用小括号，列表使用方括号。</p>
@@ -396,11 +397,47 @@
 <li>元组运算符（进行组合和复制）</li>
 <li>元组索引，截取</li>
 <li>无关闭分隔符：任意无符号的对象，以逗号隔开，默认为元组</li>
-<li>元组内置函数：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">cmp</span><span class="hljs-params">(tuple1, tuple2)</span></span> #比较两个元组元素<br><span class="hljs-function"><span class="hljs-title">len</span><span class="hljs-params">(tuple)</span></span>          #计算元组元素个数<br><span class="hljs-function"><span class="hljs-title">tuple</span><span class="hljs-params">(seq)</span></span>          #将列表转换为元组<br><span class="hljs-function"><span class="hljs-title">max</span><span class="hljs-params">(tuple)</span></span>          #返回元组中元素最大值<br><span class="hljs-function"><span class="hljs-title">min</span><span class="hljs-params">(tuple)</span></span>          #返回元组中元素最小值<br></code></pre></td></tr></table></figure>
-详细参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-tuples.html">https://www.runoob.com/python/python-tuples.html</a></li>
+<li>元组内置函数：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-tuples.html">https://www.runoob.com/python/python-tuples.html</a></li>
 </ol>
-<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>一种可变容器模型，且可存储任意类型对象。</p>
-<h3 id="7-日期与时间"><a href="#7-日期与时间" class="headerlink" title="7. 日期与时间"></a>7. 日期与时间</h3><h3 id="8-语句"><a href="#8-语句" class="headerlink" title="8. 语句"></a>8. 语句</h3><h3 id="9-运算符"><a href="#9-运算符" class="headerlink" title="9. 运算符"></a>9. 运算符</h3><h3 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h3><h2 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h2><h3 id="1-模块"><a href="#1-模块" class="headerlink" title="1. 模块"></a>1. 模块</h3><h3 id="2-File-文件-方法"><a href="#2-File-文件-方法" class="headerlink" title="2.  File(文件) 方法"></a>2.  File(文件) 方法</h3><h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><h3 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4. 异常处理"></a>4. 异常处理</h3><h3 id="5-面向对象"><a href="#5-面向对象" class="headerlink" title="5. 面向对象"></a>5. 面向对象</h3><h3 id="6-多线程"><a href="#6-多线程" class="headerlink" title="6. 多线程"></a>6. 多线程</h3><h3 id="7-SMTP发送邮件"><a href="#7-SMTP发送邮件" class="headerlink" title="7. SMTP发送邮件"></a>7. SMTP发送邮件</h3><h3 id="8-网络编程"><a href="#8-网络编程" class="headerlink" title="8. 网络编程"></a>8. 网络编程</h3><h3 id="9-使用python进行GUI设计"><a href="#9-使用python进行GUI设计" class="headerlink" title="9. 使用python进行GUI设计"></a>9. 使用python进行GUI设计</h3><h3 id="10-使用-Python-语言来编码和解码-JSON-对象"><a href="#10-使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="10. 使用 Python 语言来编码和解码 JSON 对象"></a>10. 使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="11-使用python进行AI绘画"><a href="#11-使用python进行AI绘画" class="headerlink" title="11.使用python进行AI绘画"></a>11.使用python进行AI绘画</h3>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>一种可变容器模型，且可存储任意类型对象。<br><code>dict</code> 作为 Python 的关键字和内置函数，字典的变量名不建议命名为 dict。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">d = &#123;key1 : <span class="hljs-type">value1</span>, key2 : <span class="hljs-type">value2</span> &#125;<br></code></pre></td></tr></table></figure>
+<p>字典值可以没有限制地取任何 python 对象，既可以是标准的对象，也可以是用户定义的，但键不行。</p>
+<ul>
+<li>键一般是唯一的，如果重复最后的一个键值对会替换前面的，值不需要唯一。</li>
+<li>值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组。</li>
+</ul>
+<ol>
+<li>访问字典的值<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">#!/usr/bin/python</span><br> <br>tinydict = &#123;<span class="hljs-string">&#x27;Name&#x27;</span>: <span class="hljs-string">&#x27;Zara&#x27;</span>, <span class="hljs-string">&#x27;Age&#x27;</span>: 7, <span class="hljs-string">&#x27;Class&#x27;</span>: <span class="hljs-string">&#x27;First&#x27;</span>&#125;<br> <br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;tinydict[&#x27;Name&#x27;]: &quot;</span>, tinydict[<span class="hljs-string">&#x27;Name&#x27;</span>]<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;tinydict[&#x27;Age&#x27;]: &quot;</span>, tinydict[<span class="hljs-string">&#x27;Age&#x27;</span>]<br></code></pre></td></tr></table></figure></li>
+<li>修改字典<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs 1c">tinydict = &#123;&#x27;Name&#x27;: &#x27;Zara&#x27;, &#x27;Age&#x27;: <span class="hljs-number">7</span>, &#x27;Class&#x27;: &#x27;First&#x27;&#125;<br> <br>tinydict[&#x27;Age&#x27;] = <span class="hljs-number">8</span> <span class="hljs-meta"># 更新</span><br>tinydict[&#x27;School&#x27;] = <span class="hljs-string">&quot;RUNOOB&quot;</span> <span class="hljs-meta"># 添加</span><br></code></pre></td></tr></table></figure></li>
+<li>删除字典元素<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">del</span> tinydict[<span class="hljs-string">&#x27;Name&#x27;</span>]  <span class="hljs-comment"># 删除键是&#x27;Name&#x27;的条目</span><br>tinydict.clear()      <span class="hljs-comment"># 清空字典所有条目</span><br><span class="hljs-built_in">del</span> tinydict          <span class="hljs-comment"># 删除字典</span><br></code></pre></td></tr></table></figure></li>
+<li>字典内置函数&amp;方法<br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-dictionary.html">https://www.runoob.com/python/python-dictionary.html</a></li>
+</ol>
+<h3 id="7-日期与时间"><a href="#7-日期与时间" class="headerlink" title="7. 日期与时间"></a>7. 日期与时间</h3><p>Python 提供了一个 time 和 calendar 模块可以用于格式化日期和时间。</p>
+<p>时间间隔是以秒为单位的浮点小数。每个时间戳都以自从1970年1月1日午夜（历元）经过了多长时间来表示。</p>
+<p><code>time.time()</code> 用于获取当前时间戳 </p>
+<ol>
+<li><p><code>struct_time</code>元组<br>很多Python函数用一个元组装起来的9组数字处理时间:<br>html <div align="center"> <img src="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png " srcset="/img/loading.gif" lazyload width = 80% /> </div></p>
+</li>
+<li><p>获取当前时间：<br>从返回浮点数的时间戳方式向时间元组转换，只要将浮点数传递给如localtime之类的函数</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> <span class="hljs-type">time</span><br> <br><span class="hljs-built_in">localtime</span> = <span class="hljs-type">time</span>.<span class="hljs-built_in">localtime</span>(<span class="hljs-type">time</span>.time())<br>print &quot;本地时间为 :&quot;, <span class="hljs-built_in">localtime</span><br></code></pre></td></tr></table></figure>
+<p>实例输出结果为：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">本地时间为 : time.struct_time(<span class="hljs-attribute">tm_year</span>=2016, <span class="hljs-attribute">tm_mon</span>=4, <span class="hljs-attribute">tm_mday</span>=7, <span class="hljs-attribute">tm_hour</span>=10, <span class="hljs-attribute">tm_min</span>=3, <span class="hljs-attribute">tm_sec</span>=27, <span class="hljs-attribute">tm_wday</span>=3, <span class="hljs-attribute">tm_yday</span>=98, <span class="hljs-attribute">tm_isdst</span>=0)<br></code></pre></td></tr></table></figure></li>
+<li><p>获取格式化的时间: <code>asctime()</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-built_in">localtime</span> = <span class="hljs-type">time</span>.asctime( <span class="hljs-type">time</span>.<span class="hljs-built_in">localtime</span>(<span class="hljs-type">time</span>.time()) )<br></code></pre></td></tr></table></figure>
+<p>实例输出结果为：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">本地时间为 : <span class="hljs-type">Thu</span> Apr  <span class="hljs-number">7</span> <span class="hljs-number">10</span>:<span class="hljs-number">05</span>:<span class="hljs-number">21</span> <span class="hljs-number">2016</span><br></code></pre></td></tr></table></figure></li>
+<li><p>格式化日期<br>使用 time 模块的 <code>strftime</code> 来格式化日期 :<br><code>time.strftime(format[, t])</code></p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs perl">import <span class="hljs-keyword">time</span><br> <br><span class="hljs-comment"># 格式化成2016-03-20 11:45:39形式</span><br><span class="hljs-keyword">print</span> time.strftime(<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, time.localtime()) <br> <br><span class="hljs-comment"># 格式化成Sat Mar 28 22:24:24 2016形式</span><br><span class="hljs-keyword">print</span> time.strftime(<span class="hljs-string">&quot;%a %b %d %H:%M:%S %Y&quot;</span>, time.localtime()) <br>  <br><span class="hljs-comment"># 将格式字符串转换为时间戳</span><br>a = <span class="hljs-string">&quot;Sat Mar 28 22:24:24 2016&quot;</span><br><span class="hljs-keyword">print</span> time.mktime(time.strptime(a,<span class="hljs-string">&quot;%a %b %d %H:%M:%S %Y&quot;</span>))<br></code></pre></td></tr></table></figure>
+<p>日期格式化符号解释：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-date-time.html">https://www.runoob.com/python/python-date-time.html</a></p>
+</li>
+<li><p>获取某月日历：引入<code>calendar</code>模块</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import calendar<br> <br>cal = calendar.month(2016, 1)<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;以下输出2016年1月份的日历:&quot;</span><br><span class="hljs-built_in">print</span> cal<br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tap">以下输出2016年1月份的日历:<br>    January 2016<br>Mo Tu We Th Fr Sa Su<br>            <span class="hljs-number"> 1 </span><span class="hljs-number"> 2 </span> 3<br><span class="hljs-number"> 4 </span><span class="hljs-number"> 5 </span><span class="hljs-number"> 6 </span><span class="hljs-number"> 7 </span><span class="hljs-number"> 8 </span><span class="hljs-number"> 9 </span>10<br>11<span class="hljs-number"> 12 </span>13<span class="hljs-number"> 14 </span>15<span class="hljs-number"> 16 </span>17<br>18<span class="hljs-number"> 19 </span>20<span class="hljs-number"> 21 </span>22<span class="hljs-number"> 23 </span>24<br>25<span class="hljs-number"> 26 </span>27<span class="hljs-number"> 28 </span>29<span class="hljs-number"> 30 </span>31<br></code></pre></td></tr></table></figure></li>
+<li><p>python中关于时间和日期方面的模块有：<code>Time</code> 模块、<code>Calendar</code>模块、<code>datetime</code>模块、<code>pytz</code>模块、<code>dateutil</code>模块。<br>详细参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-date-time.html">https://www.runoob.com/python/python-date-time.html</a></p>
+</li>
+</ol>
+<h3 id="8-语句"><a href="#8-语句" class="headerlink" title="8. 语句"></a>8. 语句</h3><h3 id="9-运算符"><a href="#9-运算符" class="headerlink" title="9. 运算符"></a>9. 运算符</h3><h3 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h3><h2 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h2><h3 id="1-模块"><a href="#1-模块" class="headerlink" title="1. 模块"></a>1. 模块</h3><h3 id="2-File-文件-方法"><a href="#2-File-文件-方法" class="headerlink" title="2.  File(文件) 方法"></a>2.  File(文件) 方法</h3><h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><h3 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4. 异常处理"></a>4. 异常处理</h3><h3 id="5-面向对象"><a href="#5-面向对象" class="headerlink" title="5. 面向对象"></a>5. 面向对象</h3><h3 id="6-多线程"><a href="#6-多线程" class="headerlink" title="6. 多线程"></a>6. 多线程</h3><h3 id="7-SMTP发送邮件"><a href="#7-SMTP发送邮件" class="headerlink" title="7. SMTP发送邮件"></a>7. SMTP发送邮件</h3><h3 id="8-网络编程"><a href="#8-网络编程" class="headerlink" title="8. 网络编程"></a>8. 网络编程</h3><h3 id="9-使用python进行GUI设计"><a href="#9-使用python进行GUI设计" class="headerlink" title="9. 使用python进行GUI设计"></a>9. 使用python进行GUI设计</h3><h3 id="10-使用-Python-语言来编码和解码-JSON-对象"><a href="#10-使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="10. 使用 Python 语言来编码和解码 JSON 对象"></a>10. 使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="11-使用python进行AI绘画"><a href="#11-使用python进行AI绘画" class="headerlink" title="11.使用python进行AI绘画"></a>11.使用python进行AI绘画</h3>
                 
               </div>
             
