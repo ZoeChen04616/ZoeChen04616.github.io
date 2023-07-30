@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png">
 <meta property="article:published_time" content="2023-07-28T06:13:23.000Z">
-<meta property="article:modified_time" content="2023-07-29T09:34:57.948Z">
+<meta property="article:modified_time" content="2023-07-30T08:51:30.921Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.1k 字
+          13k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          68 分钟
+          111 分钟
         
       </span>
     
@@ -312,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年7月29日 下午
+                    本文最后更新于：2023年7月30日 下午
                   
                 
               </p>
@@ -449,15 +449,210 @@
 </ol>
 <ul>
 <li>while … else 在循环条件为 false 时执行 else 语句块 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">count</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> <span class="hljs-keyword">count</span> &lt; <span class="hljs-number">5</span>:<br>   <span class="hljs-keyword">print</span> <span class="hljs-keyword">count</span>, <span class="hljs-string">&quot; is  less than 5&quot;</span><br>   <span class="hljs-keyword">count</span> = <span class="hljs-keyword">count</span> + <span class="hljs-number">1</span><br><span class="hljs-keyword">else</span>:<br>   <span class="hljs-keyword">print</span> <span class="hljs-keyword">count</span>, <span class="hljs-string">&quot; is not less than 5&quot;</span><br></code></pre></td></tr></table></figure></li>
-<li>for循环<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment">#!/usr/bin/python</span><br><span class="hljs-comment"># -*- coding: UTF-8 -*-</span><br> <br><span class="hljs-keyword">for</span> <span class="hljs-built_in">num</span> <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>):  <span class="hljs-comment"># 迭代 10 到 20 之间的数字</span><br>   <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,<span class="hljs-built_in">num</span>): <span class="hljs-comment"># 根据因子迭代</span><br>      <span class="hljs-keyword">if</span> <span class="hljs-built_in">num</span>%i == <span class="hljs-number">0</span>:      <span class="hljs-comment"># 确定第一个因子</span><br>         j=<span class="hljs-built_in">num</span>/i          <span class="hljs-comment"># 计算第二个因子</span><br>         print (<span class="hljs-string">&#x27;%d 等于 %d * %d&#x27;</span> % (<span class="hljs-built_in">num</span>,i,j))<br>         break            <span class="hljs-comment"># 跳出当前循环</span><br>   <span class="hljs-keyword">else</span>:                  <span class="hljs-comment"># 循环的 else 部分</span><br>      print (<span class="hljs-string">&#x27;%d 是一个质数&#x27;</span> % <span class="hljs-built_in">num</span>)<br></code></pre></td></tr></table></figure></li>
+<li>for循环<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">for</span> <span class="hljs-built_in">num</span> <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>):  <span class="hljs-comment"># 迭代 10 到 20 之间的数字</span><br>   <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>,<span class="hljs-built_in">num</span>): <span class="hljs-comment"># 根据因子迭代</span><br>      <span class="hljs-keyword">if</span> <span class="hljs-built_in">num</span>%i == <span class="hljs-number">0</span>:      <span class="hljs-comment"># 确定第一个因子</span><br>         j=<span class="hljs-built_in">num</span>/i          <span class="hljs-comment"># 计算第二个因子</span><br>         print (<span class="hljs-string">&#x27;%d 等于 %d * %d&#x27;</span> % (<span class="hljs-built_in">num</span>,i,j))<br>         break            <span class="hljs-comment"># 跳出当前循环</span><br>   <span class="hljs-keyword">else</span>:                  <span class="hljs-comment"># 循环的 else 部分</span><br>      print (<span class="hljs-string">&#x27;%d 是一个质数&#x27;</span> % <span class="hljs-built_in">num</span>)<br></code></pre></td></tr></table></figure></li>
 </ul>
 <ol start="5">
-<li>简单语句组<br>如果你的 while 循环体中只有一条语句，你可以将该语句与while写在同一行中<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">flag = <span class="hljs-number">1</span><br> <br><span class="hljs-keyword">while</span> (flag): print <span class="hljs-symbol">&#x27;Given</span> flag <span class="hljs-keyword">is</span> really <span class="hljs-literal">true</span>!&#x27;<br></code></pre></td></tr></table></figure></li>
+<li>简单语句组<br>如果while 循环体中只有一条语句，可以将该语句与while写在同一行中<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">flag = <span class="hljs-number">1</span><br> <br><span class="hljs-keyword">while</span> (flag): print <span class="hljs-symbol">&#x27;Given</span> flag <span class="hljs-keyword">is</span> really <span class="hljs-literal">true</span>!&#x27;<br></code></pre></td></tr></table></figure></li>
 <li>通过序列索引迭代<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">fruits = [<span class="hljs-string">&#x27;banana&#x27;</span>, <span class="hljs-string">&#x27;apple&#x27;</span>,  <span class="hljs-string">&#x27;mango&#x27;</span>]<br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">index</span> in <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(fruits)):<br>   <span class="hljs-keyword">print</span> (<span class="hljs-string">&#x27;当前水果 : %s&#x27;</span> % fruits[<span class="hljs-built_in">index</span>])<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="pass语句"><a href="#pass语句" class="headerlink" title="pass语句"></a>pass语句</h4><p> pass 是空语句，是为了保持程序结构的完整性，用做占位语句。</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 输出 Python 的每个字母</span><br><span class="hljs-keyword">for</span> letter <span class="hljs-keyword">in</span> <span class="hljs-string">&#x27;Python&#x27;</span>:<br>   <span class="hljs-keyword">if</span> letter == <span class="hljs-string">&#x27;h&#x27;</span>:<br>      pass<br>      <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;这是 pass 块&#x27;</span><br>   <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;当前字母 :&#x27;</span>, letter<br></code></pre></td></tr></table></figure>
-<h3 id="9-运算符"><a href="#9-运算符" class="headerlink" title="9. 运算符"></a>9. 运算符</h3><h3 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h3><h2 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h2><h3 id="1-模块"><a href="#1-模块" class="headerlink" title="1. 模块"></a>1. 模块</h3><h3 id="2-File-文件-方法"><a href="#2-File-文件-方法" class="headerlink" title="2.  File(文件) 方法"></a>2.  File(文件) 方法</h3><h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><h3 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4. 异常处理"></a>4. 异常处理</h3><h3 id="5-面向对象"><a href="#5-面向对象" class="headerlink" title="5. 面向对象"></a>5. 面向对象</h3><h3 id="6-多线程"><a href="#6-多线程" class="headerlink" title="6. 多线程"></a>6. 多线程</h3><h3 id="7-SMTP发送邮件"><a href="#7-SMTP发送邮件" class="headerlink" title="7. SMTP发送邮件"></a>7. SMTP发送邮件</h3><h3 id="8-网络编程"><a href="#8-网络编程" class="headerlink" title="8. 网络编程"></a>8. 网络编程</h3><h3 id="9-使用python进行GUI设计"><a href="#9-使用python进行GUI设计" class="headerlink" title="9. 使用python进行GUI设计"></a>9. 使用python进行GUI设计</h3><h3 id="10-使用-Python-语言来编码和解码-JSON-对象"><a href="#10-使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="10. 使用 Python 语言来编码和解码 JSON 对象"></a>10. 使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="11-使用python进行AI绘画"><a href="#11-使用python进行AI绘画" class="headerlink" title="11.使用python进行AI绘画"></a>11.使用python进行AI绘画</h3>
+<h3 id="9-运算符"><a href="#9-运算符" class="headerlink" title="9. 运算符"></a>9. 运算符</h3><h4 id="算术运算符（略）"><a href="#算术运算符（略）" class="headerlink" title="算术运算符（略）"></a>算术运算符（略）</h4><h4 id="比较运算符（略）"><a href="#比较运算符（略）" class="headerlink" title="比较运算符（略）"></a>比较运算符（略）</h4><h4 id="赋值运算符（略）"><a href="#赋值运算符（略）" class="headerlink" title="赋值运算符（略）"></a>赋值运算符（略）</h4><p>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-operators.html">https://www.runoob.com/python/python-operators.html</a></p>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><p>按位运算符是把数字看作二进制来进行计算的</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>解释</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>按位与运算符</td>
+<td>参与运算的两个值,如果两个相应位都为1,则该位的结果为1,否则为0</td>
+</tr>
+<tr>
+<td>I</td>
+<td>按位或运算符</td>
+<td>只要对应的二个二进位有一个为1时，结果位就为1</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或运算符</td>
+<td>当两对应的二进位相异时，结果为1</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反运算符</td>
+<td>对数据的每个二进制位取反,即把1变为0,把0变为1 。~x 类似于 -x-1</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移动运算符</td>
+<td>运算数的各二进位全部左移若干位，由 &lt;&lt; 右边的数字指定了移动的位数，高位丢弃，低位补0。</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移动运算符</td>
+<td>把”&gt;&gt;”左边的运算数的各二进位全部右移若干位，&gt;&gt; 右边的数字指定了移动的位数</td>
+</tr>
+</tbody></table>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><ul>
+<li>and</li>
+<li>or</li>
+<li>not</li>
+</ul>
+<h4 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h4><ul>
+<li>in</li>
+<li>not in<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros">a = 10<br>list = [1, 2, 3, 4, 5 ];<br> <br><span class="hljs-keyword">if</span> ( a <span class="hljs-keyword">in</span> list ):<br>   <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;变量 a 在给定的列表中 list 中&quot;</span><br><span class="hljs-keyword">else</span>:<br>   <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;变量 a 不在给定的列表中 list 中&quot;</span><br> <br><span class="hljs-comment"># 修改变量 a 的值</span><br>a = 2<br><span class="hljs-keyword">if</span> ( a <span class="hljs-keyword">in</span> list ):<br>   <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;变量 a 在给定的列表中 list 中&quot;</span><br><span class="hljs-keyword">else</span>:<br>   <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;变量 a 不在给定的列表中 list 中&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h4><p>用于比较两个对象的存储单元(本质是判断指针)</p>
+<ul>
+<li>is</li>
+<li>is not</li>
+</ul>
+<p>tips：<code>is 与 == 区别</code> :</p>
+<p>is 用于判断两个变量引用对象是否为同一个(同一块内存空间)， &#x3D;&#x3D; 用于判断引用变量的值是否相等。</p>
+<h3 id="10-函数"><a href="#10-函数" class="headerlink" title="10. 函数"></a>10. 函数</h3><h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><p>语法：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">functionname</span>(<span class="hljs-params"> parameters </span>):<br>   <span class="hljs-string">&quot;函数_文档字符串&quot;</span><br>   function_suite<br>   <span class="hljs-keyword">return</span> [expression]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</li>
+<li>函数内容以冒号起始，并且缩进。</li>
+<li>return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。</li>
+</ul>
+<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><p>在 python 中，类型属于对象，变量是没有类型的：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">a</span>=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-attr">a</span>=<span class="hljs-string">&quot;Runoob&quot;</span><br></code></pre></td></tr></table></figure>
+<p>以上代码中，[1,2,3] 是 List 类型，”Runoob” 是 String 类型，而变量 a 是没有类型，她仅仅是一个对象的引用（一个指针），可以是 List 类型对象，也可以指向 String 类型对象。</p>
+<ul>
+<li><p>可更改(mutable)与不可更改(immutable)对象:<br>在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。</p>
+<ul>
+<li><p>不可变类型：变量赋值 a&#x3D;5 后再赋值 a&#x3D;10，这里实际是新生成一个 int 值对象 10，再让 a 指向它，而 5 被丢弃，不是改变a的值，相当于新生成了a。</p>
+</li>
+<li><p>可变类型：变量赋值 la&#x3D;[1,2,3,4] 后再赋值 la[2]&#x3D;5 则是将 list la 的第三个元素值更改，本身la没有动，只是其内部的一部分值被修改了。</p>
+</li>
+</ul>
+</li>
+<li><p>python 函数的参数传递：</p>
+<ul>
+<li><p>不可变类型：类似 c++ 的值传递，如 整数、字符串、元组。如fun（a），传递的只是a的值，没有影响a对象本身。比如在 fun（a）内部修改 a 的值，只是修改另一个复制的对象，不会影响 a 本身。</p>
+</li>
+<li><p>可变类型：类似 c++ 的引用传递，如 列表，字典。如 fun（la），则是将 la 真正的传过去，修改后fun外部的la也会受影响</p>
+</li>
+</ul>
+</li>
+<li><p>使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。</p>
+</li>
+<li><p>调用函数时，默认参数的值如果没有传入，则被认为是默认值<br>参数默认值在函数声明时设置</p>
+</li>
+</ul>
+<h4 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h4><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">def functionname([<span class="hljs-keyword">formal</span><span class="hljs-number">_</span>args,] *var<span class="hljs-number">_</span>args<span class="hljs-number">_</span>tuple ):<br>   <span class="hljs-string">&quot;函数_文档字符串&quot;</span><br>   <span class="hljs-keyword">function</span><span class="hljs-number">_</span>suite<br>   <span class="hljs-keyword">return</span> [expression]<br></code></pre></td></tr></table></figure>
+<p>加了星号（*）的变量名会存放所有未命名的变量参数<br>示例：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs axapta">def printinfo( arg1, *vartuple ):<br>   <span class="hljs-string">&quot;打印任何传入的参数&quot;</span><br>   <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;输出: &quot;</span><br>   <span class="hljs-keyword">print</span> arg1<br>   <span class="hljs-keyword">for</span> <span class="hljs-built_in">var</span> <span class="hljs-keyword">in</span> vartuple: <span class="hljs-meta">#哇哦，这里的for in体现出不定长的特性！！</span><br>      <span class="hljs-keyword">print</span> <span class="hljs-built_in">var</span><br>   <span class="hljs-keyword">return</span><br> <br><span class="hljs-meta"># 调用printinfo 函数</span><br>printinfo( <span class="hljs-number">10</span> )<br>printinfo( <span class="hljs-number">70</span>, <span class="hljs-number">60</span>, <span class="hljs-number">50</span> )<br></code></pre></td></tr></table></figure>
+<h4 id="匿名参数"><a href="#匿名参数" class="headerlink" title="匿名参数"></a>匿名参数</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-built_in">lambda</span> [arg1 [,arg2,.....argn]]<span class="hljs-symbol">:expression</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>lambda的主体是一个表达式，而不是一个代码块。仅仅能在lambda表达式中封装有限的逻辑进去。</li>
+<li>lambda函数拥有自己的命名空间，且不能访问自有参数列表之外或全局命名空间里的参数。</li>
+<li>虽然lambda函数看起来只能写一行，却不等同于C或C++的内联函数，后者的目的是调用小函数时不占用栈内存从而增加运行效率。<br>示例：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 可写函数说明</span><br><span class="hljs-built_in">sum</span> = <span class="hljs-keyword">lambda</span> arg1, arg2: arg1 + arg2<br> <br><span class="hljs-comment"># 调用sum函数</span><br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;相加后的值为 : &quot;</span>, <span class="hljs-built_in">sum</span>( <span class="hljs-number">10</span>, <span class="hljs-number">20</span> )<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;相加后的值为 : &quot;</span>, <span class="hljs-built_in">sum</span>( <span class="hljs-number">20</span>, <span class="hljs-number">20</span> )<br></code></pre></td></tr></table></figure>
+运行结果：<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ada">相加后的值为 :  30<br>相加后的值为 :  40<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><ul>
+<li>全局变量</li>
+<li>局部变量</li>
+</ul>
+<h2 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h2><h3 id="1-模块"><a href="#1-模块" class="headerlink" title="1. 模块"></a>1. 模块</h3><p>Python 模块(Module)，是一个 Python 文件，以<code> .py</code> 结尾，包含了 Python 对象定义和Python语句。</p>
+<p>模块能够有逻辑地组织Python 代码段。把相关的代码分配到一个模块里能让代码更好用，更易懂。</p>
+<p>模块能定义函数，类和变量，模块里也能包含可执行的代码。</p>
+<h4 id="模块的引入"><a href="#模块的引入" class="headerlink" title="模块的引入"></a>模块的引入</h4><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon"><span class="hljs-keyword">import</span> <span class="hljs-keyword">module</span><span class="hljs-number">1</span>[, <span class="hljs-keyword">module</span><span class="hljs-number">2</span>[,... moduleN]]<br></code></pre></td></tr></table></figure>
+<p>一个模块只会被导入一次，不管你执行了多少次import。这样可以防止导入模块被一遍又一遍地执行。</p>
+<h4 id="搜索路径和环境变量"><a href="#搜索路径和环境变量" class="headerlink" title="搜索路径和环境变量"></a>搜索路径和环境变量</h4><p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-modules.html">https://www.runoob.com/python/python-modules.html</a></p>
+<h4 id="命名空间和作用域"><a href="#命名空间和作用域" class="headerlink" title="命名空间和作用域"></a>命名空间和作用域</h4><p>命名空间是一个包含了变量名称们（键）和它们各自相应的对象们（值）的字典。</p>
+<p>一个 Python 表达式可以访问局部命名空间和全局命名空间里的变量。如果一个局部变量和一个全局变量重名，则局部变量会覆盖全局变量。如果要给函数内的全局变量赋值，必须使用 global 语句：<br><code>global VarName</code></p>
+<h4 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h4><p>排好序的字符串列表，内容是一个模块里定义过的名字。<br>返回的列表容纳了在一个模块里定义的所有模块，变量和函数。</p>
+<h4 id="globals-和-locals-函数、reload-函数"><a href="#globals-和-locals-函数、reload-函数" class="headerlink" title="globals() 和 locals() 函数、reload() 函数"></a>globals() 和 locals() 函数、reload() 函数</h4><p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-modules.html">https://www.runoob.com/python/python-modules.html</a></p>
+<h4 id="Python中的包"><a href="#Python中的包" class="headerlink" title="Python中的包"></a>Python中的包</h4><p>包是一个分层次的文件目录结构，它定义了一个由模块及子包，和子包下的子包等组成的 Python 的应用环境。</p>
+<p>简单来说，包就是文件夹，但该文件夹下必须存在 <strong>init</strong>.py 文件, 该文件的内容可以为空。<strong>init</strong>.py 用于标识当前文件夹是一个包。</p>
+<h3 id="2-File-文件-方法"><a href="#2-File-文件-方法" class="headerlink" title="2.  File(文件) 方法"></a>2.  File(文件) 方法</h3><h4 id="读取键盘输入"><a href="#读取键盘输入" class="headerlink" title="读取键盘输入"></a>读取键盘输入</h4><ul>
+<li>raw_input函数<br>raw_input([prompt]) 函数从标准输入读取一个行，并返回一个字符串（去掉结尾的换行符）</li>
+<li>input函数<br>input([prompt]) 函数和 raw_input([prompt]) 函数基本类似，但是 input 可以接收一个Python表达式作为输入，并将运算结果返回<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs hsp"><span class="hljs-keyword">str</span> = <span class="hljs-keyword">input</span>(<span class="hljs-string">&quot;请输入：&quot;</span>)<br><span class="hljs-keyword">print</span> <span class="hljs-string">&quot;你输入的内容是: &quot;</span>, <span class="hljs-keyword">str</span><br></code></pre></td></tr></table></figure>
+示例：<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs inform7">请输入：<span class="hljs-comment">[x*5 for x in range(2,10,2)]</span><br>你输入的内容是:  <span class="hljs-comment">[10, 20, 30, 40]</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="打开、关闭和读写文件"><a href="#打开、关闭和读写文件" class="headerlink" title="打开、关闭和读写文件"></a>打开、关闭和读写文件</h4><ul>
+<li><p>open函数 ：打开一个文件，创建一个file对象<br><code>file object = open(file_name ,[access_mode],[buffering])</code></p>
+<ul>
+<li>file_name：file_name变量是一个包含了你要访问的文件名称的字符串值</li>
+<li>access_mode：access_mode决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)</li>
+<li>buffering:如果buffering的值被设为0，就不会有寄存。如果buffering的值取1，访问文件时会寄存行。如果将buffering的值设为大于1的整数，表明了这就是的寄存区的缓冲大小。如果取负值，寄存区的缓冲大小则为系统默认</li>
+</ul>
+</li>
+<li><p>File对象的属性</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>file.closed</td>
+<td>返回true如果文件已被关闭，否则返回false</td>
+</tr>
+<tr>
+<td>file.mode</td>
+<td>返回被打开文件的访问模式</td>
+</tr>
+<tr>
+<td>file.name</td>
+<td>返回文件的名称</td>
+</tr>
+<tr>
+<td>file.softspace</td>
+<td>如果用print输出后，必须跟一个空格符，则返回false；否则返回true</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>close（）函数<br><code>fileObject.close()</code> :<br>刷新缓冲区里任何还没写入的信息，并关闭该文件，这之后便不能再进行写入</p>
+</li>
+<li><p>write()函数<br><code>fileObject.write(string)</code> :将字符串写入一个打开的文件</p>
+<ul>
+<li>Python字符串可以是二进制数据，而不是仅仅是文字。</li>
+<li>write()方法不会在字符串的结尾添加换行符(‘\n’)。</li>
+</ul>
+</li>
+<li><p>read()函数<br><code>fileObject.read([count])</code> :从一个打开的文件中读取一个字符串</p>
+<ul>
+<li>被传递的参数是要从已打开文件中读取的字节计数</li>
+<li>从文件的开头开始读入，如果没有传入count，它会尝试尽可能多地读取更多的内容，很可能是直到文件的末尾<br>示例：<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vim"># 打开一个文件<br><span class="hljs-keyword">fo</span> = <span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;foo.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>)<br><span class="hljs-keyword">fo</span>.<span class="hljs-keyword">write</span>( <span class="hljs-string">&quot;www.runoob.com!\nVery good site!\n&quot;</span>)<br>str = <span class="hljs-keyword">fo</span>.<span class="hljs-keyword">read</span>(<span class="hljs-number">10</span>)<br><span class="hljs-keyword">print</span> <span class="hljs-string">&quot;读取的字符串是 : &quot;</span>, str<br># 关闭打开的文件<br><span class="hljs-keyword">fo</span>.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure>
+运行结果 ：<code>读取的字符串是 :  www.runoob</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h4><ul>
+<li><code>tell()</code> :返回文件内的当前位置，下一次的读写会发生在文件开头这么多字节之后</li>
+<li><code>seek（offset,[from]）</code> :改变当前文件的位置<ul>
+<li>offset变量表示要移动的字节数</li>
+<li>from变量指定开始移动字节的参考位置</li>
+<li>如果from设为0，将文件的开头作为移动字节的参考位置。<br>  如果设为1，则使用当前的位置作为参考位置。<br>  如果设为2，那么该文件的末尾将作为参考位置。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python</span><br><span class="hljs-comment"># -*- coding: UTF-8 -*-</span><br> <br><span class="hljs-comment"># 打开一个文件</span><br>fo = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;foo.txt&quot;</span>, <span class="hljs-string">&quot;r+&quot;</span>)<br><span class="hljs-built_in">str</span> = fo.read(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;读取的字符串是 : &quot;</span>, <span class="hljs-built_in">str</span><br> <br><span class="hljs-comment"># 查找当前位置</span><br>position = fo.tell()<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;当前文件位置 : &quot;</span>, position<br> <br><span class="hljs-comment"># 把指针再次重新定位到文件开头</span><br>position = fo.seek(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br><span class="hljs-built_in">str</span> = fo.read(<span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;重新读取字符串 : &quot;</span>, <span class="hljs-built_in">str</span><br><span class="hljs-comment"># 关闭打开的文件</span><br>fo.close()<br></code></pre></td></tr></table></figure>
+运行结果：<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">读取的字符串是 :  <span class="hljs-type">www.runoob</span><br>当前文件位置 :  10<br>重新读取字符串 :  <span class="hljs-type">www.runoob</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="重命名和删除文件"><a href="#重命名和删除文件" class="headerlink" title="重命名和删除文件"></a>重命名和删除文件</h4><p>Python的<code>os</code>模块提供了执行文件处理操作的方法，比如重命名和删除文件。</p>
+<p>要使用这个模块，必须先 <code>import os</code>。</p>
+<ul>
+<li>os.rename(current_file_name, new_file_name)<br>重命名文件</li>
+<li>os.remove(file_name)<br>删除文件</li>
+</ul>
+<h4 id="Python里的目录"><a href="#Python里的目录" class="headerlink" title="Python里的目录"></a>Python里的目录</h4><ul>
+<li>os.mkdir(“newdir”)<br>在当前目录下创建新的目录</li>
+<li>os.chdir(“newdir”)<br>改变当前的目录<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-keyword">import</span> <span class="hljs-built_in">os</span><br> <br># 将当前目录改为<span class="hljs-string">&quot;/home/newdir&quot;</span><br><span class="hljs-built_in">os</span>.chdir(<span class="hljs-string">&quot;/home/newdir&quot;</span>)<br></code></pre></td></tr></table></figure></li>
+<li>os.getcwd()<br>显示当前的工作目录</li>
+<li>os.rmdir(‘dirname’)<br>删除目录，目录名称以参数传递，目录的完全合规的名称必须被给出，否则会在当前目录下搜索该目录。<br>更多参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/file-methods.html">https://www.runoob.com/python/file-methods.html</a></li>
+</ul>
+<h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-built-in-functions.html">https://www.runoob.com/python/python-built-in-functions.html</a></p>
+<h3 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4. 异常处理"></a>4. 异常处理</h3><h3 id="5-面向对象"><a href="#5-面向对象" class="headerlink" title="5. 面向对象"></a>5. 面向对象</h3><h3 id="6-多线程"><a href="#6-多线程" class="headerlink" title="6. 多线程"></a>6. 多线程</h3><h3 id="7-SMTP发送邮件"><a href="#7-SMTP发送邮件" class="headerlink" title="7. SMTP发送邮件"></a>7. SMTP发送邮件</h3><h3 id="8-网络编程"><a href="#8-网络编程" class="headerlink" title="8. 网络编程"></a>8. 网络编程</h3><h3 id="9-使用python进行GUI设计"><a href="#9-使用python进行GUI设计" class="headerlink" title="9. 使用python进行GUI设计"></a>9. 使用python进行GUI设计</h3><h3 id="10-使用-Python-语言来编码和解码-JSON-对象"><a href="#10-使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="10. 使用 Python 语言来编码和解码 JSON 对象"></a>10. 使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="11-使用python进行AI绘画"><a href="#11-使用python进行AI绘画" class="headerlink" title="11.使用python进行AI绘画"></a>11.使用python进行AI绘画</h3>
                 
               </div>
             
