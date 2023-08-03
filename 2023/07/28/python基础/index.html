@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png">
 <meta property="article:published_time" content="2023-07-28T06:13:23.000Z">
-<meta property="article:modified_time" content="2023-07-30T14:19:20.230Z">
+<meta property="article:modified_time" content="2023-08-03T11:18:57.684Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25k 字
+          28k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          213 分钟
+          235 分钟
         
       </span>
     
@@ -312,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年7月30日 晚上
+                    本文最后更新于：2023年8月3日 晚上
                   
                 
               </p>
@@ -333,6 +333,13 @@
 <li>使用四个空格来表示一个缩进层级<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">if</span> x &gt; 0:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;x is positive&quot;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;positive number&quot;</span>) <br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;x is zero or negative&quot;</span>)<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="3-多行语句"><a href="#3-多行语句" class="headerlink" title="3. 多行语句"></a>3. 多行语句</h3><p>Python 通常是一行写完一条语句；长语句可通过反斜杠（\）来实现多行语句。</p>
+<p>python的print()函数中参数end&#x3D;’ ‘默认为\n，所以会自动换行。</p>
+<ul>
+<li>end&#x3D;’ ‘  表示不换行</li>
+<li>end&#x3D;’\t’——表示缩进，就是按一下Tab键</li>
+<li>end&#x3D;’\n’——相当于换行</li>
+<li>end&#x3D;’\r’ 返回行首，最后一个字符的输入会将之前的字符全部覆盖掉</li>
+</ul>
 <h3 id="4-等待用户输入：input-函数"><a href="#4-等待用户输入：input-函数" class="headerlink" title="4. 等待用户输入：input() 函数"></a>4. 等待用户输入：input() 函数</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">1.  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Who are you?&quot;</span>)<br>2.  you = input()<br>3.  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello!&quot;</span>)<br>4.  <span class="hljs-built_in">print</span>(you)<br></code></pre></td></tr></table></figure>
 <h3 id="5-变量"><a href="#5-变量" class="headerlink" title="5. 变量"></a>5. 变量</h3><ul>
 <li>变量命名和赋值：Python 的变量无须提前声明，赋值的同时也就声明了变量。<br>  eg:<code>a = 42</code></li>
@@ -560,6 +567,11 @@
 <li>全局变量</li>
 <li>局部变量</li>
 </ul>
+<h3 id="11-python的版本迭代备注"><a href="#11-python的版本迭代备注" class="headerlink" title="11.python的版本迭代备注"></a>11.python的版本迭代备注</h3><h4 id="关于设置Python解释器的默认字符编码为UTF-8"><a href="#关于设置Python解释器的默认字符编码为UTF-8" class="headerlink" title="关于设置Python解释器的默认字符编码为UTF-8"></a>关于设置Python解释器的默认字符编码为UTF-8</h4><p>一些开源项目里面的python代码会写成：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> sys<br># 设置默认编码为UTF<span class="hljs-number">-8</span><br>sys.setdefaultencoding(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>但Python 3中已经移除了sys.setdefaultencoding()函数，因为它会导致潜在的问题，特别是与第三方库的兼容性。</p>
+<p>在Python 3中，字符串默认使用Unicode编码（UTF-8），而且不再需要显式地设置默认编码,直接使用Unicode字符串而不用担心编码问题。</p>
+<h4 id="decode-和encode"><a href="#decode-和encode" class="headerlink" title="decode( )和encode( )"></a>decode( )和encode( )</h4><p>在Python 3中，decode()方法用于将字节转换为字符串，而encode()方法用于将字符串转换为字节</p>
 <h2 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h2><h3 id="1-模块"><a href="#1-模块" class="headerlink" title="1. 模块"></a>1. 模块</h3><p>Python 模块(Module)，是一个 Python 文件，以<code> .py</code> 结尾，包含了 Python 对象定义和Python语句。</p>
 <p>模块能够有逻辑地组织Python 代码段。把相关的代码分配到一个模块里能让代码更好用，更易懂。</p>
 <p>模块能定义函数，类和变量，模块里也能包含可执行的代码。</p>
@@ -651,6 +663,27 @@
 <li>os.getcwd()<br>显示当前的工作目录</li>
 <li>os.rmdir(‘dirname’)<br>删除目录，目录名称以参数传递，目录的完全合规的名称必须被给出，否则会在当前目录下搜索该目录。<br>更多参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/python/file-methods.html">https://www.runoob.com/python/file-methods.html</a></li>
 </ul>
+<h4 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h4><p>用于简化资源管理的一种结构。它允许在代码块中打开一个资源（例如文件、网络连接、数据库连接等），并在使用完毕后自动关闭资源，无需显式地调用关闭方法。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">with</span> expression [<span class="hljs-keyword">as</span> <span class="hljs-built_in">variable</span>]:<br>    <span class="hljs-comment"># Code block using the resource</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>expression通常是一个返回可上下文管理器（context manager）的表达式，而可上下文管理器是一个具有<code>__enter__()</code>和<code>__exit__()</code>方法的对象。</p>
+</li>
+<li><p><code>__enter__()</code>方法在进入with代码块时被调用，它负责设置资源，例如打开文件或建立网络连接，并返回相关的资源对象。而<code>__exit__()</code>方法在退出with代码块时被调用，它负责释放资源，例如关闭文件或断开网络连接。</p>
+</li>
+</ul>
+<p>在with语句块中可以使用资源对象，并在代码块执行完毕后，Python会自动调用<code>__exit__()</code>方法来释放资源，即使在代码块中发生了异常也会执行。这样可以确保资源的正确关闭，避免资源泄漏。</p>
+<p>常见例子：使用with来打开文件</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-keyword">with</span> <span class="hljs-keyword">open</span>(<span class="hljs-symbol">&#x27;example</span>.txt&#x27;, <span class="hljs-symbol">&#x27;r</span>&#x27;) as <span class="hljs-keyword">file</span>:<br>    content = <span class="hljs-keyword">file</span>.read()<br>    # Code <span class="hljs-keyword">block</span> <span class="hljs-keyword">to</span> work <span class="hljs-keyword">with</span> the <span class="hljs-keyword">file</span> content<br><br># <span class="hljs-keyword">After</span> exiting the <span class="hljs-symbol">&#x27;with</span>&#x27; <span class="hljs-keyword">block</span>, the <span class="hljs-keyword">file</span> <span class="hljs-keyword">is</span> automatically closed.<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，open()函数返回一个文件对象，它是一个上下文管理器。<code>with open(&#39;example.txt&#39;, &#39;r&#39;) as file:</code>会打开名为example.txt的文件，并将文件对象赋值给file变量。在代码块中，我们可以使用file对象读取文件内容。不论代码块是否抛出异常，with语句执行完毕后，文件对象会被自动关闭，无需显式调用file.close()方法。</p>
+<h4 id="readline-函数"><a href="#readline-函数" class="headerlink" title="readline( )函数"></a>readline( )函数</h4><p>用于从文件对象中逐行读取数据，用于读取文件的一行内容，并返回一个字符串，包含了该行的内容（包括行尾的换行符 \n）。<br>每次调用readline()，都会读取文件当前位置的下一行，并将文件指针移动到下一行的开头，直到文件末尾。</p>
+<p>当文件对象的指针移动到文件末尾后，再次调用readline()会返回空字符串，表示文件已经读取完毕。因此，在使用readline()时，通常使用循环来逐行读取文件的内容，直到返回空字符串为止，标志文件的末尾。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;example.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">file</span>:<br>    <span class="hljs-built_in">line</span> = <span class="hljs-built_in">file</span>.readline()<br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">line</span>:<br>        print(<span class="hljs-built_in">line</span>.strip())  <span class="hljs-comment"># Remove the newline characters</span><br>        <span class="hljs-built_in">line</span> = <span class="hljs-built_in">file</span>.readline()<br></code></pre></td></tr></table></figure>
+<h4 id="strip-函数"><a href="#strip-函数" class="headerlink" title="strip()函数"></a>strip()函数</h4><p>用于去除字符串首尾的指定字符（默认是空格和换行符）或空白字符。它返回一个新的字符串，该字符串是去除了首尾指定字符后的原始字符串。</p>
+<p>语法格式：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">string</span>.strip([<span class="hljs-keyword">chars</span>])<br></code></pre></td></tr></table></figure>
+<p>其中，string是要操作的字符串，而chars是可选参数，用于指定需要去除的字符集合。如果不提供chars参数，则默认去除字符串首尾的空白字符（空格、制表符、换行符等）。</p>
+<p>示例：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-built_in">text</span> = <span class="hljs-string">&quot;   Hello, world!   &quot;</span><br><span class="hljs-literal">result</span> = <span class="hljs-built_in">text</span>.strip()  <span class="hljs-comment"># Removes leading and trailing whitespaces</span><br>print(<span class="hljs-literal">result</span>)  <span class="hljs-comment"># Output: &quot;Hello, world!&quot;</span><br><br>text2 = <span class="hljs-string">&quot;----Hello, world!---&quot;</span><br>result2 = text2.strip(<span class="hljs-string">&quot;-&quot;</span>)  <span class="hljs-comment"># Removes leading and trailing dashes</span><br>print(result2)  <span class="hljs-comment"># Output: &quot;Hello, world!&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3. 内置函数"></a>3. 内置函数</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-built-in-functions.html">https://www.runoob.com/python/python-built-in-functions.html</a></p>
 <h3 id="4-异常处理"><a href="#4-异常处理" class="headerlink" title="4. 异常处理"></a>4. 异常处理</h3><h4 id="try…-except…else"><a href="#try…-except…else" class="headerlink" title="try….except…else"></a>try….except…else</h4><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">try:<br><span class="hljs-variable">&lt;语句&gt;</span>        <span class="hljs-comment">#运行别的代码</span><br>except <span class="hljs-variable">&lt;名字&gt;</span>：<br><span class="hljs-variable">&lt;语句&gt;</span>        <span class="hljs-comment">#如果在try部份引发了&#x27;name&#x27;异常</span><br>except <span class="hljs-variable">&lt;名字&gt;</span>，<span class="hljs-variable">&lt;数据&gt;</span>:<br><span class="hljs-variable">&lt;语句&gt;</span>        <span class="hljs-comment">#如果引发了&#x27;name&#x27;异常，获得附加的数据</span><br>else:<br><span class="hljs-variable">&lt;语句&gt;</span>        <span class="hljs-comment">#如果没有异常发生</span><br></code></pre></td></tr></table></figure>
 <ul>
@@ -867,7 +900,11 @@ tips：为了能够捕获异常，”except”语句必须有用相同的异常�
 </ul>
 <p>示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">&gt;&gt;&gt;<span class="hljs-keyword">import</span> re<br><span class="hljs-meta">&gt;&gt;&gt; </span>re.split(<span class="hljs-string">&#x27;\W+&#x27;</span>, <span class="hljs-string">&#x27;runoob, runoob, runoob.&#x27;</span>)<br>[<span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>re.split(<span class="hljs-string">&#x27;(\W+)&#x27;</span>, <span class="hljs-string">&#x27; runoob, runoob, runoob.&#x27;</span>) <br>[<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;, &#x27;</span>, <span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;, &#x27;</span>, <span class="hljs-string">&#x27;runoob&#x27;</span>, <span class="hljs-string">&#x27;.&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>]<br><span class="hljs-meta">&gt;&gt;&gt; </span>re.split(<span class="hljs-string">&#x27;\W+&#x27;</span>, <span class="hljs-string">&#x27; runoob, runoob, runoob.&#x27;</span>, <span class="hljs-number">1</span>) <br>[<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;runoob, runoob, runoob.&#x27;</span>]<br> <br><span class="hljs-meta">&gt;&gt;&gt; </span>re.split(<span class="hljs-string">&#x27;a*&#x27;</span>, <span class="hljs-string">&#x27;hello world&#x27;</span>)   <span class="hljs-comment"># 对于一个找不到匹配的字符串而言，split 不会对其作出分割</span><br>[<span class="hljs-string">&#x27;hello world&#x27;</span>]<br></code></pre></td></tr></table></figure>
-<h3 id="10-SMTP发送邮件"><a href="#10-SMTP发送邮件" class="headerlink" title="10. SMTP发送邮件"></a>10. SMTP发送邮件</h3><h3 id="11-网络编程"><a href="#11-网络编程" class="headerlink" title="11. 网络编程"></a>11. 网络编程</h3><h3 id="12-使用python进行GUI设计"><a href="#12-使用python进行GUI设计" class="headerlink" title="12. 使用python进行GUI设计"></a>12. 使用python进行GUI设计</h3><h3 id="13-使用-Python-语言来编码和解码-JSON-对象"><a href="#13-使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="13. 使用 Python 语言来编码和解码 JSON 对象"></a>13. 使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="14-使用python进行AI绘画"><a href="#14-使用python进行AI绘画" class="headerlink" title="14.使用python进行AI绘画"></a>14.使用python进行AI绘画</h3>
+<h3 id="导入自己写的Python文件作为自定义库"><a href="#导入自己写的Python文件作为自定义库" class="headerlink" title="导入自己写的Python文件作为自定义库"></a>导入自己写的Python文件作为自定义库</h3><p>只需要将需要引用的函数或变量定义在一个.py文件中，然后在其他.py文件中通过import语句导入即可。</p>
+<p>注意，当你导入一个自定义库时，Python会执行该库中的所有顶层代码。这意味着如果在自定义库中有一些不是函数或类定义的代码，它们也将会被执行。因此，最好将不需要立即执行的代码放在条件语句中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># my_custom_library.py</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet</span>(<span class="hljs-params">name</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;Hello, <span class="hljs-subst">&#123;name&#125;</span>!&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_numbers</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">return</span> a + b<br><br>custom_variable = <span class="hljs-string">&quot;This is a custom variable.&quot;</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 这里的代码只有在直接运行 my_custom_library.py 文件时才会执行</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is executed only when running my_custom_library.py directly.&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h3 id="使用python进行GUI设计"><a href="#使用python进行GUI设计" class="headerlink" title="使用python进行GUI设计"></a>使用python进行GUI设计</h3><h3 id="使用-Python-语言来编码和解码-JSON-对象"><a href="#使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="使用 Python 语言来编码和解码 JSON 对象"></a>使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="使用python进行AI绘画"><a href="#使用python进行AI绘画" class="headerlink" title="使用python进行AI绘画"></a>使用python进行AI绘画</h3>
                 
               </div>
             
@@ -956,6 +993,12 @@ tips：为了能够捕获异常，”except”语句必须有用相同的异常�
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/07/31/python%E9%A1%B9%E7%9B%AE1-%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="python项目1_爬虫学习指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python项目1_爬虫学习指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
