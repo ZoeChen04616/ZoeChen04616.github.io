@@ -422,7 +422,7 @@
 <h3 id="7-日期与时间"><a href="#7-日期与时间" class="headerlink" title="7. 日期与时间"></a>7. 日期与时间</h3><p>Python 提供了一个 time 和 calendar 模块可以用于格式化日期和时间。</p>
 <p>时间间隔是以秒为单位的浮点小数。每个时间戳都以自从1970年1月1日午夜（历元）经过了多长时间来表示。</p>
 <p><code>time.time()</code> 用于获取当前时间戳 </p>
-<h4 id="struct-time元组"><a href="#struct-time元组" class="headerlink" title="struct_time元组"></a><code>struct_time</code>元组</h4><p>很多Python函数用一个元组装起来的9组数字处理时间:<br>html <div align="center"> <img src="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png " srcset="/img/loading.gif" lazyload width = 80% /> </div></p>
+<h4 id="struct-time元组"><a href="#struct-time元组" class="headerlink" title="struct_time元组"></a><code>struct_time</code>元组</h4><p>很多Python函数用一个元组装起来的9组数字处理时间:<br>html <div align="center"> <img src="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png " srcset="/img/loading.gif" lazyload width="80%"> </div></p>
 <h4 id="获取当前时间："><a href="#获取当前时间：" class="headerlink" title="获取当前时间："></a>获取当前时间：</h4><p>从返回浮点数的时间戳方式向时间元组转换，只要将浮点数传递给如localtime之类的函数</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> <span class="hljs-type">time</span><br> <br><span class="hljs-built_in">localtime</span> = <span class="hljs-type">time</span>.<span class="hljs-built_in">localtime</span>(<span class="hljs-type">time</span>.time())<br>print &quot;本地时间为 :&quot;, <span class="hljs-built_in">localtime</span><br></code></pre></td></tr></table></figure>
 <p>实例输出结果为：</p>
