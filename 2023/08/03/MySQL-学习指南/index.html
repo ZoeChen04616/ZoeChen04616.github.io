@@ -24,7 +24,7 @@
 <meta property="og:description" content="基本概念MySQL是一种关系型数据库管理系统，被广泛用于存储和管理结构化数据。它是开源的，免费使用，并且支持多种操作系统。 以下是一些MySQL的基本概念：  数据库和表格  数据库：MySQL可以管理多个数据库，每个数据库是一个独立的数据存储单元。 表格：数据库由多个表格组成，每个表格是一个二维数据结构，用于存储数据。   基本数据类型MySQL支持多种数据类型,常用的数据类型有：  INT：整">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-03T12:24:42.000Z">
-<meta property="article:modified_time" content="2023-08-03T15:10:37.780Z">
+<meta property="article:modified_time" content="2023-08-04T06:02:06.340Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.4k 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          21 分钟
+          29 分钟
         
       </span>
     
@@ -310,7 +310,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月3日 晚上
+                    本文最后更新于：2023年8月4日 下午
                   
                 
               </p>
@@ -349,7 +349,10 @@
 <p>一旦建立了数据库连接，你可以通过执行SQL语句来读取、写入和修改数据库中的数据。</p>
 <h2 id="安装MySQL教程"><a href="#安装MySQL教程" class="headerlink" title="安装MySQL教程"></a>安装MySQL教程</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52559040/article/details/121843945">https://blog.csdn.net/m0_52559040/article/details/121843945</a></p>
 <h2 id="常用cmd命令"><a href="#常用cmd命令" class="headerlink" title="常用cmd命令"></a>常用cmd命令</h2><ul>
-<li><code>mysql -uroot -p</code>  : 启动数据库</li>
+<li><code>mysql -uroot -p</code>  : 启动数据库<ul>
+<li>最初，都是使用 root 用户登录，工作中如果一直用 root 用户登录，因为权限太大，风险是很大的，所以等创建好权限适合的用户后，就不要经常登录 root 用户了。</li>
+</ul>
+</li>
 <li><code>\h</code> ：查看命令行说明</li>
 <li><code>\c</code> ：clear the current input statement</li>
 <li><code>\G</code> : send commend to mysql server, display result vertically</li>
@@ -357,25 +360,43 @@
 <li><code>\q</code> : Quit Mysql</li>
 <li><code>\s</code> : get status information from the server<br>更多命令输入<code>\h</code>查看</li>
 </ul>
-<h1 id="import-pymysql-操作MySQL数据库"><a href="#import-pymysql-操作MySQL数据库" class="headerlink" title="import pymysql 操作MySQL数据库"></a>import pymysql 操作MySQL数据库</h1><ul>
-<li><p><code>pip install pymysql</code> 安装pymysql库</p>
-</li>
-<li><p>在python脚本中导入库：</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> pymysql<br></code></pre></td></tr></table></figure></li>
-<li><p>建立数据库连接<br>使用<code>pymysql.connect( )</code>函数来建立与MySQL数据库的连接。提供MySQL服务器的主机名、用户名、密码和数据库名称等信息。</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 建立数据库连接</span><span class="hljs-built_in"></span><br><span class="hljs-built_in">connection </span>= pymysql.connect(<br>    <span class="hljs-attribute">host</span>=<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>    <span class="hljs-attribute">user</span>=<span class="hljs-string">&#x27;your_username&#x27;</span>,<br>    <span class="hljs-attribute">password</span>=<span class="hljs-string">&#x27;your_password&#x27;</span>,<br>    <span class="hljs-attribute">database</span>=<span class="hljs-string">&#x27;your_database_name&#x27;</span><br>)<br></code></pre></td></tr></table></figure></li>
-<li><p>创建游标对象<br>在连接上创建游标对象，用于执行SQL查询和获取结果。</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">cursor</span> = <span class="hljs-keyword">connection</span>.<span class="hljs-keyword">cursor</span>()<br></code></pre></td></tr></table></figure></li>
-<li><p>执行SQL查询</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="查看当前的数据库"><a href="#查看当前的数据库" class="headerlink" title="查看当前的数据库"></a>查看当前的数据库</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">show databases<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> MyDB_one;<br></code></pre></td></tr></table></figure>
 <ul>
+<li>创建数据库时设置字符编码:<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> MyDB_three charset utf8;<br></code></pre></td></tr></table></figure>
+通常我们会在数据库中存放中文数据，所以最好把数据库的编码方式设置成 utf-8 ，这样中文才能正常显示。</li>
+<li>查看和显示数据库的编码方式<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> MyDB_one;<br><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> MyDB_two;<br></code></pre></td></tr></table></figure></li>
+<li>修改数据库编码<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> MyDB_one <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> utf8;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="进入或切换数据库"><a href="#进入或切换数据库" class="headerlink" title="进入或切换数据库"></a>进入或切换数据库</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">use</span> MyDB_one<br><span class="hljs-keyword">use</span> MyDB_two;<br></code></pre></td></tr></table></figure>
+<p>刚连接上 MySQL 时，没有处于任何一个数据库中，如果要使用某一个数据库，就需要进入到这个数据库中。</p>
+<p><code>use 数据库名</code> 这个命令后面的分号可以省略，这是 SQL 语句中唯一可以省略分号的语句。</p>
+<ul>
+<li>显示当前数据库：<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">database</span>()</span>;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><h4 id="查看当前数据库中的表"><a href="#查看当前数据库中的表" class="headerlink" title="查看当前数据库中的表"></a>查看当前数据库中的表</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>;<br></code></pre></td></tr></table></figure>
+<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Phone_table(pid <span class="hljs-type">INT</span>, <span class="hljs-type">name</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">20</span>), price <span class="hljs-type">INT</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="显示表信息"><a href="#显示表信息" class="headerlink" title="显示表信息"></a>显示表信息</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Phone_table;<br></code></pre></td></tr></table></figure>
+<h4 id="给表增加字段"><a href="#给表增加字段" class="headerlink" title="给表增加字段"></a>给表增加字段</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> Phone_table <span class="hljs-keyword">add</span> color <span class="hljs-type">CHAR</span>(<span class="hljs-number">20</span>);<br></code></pre></td></tr></table></figure>
+<h4 id="删除表的字段"><a href="#删除表的字段" class="headerlink" title="删除表的字段"></a>删除表的字段</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> Phone_table <span class="hljs-keyword">drop</span> price;<br></code></pre></td></tr></table></figure>
+
+<p>更多操作参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/370510336">https://zhuanlan.zhihu.com/p/370510336</a></p>
+<h1 id="import-pymysql-操作MySQL数据库"><a href="#import-pymysql-操作MySQL数据库" class="headerlink" title="import pymysql 操作MySQL数据库"></a>import pymysql 操作MySQL数据库</h1><ul>
+<li><code>pip install pymysql</code> 安装pymysql库</li>
+<li>在python脚本中导入库：<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> pymysql<br></code></pre></td></tr></table></figure></li>
+<li>建立数据库连接<br>使用<code>pymysql.connect( )</code>函数来建立与MySQL数据库的连接。提供MySQL服务器的主机名、用户名、密码和数据库名称等信息。<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 建立数据库连接</span><span class="hljs-built_in"></span><br><span class="hljs-built_in">connection </span>= pymysql.connect(<br>    <span class="hljs-attribute">host</span>=<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>    <span class="hljs-attribute">user</span>=<span class="hljs-string">&#x27;your_username&#x27;</span>,<br>    <span class="hljs-attribute">password</span>=<span class="hljs-string">&#x27;your_password&#x27;</span>,<br>    <span class="hljs-attribute">database</span>=<span class="hljs-string">&#x27;your_database_name&#x27;</span><br>)<br></code></pre></td></tr></table></figure></li>
+<li>创建游标对象<br>在连接上创建游标对象，用于执行SQL查询和获取结果。<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">cursor</span> = <span class="hljs-keyword">connection</span>.<span class="hljs-keyword">cursor</span>()<br></code></pre></td></tr></table></figure></li>
+<li>执行SQL查询<ul>
 <li>查询数据  <figure class="highlight stan"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs stan"><span class="hljs-comment"># 查询数据</span><br>query = <span class="hljs-string">&quot;SELECT * FROM your_table_name;&quot;</span><br>cursor.execute(query)<br><br><span class="hljs-comment"># 获取所有结果</span><br>results = cursor.fetchall()<br><br><span class="hljs-comment"># 遍历结果并打印</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">row</span> <span class="hljs-keyword">in</span> results:<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">row</span>)<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p>插入数据</p>
-  <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 插入数据</span><br>query = <span class="hljs-string">&quot;INSERT INTO your_table_name (column1, column2, column3) VALUES (%s, %s, %s);&quot;</span><br>data = (<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;value2&#x27;</span>, <span class="hljs-string">&#x27;value3&#x27;</span>)<br>cursor.execute(query, data)<br><br><span class="hljs-comment"># 提交更改</span><br>connection.commit()<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>关闭连接<br>在完成所有数据库操作后，关闭游标和连接。</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br><span class="hljs-keyword">connection</span>.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure></li>
+<li>插入数据  <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 插入数据</span><br>query = <span class="hljs-string">&quot;INSERT INTO your_table_name (column1, column2, column3) VALUES (%s, %s, %s);&quot;</span><br>data = (<span class="hljs-string">&#x27;value1&#x27;</span>, <span class="hljs-string">&#x27;value2&#x27;</span>, <span class="hljs-string">&#x27;value3&#x27;</span>)<br>cursor.execute(query, data)<br><br><span class="hljs-comment"># 提交更改</span><br>connection.commit()<br></code></pre></td></tr></table></figure>
+使用游标对象cur执行了一个INSERT语句，向名为<code>your_table_name</code>的表格中插入一条数据。</li>
+</ul>
+<p>INSERT语句中的参数使用占位符%s表示。这样做可以防止SQL注入攻击。<code>cur.execute()</code>方法将会将后面提供的参数值安全地插入到SQL语句中。</p>
+<p>调用了<code>conn.commit()</code>来提交更改，将数据插入到数据库中。如果没有调用commit()方法，数据库将不会保存插入的数据。</p>
+<ul>
+<li>关闭连接<br>在完成所有数据库操作后，关闭游标和连接。  <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">cursor</span>.<span class="hljs-keyword">close</span>()<br><span class="hljs-keyword">connection</span>.<span class="hljs-keyword">close</span>()<br></code></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="样例源码：更新库中用户数据"><a href="#样例源码：更新库中用户数据" class="headerlink" title="样例源码：更新库中用户数据"></a>样例源码：更新库中用户数据</h2><p>假设你有一个名为users的表格，包含id、name和age三列。现在，你想根据id来更新某个用户的信息。</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-keyword">import</span> pymysql<br><br>def update_user_by_id(user_id, <span class="hljs-keyword">new</span><span class="hljs-type">_name</span>, <span class="hljs-keyword">new</span><span class="hljs-type">_age</span>):<span class="hljs-type"></span><br>    <span class="hljs-meta"># 建立数据库连接</span><br>    connection = pymysql.connect(<br>        host=<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        user=<span class="hljs-string">&#x27;your_username&#x27;</span>,<br>        password=<span class="hljs-string">&#x27;your_password&#x27;</span>,<br>        database=<span class="hljs-string">&#x27;your_database_name&#x27;</span><br>    )<br><br>    <span class="hljs-keyword">try</span>:<span class="hljs-type"></span><br>        <span class="hljs-meta"># 创建游标对象</span><br>        cursor = connection.cursor()<br><br>        <span class="hljs-meta"># 执行UPDATE操作</span><br>        query = <span class="hljs-string">&quot;UPDATE users SET name=%s, age=%s WHERE id=%s;&quot;</span><br>        data = (<span class="hljs-keyword">new</span><span class="hljs-type">_name</span>, <span class="hljs-keyword">new</span><span class="hljs-type">_age</span>, user_id)<br>        cursor.execute(query, data)<br><br>        <span class="hljs-meta"># 提交更改</span><br>        connection.commit()<br><br>        print(<span class="hljs-string">&quot;User information updated successfully!&quot;</span>)<br>    except Exception as e:<span class="hljs-type"></span><br>        <span class="hljs-meta"># 如果出现错误，回滚更改</span><br>        connection.rollback()<br>        print(f<span class="hljs-string">&quot;Error: &#123;str(e)&#125;&quot;</span>)<br>    finally:<span class="hljs-type"></span><br>        <span class="hljs-meta"># 关闭游标和连接</span><br>        cursor.close()<br>        connection.close()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<span class="hljs-type"></span><br>    <span class="hljs-meta"># 要更新的用户信息</span><br>    user_id = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">new</span><span class="hljs-type">_name</span> = <span class="hljs-string">&quot;Alice Smith&quot;</span><br>    <span class="hljs-keyword">new</span><span class="hljs-type">_age</span> = <span class="hljs-number">32</span><br><br>    update_user_by_id(user_id, <span class="hljs-keyword">new</span><span class="hljs-type">_name</span>, <span class="hljs-keyword">new</span><span class="hljs-type">_age</span>)<br></code></pre></td></tr></table></figure>
@@ -467,6 +488,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/09/02/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BB%98%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="数学建模绘图学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数学建模绘图学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

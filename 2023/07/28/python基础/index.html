@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/f3c5757a142747c28166d8d1ede987e6.png">
 <meta property="article:published_time" content="2023-07-28T06:13:23.000Z">
-<meta property="article:modified_time" content="2023-08-03T11:18:57.684Z">
+<meta property="article:modified_time" content="2023-08-04T07:03:49.160Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -262,7 +262,7 @@
         
         
         
-          235 分钟
+          238 分钟
         
       </span>
     
@@ -312,7 +312,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月3日 晚上
+                    本文最后更新于：2023年8月4日 下午
                   
                 
               </p>
@@ -903,7 +903,14 @@ tips：为了能够捕获异常，”except”语句必须有用相同的异常�
 <h3 id="导入自己写的Python文件作为自定义库"><a href="#导入自己写的Python文件作为自定义库" class="headerlink" title="导入自己写的Python文件作为自定义库"></a>导入自己写的Python文件作为自定义库</h3><p>只需要将需要引用的函数或变量定义在一个.py文件中，然后在其他.py文件中通过import语句导入即可。</p>
 <p>注意，当你导入一个自定义库时，Python会执行该库中的所有顶层代码。这意味着如果在自定义库中有一些不是函数或类定义的代码，它们也将会被执行。因此，最好将不需要立即执行的代码放在条件语句中。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># my_custom_library.py</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet</span>(<span class="hljs-params">name</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;Hello, <span class="hljs-subst">&#123;name&#125;</span>!&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_numbers</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">return</span> a + b<br><br>custom_variable = <span class="hljs-string">&quot;This is a custom variable.&quot;</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 这里的代码只有在直接运行 my_custom_library.py 文件时才会执行</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is executed only when running my_custom_library.py directly.&quot;</span>)<br></code></pre></td></tr></table></figure>
-
+<h4 id="import导入一个库"><a href="#import导入一个库" class="headerlink" title="import导入一个库"></a>import导入一个库</h4><ul>
+<li>可以通过库的名称引用库中的类:</li>
+</ul>
+<p>例如，假设有一个名为my_module.py的Python文件，其中定义了一个类MyClass，你可以使用以下方式引用这个类：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># 导入my_module库</span><br><span class="hljs-keyword">import</span> my_module<br><br><span class="hljs-meta"># 创建MyClass的实例</span><br><span class="hljs-title">obj</span> = my_module.<span class="hljs-type">MyClass</span>()<br><br><span class="hljs-meta"># 调用MyClass的方法</span><br><span class="hljs-title">obj</span>.some_method()<br></code></pre></td></tr></table></figure>
+<ul>
+<li>另一种方式是使用from关键字，这样你可以直接使用类名，而不需要使用库名称来引用类：<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"># 从my_module库导入<span class="hljs-keyword">MyClass</span>类<br><span class="hljs-keyword">from</span> my_module import <span class="hljs-keyword">MyClass</span><br><br># 创建<span class="hljs-keyword">MyClass</span>的实例<br>obj = <span class="hljs-keyword">MyClass</span>()<br><br># 调用<span class="hljs-keyword">MyClass</span>的方法<br>obj.some_method()<br></code></pre></td></tr></table></figure></li>
+</ul>
 <h3 id="SMTP发送邮件"><a href="#SMTP发送邮件" class="headerlink" title="SMTP发送邮件"></a>SMTP发送邮件</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h3 id="使用python进行GUI设计"><a href="#使用python进行GUI设计" class="headerlink" title="使用python进行GUI设计"></a>使用python进行GUI设计</h3><h3 id="使用-Python-语言来编码和解码-JSON-对象"><a href="#使用-Python-语言来编码和解码-JSON-对象" class="headerlink" title="使用 Python 语言来编码和解码 JSON 对象"></a>使用 Python 语言来编码和解码 JSON 对象</h3><h3 id="使用python进行AI绘画"><a href="#使用python进行AI绘画" class="headerlink" title="使用python进行AI绘画"></a>使用python进行AI绘画</h3>
                 
               </div>
