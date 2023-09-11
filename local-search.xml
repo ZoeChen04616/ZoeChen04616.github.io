@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>OpenCV配置教程</title>
+    <link href="/2023/09/11/OpenCV%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/"/>
+    <url>/2023/09/11/OpenCV%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<p>尊嘟很好用！！</p><span id="more"></span> <p><strong>Step1 下载并安装OpenCV</strong></p><p>访问 <a href="https://opencv.org/releases/">Releases - OpenCV</a> 找到最新版的OpenCV（在最上方且标有*号），点击“Windows”按钮下载。</p><p>下载完成后，将得到的zip文件就地解压，双击里面的distrib.7z.exe，会出现界面Extract to（解压至），如图将下面的文本框中的内容修改为“D:\”，指明OpenCV的安装路径为D盘根目录。</p><p><img src="/images/image/136cf546-0a1f-4c4d-8365-359a4699e60f.png"></p><p><strong>Step2 配置环境变量</strong></p><p>打开 D:\opencv\build\x64 文件夹，内装有命名风格类似“vc**”的文件夹</p><p>按下Windows键，输入env，点击“编辑系统环境变量”</p><p><img src="/images/image/158523ee-7503-4f71-a918-dab6a2062171.png"></p><p>在弹出的对话框中，点击“环境变量(N)”，会弹出一个新对话框，选择“Path”，点击“编辑”</p><p><img src="/images/image/7f6caa9d-3fcd-49a6-b3e7-6c9b1cc72cf4.png"></p><p>如图所示，点击“新建”，把刚才的文件夹按照 D:\opencv\build\x64\vc**\bin 的格式添加进去。</p><p>注意：如果有一个文件夹就添加一项，如果有两个文件夹就添加数字大的那一项，不要遗漏后面的 “\bin”。</p><p><img src="/images/image/be22d535-60a8-4eb1-862d-d0b2c61f5c7b.png"></p><p><strong>Step3 配置openCV.props</strong></p><p>这里要分两种情况讨论，请先打开本文件同目录下的openCV.props文件，在第五行有注释：文件适用于OpenCV *.*.*。</p><p>情况1：该文件与你安装的OpenCV版本一致，那么非常简单，你只需要将文件拷贝到 D:\openCV\openCV.props 处，即可完成配置。</p><p>情况2：该文件与你安装的OpenCV版本不一致（版本过旧），那么你需要对此文件做如下修改。</p><ol><li>将&lt;LibraryPath&gt;中 vc** 的数字改为你刚才添加进环境变量中的那个数字<br><img src="/images/image/ac1d4a74-0807-44d1-a123-3e593f709e06.png"></li><li>打开刚才LibraryPath中的文件夹 D:\opencv\build\x64\vc**\lib，找到里面命名风格类似opencv_world***.lib的文件，把&lt;AdditionalDependencies&gt;中opencv_world***.lib的数字改为这个文件的数字（注意不要有d）。<br><img src="/images/image/5ca41cc8-22f5-4580-9063-abc30d9dce88.png"></li><li>保存修改，把文件拷贝到 D:\openCV\openCV.props 处，完成配置。</li></ol><p>完成后的opencv目录如图所示。</p><p><img src="/images/image/83d0fbf8-9431-4c3d-a1e8-b34dfea2af35.png"></p><p><strong>Step4 重启电脑</strong></p><p>修改环境变量后，一般要重启才能生效，请重启你的电脑。</p><p><strong>Step5 在vs项目中引用openCV.props属性文件</strong></p><p>每次新建项目之后，只需要将属性表放到项目路径下，并添加到项目中就可以使用了。</p><p><code>添加属性表</code>：先把属性表复制、粘贴到当前项目的项目文件夹中，然后打开“属性管理器”，找到对应的“模式”和“位数”，例如“Debug|x64”，然后点击鼠标右键选择“添加现有属性表”，把复制、粘贴好的属性表文件添加进来即可。</p><br>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>CV</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数学建模绘图学习笔记</title>
     <link href="/2023/09/02/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BB%98%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <url>/2023/09/02/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E7%BB%98%E5%9B%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
