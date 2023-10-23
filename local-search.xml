@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>VS2022编码问题</title>
+    <link href="/2023/10/23/VS2022%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <url>/2023/10/23/VS2022%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>Visual Studio默认的文件编码方式为GB2312,如何设置为更加通用的UTF-8呢?</p><p>本篇提供了一劳永逸更改编码方式为<code>UTF-8 with BOM</code>的解决方案。</p><span id="more"></span><h2 id="如何查看文件的编码方式"><a href="#如何查看文件的编码方式" class="headerlink" title="如何查看文件的编码方式"></a>如何查看文件的编码方式</h2><p>Visual Studio 设置默认编码格式在“高级保存选项”窗口中，可通过“文件”菜单打开；但有时“文件”菜单没有显示“高级保存选项”，需要把它显示出来。</p><p>单击“工具”，在弹出的菜单选择“自定义”，打开“自定义”窗口；选择“命令”选项卡，点击“菜单栏”右边的下拉列表框，要弹出的选项中选择“文件”；单击“添加命令”，在打开的窗口中，把左边列表框的滚动条拖到最下面，选择“文件”，再把右边列表框的滚动条往下拖一拖到看到“高级保存选项”，选择它，则它被添加到“文件”菜单。操作过程步骤如图1所示：</p><p><img src="/images/VS2022%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/img4.gif" alt="图示"></p><h2 id="一种可行方案（但不够一劳永逸）"><a href="#一种可行方案（但不够一劳永逸）" class="headerlink" title="一种可行方案（但不够一劳永逸）"></a>一种可行方案（但不够一劳永逸）</h2><ul><li>单击“文件”，在弹出的菜单选择“高级保存选项”</li><li>打开“高级保存选项”窗口，查看当前设置的编码为“简体中文（GB2312-80）</li><li>点击“编码”下拉列表框，把滚动条拖到最上面，选择“Unicode(UTF-8 带签名)”</li></ul><center class="half"><img src="/images/VS2022编码问题/img1.png" width="365/"><img src="/images/VS2022编码问题/img2.png" width="300/"></center><ul><li>单击“确定”，则 Visual Studio 设置默认编码格式为 UTF-8<br>如果工程庞大得一个一个设置，很麻烦,因此，介绍另一种解决方案：<code>使用editorconfig文件</code>，统一代码规范，从而统一编码问题。</li></ul><h2 id="使用editorconfig文件统一代码规范"><a href="#使用editorconfig文件统一代码规范" class="headerlink" title="使用editorconfig文件统一代码规范"></a>使用editorconfig文件统一代码规范</h2><p>自Visual Studio 2019 起，可以通过<code>“工具” &gt; “选项”&gt;&quot;文本编辑器&quot;基于代码样式设置</code>生成 EditorConfig 文件。<br>基于目标的开发语言，比如我这里选择的语言是C++,在代码样式里，可以找到基于代码样式设置生成 EditorConfig 文件。<br><img src="/images/VS2022%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/img3.png" alt="图示"><br>生成后，在该文件中加入:</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit">#编码方式,有以下几种类型：latin1, utf<span class="hljs-string">-8</span>, utf<span class="hljs-string">-8</span>-bom, utf<span class="hljs-string">-16</span>be, utf<span class="hljs-string">-16</span>le<br>charset = utf<span class="hljs-string">-8</span>-bom<br></code></pre></td></tr></table></figure><p>保存即可。<br>当新建项目时，将这个文件是放到项目路径下即可。</p><hr><p>参考资料连接：</p><ul><li><a href="https://blog.csdn.net/qq_41868108/article/details/105750175">https://blog.csdn.net/qq_41868108/article/details/105750175</a></li><li><a href="https://blog.csdn.net/no_say_you_know/article/details/121146469">https://blog.csdn.net/no_say_you_know/article/details/121146469</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>计算机基础技能</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>my technology stack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>摄像头选型</title>
     <link href="/2023/10/19/%E7%9B%B8%E6%9C%BA%E9%80%89%E5%9E%8B/"/>
     <url>/2023/10/19/%E7%9B%B8%E6%9C%BA%E9%80%89%E5%9E%8B/</url>
