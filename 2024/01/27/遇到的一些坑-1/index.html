@@ -16,15 +16,15 @@
   <meta name="author" content="Yunru Chen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用Multisim进行电路仿真。">
+    <meta name="description" content="记录日常遇到的一些小bugs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="电路仿真Multisim使用指南">
-<meta property="og:url" content="http://zoechen04616.github.io/2023/12/26/%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9FMultisim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="遇到的一些坑">
+<meta property="og:url" content="http://zoechen04616.github.io/2024/01/27/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="使用Multisim进行电路仿真。">
+<meta property="og:description" content="记录日常遇到的一些小bugs">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-26T04:01:15.000Z">
-<meta property="article:modified_time" content="2023-12-26T11:09:45.980Z">
+<meta property="article:published_time" content="2024-01-27T15:14:14.000Z">
+<meta property="article:modified_time" content="2024-01-27T15:29:26.748Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>电路仿真Multisim使用指南 - Hexo</title>
+  <title>遇到的一些坑 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="电路仿真Multisim使用指南"></span>
+            <span id="subtitle" data-typed-text="遇到的一些坑"></span>
           
         </div>
 
@@ -237,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-26 12:01" pubdate>
-          2023年12月26日 中午
+        <time datetime="2024-01-27 23:14" pubdate>
+          2024年1月27日 晚上
         </time>
       </span>
     
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          338 字
+          546 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          3 分钟
+          5 分钟
         
       </span>
     
@@ -305,12 +305,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">电路仿真Multisim使用指南</h1>
+            <h1 id="seo-header">遇到的一些坑</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年12月26日 晚上
+                    本文最后更新于：2024年1月27日 晚上
                   
                 
               </p>
@@ -318,22 +318,24 @@
             
               <div class="markdown-body">
                 
-                <p>使用Multisim进行电路仿真。</p>
+                <p>记录日常遇到的一些小bugs</p>
 <span id="more"></span> 
-<h2 id="安装Multisim"><a href="#安装Multisim" class="headerlink" title="安装Multisim"></a>安装Multisim</h2><h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1mmY5c3bc635i-Ybo36_TCA">百度网盘</a><br>提取码：3drh</p>
-<h3 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42773514/article/details/105255303">教程看这个，写的很详细了</a></p>
-<h3 id="汉化-可选"><a href="#汉化-可选" class="headerlink" title="汉化 (可选)"></a>汉化 (可选)</h3><ul>
-<li>在最开始解压的【Multisim14.0】文件夹中，右击【Chinese-simplified】文件夹，然后选择【复制】。</li>
-<li>右击桌面上的【NI Multisim 14.0】，选择【打开文件所在的位置】。</li>
-<li>双击打开【stringfiles】文件夹。</li>
-<li>右击空白处，选择【粘贴】。确保将【Chinese-simplified】文件夹粘贴到【stringfiles】文件夹中。</li>
+<h3 id="安装方面"><a href="#安装方面" class="headerlink" title="安装方面"></a>安装方面</h3><h4 id="1-npm使用淘宝镜像安装时报错"><a href="#1-npm使用淘宝镜像安装时报错" class="headerlink" title="1.npm使用淘宝镜像安装时报错"></a>1.npm使用淘宝镜像安装时报错</h4><ul>
+<li>错误内容:<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">npm ERR! request <span class="hljs-keyword">to</span> https:<span class="hljs-comment">//registry.npm.taobao.org/cnpm failed, reason: certificate has expired</span><br></code></pre></td></tr></table></figure></li>
+<li>解决方案：<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"> <span class="hljs-regexp">//</span> <span class="hljs-number">1</span>. 清空缓存<br>npm cache clean --force<br><span class="hljs-regexp">//</span> <span class="hljs-number">2</span>. 切换新源<br>npm config set registry https:<span class="hljs-regexp">//</span>registry.npmmirror.com<br> <span class="hljs-regexp">//</span> <span class="hljs-number">3</span>. 查看源是否设置成功<br>npm config get registry<br> <span class="hljs-regexp">//</span> <span class="hljs-number">4</span>. 安装<br>到这里就可以正常使用npm命令安装需要的工具了。如(   npm install -g cnpm   )<br></code></pre></td></tr></table></figure></li>
+<li>错误原因：</li>
 </ul>
-<p>汉化过程结束，打开软件就是中文版的啦！</p>
-<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><ul>
-<li><code>Ctrl + W</code> ：打开元器件菜单</li>
-<li><code>Ctrl + R</code> ：顺时针旋转元器件</li>
+<ul>
+<li>2024年1 月 22 日，淘宝原镜像域名（registry.npm.taobao.org）的 HTTPS 证书正式到期。这就导致旧的 npm 淘宝镜像在使用时出错了。</li>
+<li>所以，遇到上述问题，或者还在使用旧的 npm 淘宝镜像，直接将 npm 源切换到新的源即可。</li>
 </ul>
-<h2 id="示例：我的电路仿真实验报告-运算放大器应用-一-——负阻抗变换器和回转器的设计"><a href="#示例：我的电路仿真实验报告-运算放大器应用-一-——负阻抗变换器和回转器的设计" class="headerlink" title="示例：我的电路仿真实验报告  运算放大器应用(一)——负阻抗变换器和回转器的设计"></a>示例：我的电路仿真实验报告  运算放大器应用(一)——负阻抗变换器和回转器的设计</h2>
+<ul>
+<li>过程中可能会遇到的其他问题：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">npm cache clean <span class="hljs-attr">--force</span> 后报npm WARN using <span class="hljs-attr">--force</span> Recommended protections disabled<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>解决方案：<code>npm cache verify</code>使用这个命令即可。</li>
+</ul>
+
                 
               </div>
             
@@ -351,7 +353,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%BF%E7%9C%9F/" class="category-chain-item">仿真</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%8A%80%E8%83%BD/" class="category-chain-item">计算机基础技能</a>
   
   
 
@@ -378,8 +380,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>电路仿真Multisim使用指南</div>
-      <div>http://zoechen04616.github.io/2023/12/26/电路仿真Multisim使用指南/</div>
+      <div>遇到的一些坑</div>
+      <div>http://zoechen04616.github.io/2024/01/27/遇到的一些坑-1/</div>
     </div>
     <div class="license-meta">
       
@@ -391,7 +393,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月26日</div>
+          <div>2024年1月27日</div>
         </div>
       
       
@@ -423,18 +425,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91-1/" title="遇到的一些坑">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">遇到的一些坑</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/24/%E9%A6%99%E6%A9%99%E6%B4%BE%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" title="基于香橙派的程序自启动功能实现">
-                        <span class="hidden-mobile">基于香橙派的程序自启动功能实现</span>
+                      <a href="/2023/12/26/%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9FMultisim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" title="电路仿真Multisim使用指南">
+                        <span class="hidden-mobile">电路仿真Multisim使用指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
