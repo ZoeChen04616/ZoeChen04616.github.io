@@ -31,6 +31,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p14.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p16.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p17.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p19.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p1.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p2.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p3.png">
@@ -42,7 +43,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p8.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p9.png">
 <meta property="article:published_time" content="2023-09-02T02:04:47.000Z">
-<meta property="article:modified_time" content="2024-01-29T16:43:37.092Z">
+<meta property="article:modified_time" content="2024-01-30T07:20:47.322Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="建模绘图">
 <meta name="twitter:card" content="summary_large_image">
@@ -299,7 +300,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.2k 字
+          8.6k 字
         
       </span>
     
@@ -310,7 +311,7 @@
         
         
         
-          61 分钟
+          72 分钟
         
       </span>
     
@@ -360,7 +361,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年1月30日 凌晨
+                    本文最后更新于：2024年1月30日 下午
                   
                 
               </p>
@@ -509,6 +510,27 @@
 </ul>
 </li>
 </ul>
+<h2 id="柱状图"><a href="#柱状图" class="headerlink" title="柱状图"></a>柱状图</h2><h3 id="python制作的柱状图"><a href="#python制作的柱状图" class="headerlink" title="python制作的柱状图"></a>python制作的柱状图</h3><p>代码解释：</p>
+<ul>
+<li><code>X = np.arange(n)</code><ul>
+<li>创建一个包含0到n-1的数组，用作柱子的位置</li>
+</ul>
+</li>
+<li>分别定义两组与X对应的柱子高度：Y1，Y2</li>
+<li><code>plt.bar(X, +Y1, facecolor=&#39;#9999ff&#39;, edgecolor=&#39;white&#39;)</code><ul>
+<li>创建一组柱状图，位于X位置，高度为Y1，面颜色为蓝色，边框颜色为白色</li>
+<li>同理，<code>plt.bar(X, -Y2, facecolor=&#39;#ff9999&#39;, edgecolor=&#39;white&#39;)</code><br>   创建另一组柱状图，位于X位置，高度为-Y2，面颜色为红色，边框颜色为白色</li>
+</ul>
+</li>
+<li>添加文字标签:<ul>
+<li>通过循环遍历每个柱子的位置和高度，并在相应位置添加文字标签。  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> zip(X, Y1):<br><span class="hljs-comment"># 在柱子的顶部添加高度值,水平对齐方式为&#x27;center&#x27;，垂直对齐方式为&#x27;bottom&#x27;</span><br>plt.text(x + 0.01, y + 0.05, <span class="hljs-string">&#x27;%.2f&#x27;</span> % y, <span class="hljs-attribute">ha</span>=<span class="hljs-string">&#x27;center&#x27;</span>, <span class="hljs-attribute">va</span>=<span class="hljs-string">&#x27;bottom&#x27;</span>)<br><br><span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> zip(X, Y2):<br><span class="hljs-comment"># 在柱子的底部添加高度值，水平对齐方式为&#x27;center&#x27;，垂直对齐方式为&#x27;top&#x27;。</span><br>plt.text(x + 0.01, -y - 0.05, <span class="hljs-string">&#x27;%.2f&#x27;</span> % (-y), <span class="hljs-attribute">ha</span>=<span class="hljs-string">&#x27;center&#x27;</span>, <span class="hljs-attribute">va</span>=<span class="hljs-string">&#x27;top&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>设置x轴和y轴的范围<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 设置x轴的范围为从-0.5到n</span><br><span class="hljs-attribute">plt</span>.xlim(-.<span class="hljs-number">5</span>, n)<br><span class="hljs-comment"># 设置y轴的范围为从-1.25到1.25</span><br><span class="hljs-attribute">plt</span>.ylim(-<span class="hljs-number">1</span>.<span class="hljs-number">25</span>, <span class="hljs-number">1</span>.<span class="hljs-number">25</span>)<br></code></pre></td></tr></table></figure></li>
+<li>隐藏y轴刻度: <code>plt.yticks([])</code></li>
+</ul>
+<p><img src="/images/MathematicsModeling/p19.png" srcset="/img/loading.gif" lazyload alt="双侧柱状图"></p>
+<h3 id="excel制作的柱状图"><a href="#excel制作的柱状图" class="headerlink" title="excel制作的柱状图"></a>excel制作的柱状图</h3><p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78646791">https://zhuanlan.zhihu.com/p/78646791</a></p>
 <h2 id="权重图、热力图、三维地图"><a href="#权重图、热力图、三维地图" class="headerlink" title="权重图、热力图、三维地图"></a>权重图、热力图、三维地图</h2><p>表示相关位置的重要程度。</p>
 <h3 id="权重图"><a href="#权重图" class="headerlink" title="权重图"></a>权重图</h3><p>一般用excel的色阶工具，加上PPT的修饰。</p>
 <ul>
@@ -550,7 +572,27 @@
 </li>
 </ul>
 <p><img src="/images/MathematicsModeling/p3.png" srcset="/img/loading.gif" lazyload alt="三维地图"></p>
-<h3 id="等高线图"><a href="#等高线图" class="headerlink" title="等高线图"></a>等高线图</h3><p><img src="/images/MathematicsModeling/p18.png" srcset="/img/loading.gif" lazyload alt="等高线图"></p>
+<h3 id="等高线图"><a href="#等高线图" class="headerlink" title="等高线图"></a>等高线图</h3><p>一些代码解释：</p>
+<ul>
+<li>使用NumPy的linspace函数在区间[-3, 3]上生成n个等间距的点，作为x轴、y轴上的坐标点<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">n</span> = <span class="hljs-number">256</span><br><span class="hljs-attr">x</span> = np.linspace(-<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, n)<br><span class="hljs-attr">y</span> = np.linspace(-<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, n)<br></code></pre></td></tr></table></figure></li>
+<li>使用<code>meshgrid函数将x和y上的点在二维平面上画网格</code><ul>
+<li>X和Y是生成的网格点的二维数组<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tp"><span class="hljs-keyword">X</span>, <span class="hljs-keyword">Y</span> = np.meshgrid(x, y)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用<code>contourf函数填充等高线图颜色</code><ul>
+<li>X和Y是网格点的坐标，f(X, Y)是对应的高度值，8表示等高线分成8个部分，alpha&#x3D;.75表示填充颜色的透明度为0.75，cmap&#x3D;plt.cm.hot表示使用热度图颜色。<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">plt.contourf(X, Y, f(X, Y), 8, <span class="hljs-attribute">alpha</span>=.75, <span class="hljs-attribute">cmap</span>=plt.cm.hot)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>使用<code>contour函数添加等高线</code><ul>
+<li>指定线的颜色为黑色，线宽为0.5<figure class="highlight tp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tp"># 形参分别为：<span class="hljs-keyword">X</span>,<span class="hljs-keyword">Y</span>,<span class="hljs-keyword">Z</span>(高度),等高线的级别数量，等高线颜色，线宽<br>C = plt.contour(<span class="hljs-keyword">X</span>, <span class="hljs-keyword">Y</span>, f(<span class="hljs-keyword">X</span>, <span class="hljs-keyword">Y</span>), <span class="hljs-number">8</span>, colors=<span class="hljs-string">&#x27;black&#x27;</span>, linewidth=<span class="hljs-number">.5</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>添加等高线的标签<ul>
+<li>inline&#x3D;True表示将标签嵌入等高线之中，fontsize&#x3D;10表示标签的字体大小为10<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">plt.clabel(C, <span class="hljs-attribute">inline</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">fontsize</span>=10)<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/MathematicsModeling/p18.png" srcset="/img/loading.gif" lazyload alt="等高线图"></p>
 <h2 id="office制作散点图"><a href="#office制作散点图" class="headerlink" title="office制作散点图"></a>office制作散点图</h2><p>matlab,python,office都可以制作散点图。</p>
 <p><img src="/images/MathematicsModeling/p4.png" srcset="/img/loading.gif" lazyload alt="散点图"></p>
 <ol>
