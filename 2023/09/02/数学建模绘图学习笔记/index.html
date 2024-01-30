@@ -32,10 +32,12 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p16.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p17.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p19.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p21.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p1.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p2.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p3.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p18.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p20.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p4.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p5.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p7.png">
@@ -43,7 +45,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p8.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/MathematicsModeling/p9.png">
 <meta property="article:published_time" content="2023-09-02T02:04:47.000Z">
-<meta property="article:modified_time" content="2024-01-30T07:20:47.322Z">
+<meta property="article:modified_time" content="2024-01-30T08:37:51.750Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="建模绘图">
 <meta name="twitter:card" content="summary_large_image">
@@ -300,7 +302,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.6k 字
+          9.9k 字
         
       </span>
     
@@ -311,7 +313,7 @@
         
         
         
-          72 分钟
+          83 分钟
         
       </span>
     
@@ -466,7 +468,7 @@
 <p><img src="/images/MathematicsModeling/p16.png" srcset="/img/loading.gif" lazyload alt="最简单的散点图"></p>
 <ul>
 <li>生成一个大小为 (n_points, 2) 的二维数组，数组中的值在范围 (-1, 9) 内随机分布，代表散点的坐标<ul>
-<li>使用 NumPy 的 random.random() 函数生成一个大小为 (n_points, 2) 的二维数组，数组中的值是在返回的值范围在 [0, 1)的随机数</li>
+<li>使用 NumPy 的 <code>random.random()</code> 函数生成一个大小为 (n_points, 2) 的二维数组，数组中的值是在返回的值范围在 [0, 1)的随机数</li>
 <li>表示将生成的随机数组乘以 (10-1) 的范围，即将原始随机数范围缩放到 [0, 9)。</li>
 <li>-1：将生成的随机数组中的所有元素都减去 1，使得最终的随机数范围从 [-1, 8)。</li>
 </ul>
@@ -531,6 +533,23 @@
 </ul>
 <p><img src="/images/MathematicsModeling/p19.png" srcset="/img/loading.gif" lazyload alt="双侧柱状图"></p>
 <h3 id="excel制作的柱状图"><a href="#excel制作的柱状图" class="headerlink" title="excel制作的柱状图"></a>excel制作的柱状图</h3><p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78646791">https://zhuanlan.zhihu.com/p/78646791</a></p>
+<h3 id="python绘制正态分布的直方图和概率密度函数曲线"><a href="#python绘制正态分布的直方图和概率密度函数曲线" class="headerlink" title="python绘制正态分布的直方图和概率密度函数曲线"></a>python绘制正态分布的直方图和概率密度函数曲线</h3><ul>
+<li><code>np.random.normal()</code>:生成指定均值和标准差的正态分布随机数。<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">gaussian_numbers_1</span> = np.random.normal(size=<span class="hljs-number">100000</span>)<br><span class="hljs-attribute">gaussian_numbers_2</span> = np.random.normal(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, size=<span class="hljs-number">100000</span>)<br></code></pre></td></tr></table></figure></li>
+<li>绘制正态分布的直方图和概率密度函数曲线<ul>
+<li>绘制 gaussian_numbers_1 的直方图，并使用 <code>mlab.normpdf()</code>函数计算了该分布的<code>概率密度函数曲线</code>。</li>
+<li>直方图的参数设置包括：<code>直方条的数目 (bins)</code>、<code>直方图的类型 (histtype)</code>、<code>直方条的宽度 (rwidth)</code>、<code>是否进行归一化 (normed)</code>、<code>颜色和透明度 (color 和 alpha)</code>。</li>
+<li>在 plt.hist() 函数中，<code>n</code>、<code>bins</code> 和 <code>patches</code> 是返回的三个值。<ul>
+<li>n: 是一个长度为 len(bins) - 1 的数组，其中每个元素代表了在对应区间内的<code>数据点数量</code>。</li>
+<li>bins: 是一个包含<code>直方图柱子边界值</code>的数组。直方图通常是基于数据的范围和分布，被分割成若干个区间，这些区间就是通过 bins 参数指定的。</li>
+<li>patches: 是一个包含所有直方图柱子的列表，每个柱子是一个图形对象，你可以通过修改它们的<code>属性</code>来自定义柱子的外观。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">n, bins, patches = plt.hist(gaussian_numbers_1, <span class="hljs-attribute">bins</span>=30, <span class="hljs-attribute">histtype</span>=<span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-attribute">rwidth</span>=0.8, <span class="hljs-attribute">normed</span>=1, <span class="hljs-attribute">color</span>=<span class="hljs-string">&#x27;g&#x27;</span>, <span class="hljs-attribute">alpha</span>=0.5, <span class="hljs-attribute">label</span>=<span class="hljs-string">&#x27;Gaussian_1&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/MathematicsModeling/p21.png" srcset="/img/loading.gif" lazyload alt="正态分布的直方图和概率密度函数曲线"></p>
 <h2 id="权重图、热力图、三维地图"><a href="#权重图、热力图、三维地图" class="headerlink" title="权重图、热力图、三维地图"></a>权重图、热力图、三维地图</h2><p>表示相关位置的重要程度。</p>
 <h3 id="权重图"><a href="#权重图" class="headerlink" title="权重图"></a>权重图</h3><p>一般用excel的色阶工具，加上PPT的修饰。</p>
 <ul>
@@ -593,6 +612,21 @@
 </li>
 </ul>
 <p><img src="/images/MathematicsModeling/p18.png" srcset="/img/loading.gif" lazyload alt="等高线图"></p>
+<h3 id="复杂一点的多图合一"><a href="#复杂一点的多图合一" class="headerlink" title="复杂一点的多图合一"></a>复杂一点的多图合一</h3><h4 id="使用python实现色阶"><a href="#使用python实现色阶" class="headerlink" title="使用python实现色阶"></a>使用python实现色阶</h4><ul>
+<li><code>plt.imshow(a,interpolation = &#39;nearest&#39;,cmap = cm.jet ,origin = &#39;upper&#39;)</code>:<ul>
+<li><code>origin</code> 参数用于确定数组数据的原点位置，通常是在图像的左上角或左下角。Matplotlib 中支持的值是 <code>upper</code> 和 <code>lower</code></li>
+<li>a: 是要显示的图像数据，通常是一个二维的数组，每个元素代表一个像素的值</li>
+<li><code>interpolation=&#39;nearest&#39;</code> 这个参数指定了图像数据的插值方式。  <code>&#39;nearest&#39; 表示使用最近邻插值</code>，即使用最近的像素值来填充图像的空白部分。这意味着图像的显示会更加锐利，但可能会失去一些平滑性。</li>
+<li><code>cmap=&#39;bone&#39;</code> 这个参数指定了颜色映射，即将数据值映射到颜色的方式。<br>  在这里，<code>&#39;bone&#39;</code> 是 Matplotlib 中提供的一种颜色映射方案，它会将数据值映射为灰度色调，其中较小的值会显示为较暗的颜色，较大的值会显示为较亮的颜色。<br>  也可使用<code>cmap = cm.jet</code>,将数据值映射为彩虹色的颜色&gt;(需要先<code>import matplotlib.cm as cm</code>)</li>
+<li>cm是matplotlib.cm模块的别名，它包含了许多预定义的颜色映射。</li>
+</ul>
+</li>
+<li>plt.colorbar(shrink &#x3D; .92)<ul>
+<li>显示色条，可设置宽度shrink。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/MathematicsModeling/p20.png" srcset="/img/loading.gif" lazyload alt="复杂一点的图"></p>
 <h2 id="office制作散点图"><a href="#office制作散点图" class="headerlink" title="office制作散点图"></a>office制作散点图</h2><p>matlab,python,office都可以制作散点图。</p>
 <p><img src="/images/MathematicsModeling/p4.png" srcset="/img/loading.gif" lazyload alt="散点图"></p>
 <ol>
