@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>美赛论文学习笔记</title>
+    <link href="/2024/01/31/%E7%BE%8E%E8%B5%9B%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2024/01/31/%E7%BE%8E%E8%B5%9B%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p>一些优秀美赛论文的读后感和学习记录~</p><span id="more"></span> <h1 id="摘要学习"><a href="#摘要学习" class="headerlink" title="摘要学习"></a>摘要学习</h1><h2 id="1-规范的书写结构"><a href="#1-规范的书写结构" class="headerlink" title="1.规范的书写结构"></a>1.规范的书写结构</h2><ul><li>背景：一两句话对时代背景进行概括。</li><li>问题的引入，交代整体做了什么</li><li>按照<code>首先-其次-第三-第四-……-最后</code>的顺序，分别介绍 What we have done。介绍每个模型的名字(标黑),该模型的过程概括，解决了什么问题，求出的结果是什么(具体的数值)。</li><li>一般最后会让写一封建议信balabla的，最后一段几句话概括一下即可。</li></ul><h2 id="2-一些背景引入的写法学习："><a href="#2-一些背景引入的写法学习：" class="headerlink" title="2. 一些背景引入的写法学习："></a>2. 一些背景引入的写法学习：</h2><ul><li>23年C题：<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">In <span class="hljs-keyword">the</span> digital era, language is often conveyed through abbreviations, emojis, <span class="hljs-keyword">and</span> voice messages.However, <span class="hljs-keyword">the</span> Wordle game, provided <span class="hljs-keyword">by</span> <span class="hljs-keyword">the</span> New Y ork Times, offers <span class="hljs-keyword">a</span> chance <span class="hljs-built_in">to</span> <span class="hljs-literal">return</span> <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> basics <span class="hljs-keyword">of</span> language. Thus, we conducted <span class="hljs-keyword">a</span> data analysis <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> results yielded <span class="hljs-keyword">by</span> Wordle.<br></code></pre></td></tr></table></figure></li></ul><h1 id="论文整体书写结构"><a href="#论文整体书写结构" class="headerlink" title="论文整体书写结构"></a>论文整体书写结构</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>1.1 Problem Background</p><p>1.2 Restatement of the Problem</p><p>1.3 预先工作</p><ul><li>eg. Data Cleaning</li></ul><p>1.4 Our work </p><ul><li>放一张整体建模的流程图</li></ul><h2 id="2-Assumptions"><a href="#2-Assumptions" class="headerlink" title="2. Assumptions"></a>2. Assumptions</h2><p>To simplify our modeling, we make the following assumptions: ………</p><h2 id="3-Notations-符号说明（三线表）"><a href="#3-Notations-符号说明（三线表）" class="headerlink" title="3. Notations 符号说明（三线表）"></a>3. Notations 符号说明（三线表）</h2><h2 id="4-模型具体的论述"><a href="#4-模型具体的论述" class="headerlink" title="4. 模型具体的论述"></a>4. 模型具体的论述</h2><p>4.1 模型的 Basic Description</p><ul><li>概念解释<ul><li>An Overview of the Algorithm Flow of XXX ：<br>  模型的流程图或者思维导图啥的，直观清晰</li></ul></li></ul><p>4.2 模型建立</p><ul><li>公式推导</li></ul><p>4.3 模型应用的结果</p><ul><li>模型计算的数据结果阐述</li><li>结果的精确度评价<ul><li>eg.与原始参考数据的误差分析，计算<code>均方根误差</code>，评价模型的有效性<br>  具体问题具体分析，有自己的思考，结合实际。</li><li>23年C题：从图3可以看出，平均偏差在0.06左右，说明预测数据与原始数据的偏差仅为6%左右。同时，观察到一个有趣的现象:2022年12月25日圣诞节的偏差接近50%，这是由于原始数据在这一天报告的结果数量急剧下降。这很容易与它是一个重要节日的事实联系起来。这样的结果在时间序列分析中属于<code>离群值</code>，有足够的理由去掉这个值。<br>  计算剩余数据的均值和均方根误差(RMSE)。</li><li>官方给的数据可能有些需要清洗，即data clean。例如：数据本身的错误，受到社会某些人文环境因素影响，不适合参与模型评价等等，都应该去掉。</li></ul></li></ul><h1 id="一些建模知识积累"><a href="#一些建模知识积累" class="headerlink" title="一些建模知识积累"></a>一些建模知识积累</h1><h2 id="数据处理方面"><a href="#数据处理方面" class="headerlink" title="数据处理方面"></a>数据处理方面</h2><h3 id="1-箱型图"><a href="#1-箱型图" class="headerlink" title="1.箱型图"></a>1.箱型图</h3><p>箱型图（Box Plot）是一种统计图形，用于展示<code>数据的分布情况</code>和<code>离散程度</code>。它由五个关键统计量组成：最小值、下四分位数（Q1）、中位数（Q2）、上四分位数（Q3）和最大值。</p><p>箱型图提供了一种简洁的方式来观察数据的<code>集中趋势</code>、离散程度以及<code>异常值的存在</code>。</p><h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>建模技能</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用python处理excel数据</title>
     <link href="/2024/01/31/%E4%BD%BF%E7%94%A8python%E5%A4%84%E7%90%86excel%E6%95%B0%E6%8D%AE/"/>
     <url>/2024/01/31/%E4%BD%BF%E7%94%A8python%E5%A4%84%E7%90%86excel%E6%95%B0%E6%8D%AE/</url>
