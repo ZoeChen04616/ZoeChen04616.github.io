@@ -1,0 +1,999 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon_cat.png">
+  <link rel="icon" href="/img/icon_cat.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yunru Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="我的第一块板子！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stm32最小系统板">
+<meta property="og:url" content="http://zoechen04616.github.io/2024/02/13/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我的第一块板子！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p12.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p13.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p1.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p3.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p11.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p2.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p10.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p11.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p15.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p14.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p0.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p4.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p5.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p6.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p7.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p8.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p9.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p16.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p17.png">
+<meta property="article:published_time" content="2024-02-13T08:21:21.000Z">
+<meta property="article:modified_time" content="2024-02-14T08:38:10.161Z">
+<meta property="article:author" content="Yunru Chen">
+<meta property="article:tag" content="PCB设计项目实战">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p12.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>stm32最小系统板 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zoechen04616.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":21845181,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":"ture"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//js.users.51.la/21845181.js');
+      }
+    </script>
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>My Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://localhost:4000/admin/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>CodeCloud</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E7%99%BD%E5%A4%A9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="stm32最小系统板"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-13 16:21" pubdate>
+          2024年2月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">stm32最小系统板</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年2月14日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>我的第一块板子！</p>
+<span id="more"></span> 
+<h1 id="MCU芯片介绍"><a href="#MCU芯片介绍" class="headerlink" title="MCU芯片介绍"></a>MCU芯片介绍</h1><ol>
+<li><p>MCU即<code>微控制单元</code>（Micro Controller Unit），又称<code>单片机</code>（Single Chip Microcomputer），是将CPU、存储、外围功能都整合在单一芯片上具有控制功能的芯片级计算机，作为高度集成的微型计算机控制系统，单片机具有系统结构简单、可靠性高、处理功能强、低电压和低功耗、环境适应能力强等特点，已广泛应用于汽车电子、工业控制、仪器仪表、家电等领域。</p>
+</li>
+<li><p>构成MCU的几个重要组件包括：</p>
+</li>
+</ol>
+<ul>
+<li><p>中央处理器（CPU）<br>CPU是单片机的大脑。它由算术逻辑单元(ALU)和控制单元(CU)组成。CPU读取、解码和执行指令以执行算术、逻辑和数据传输操作。</p>
+</li>
+<li><p>存储单元<br>任何计算系统都需要两种类型的存储器：<code>程序存储器</code>和<code>数据存储器</code>。</p>
+<ul>
+<li>程序存储器，顾名思义，包含程序，即要由CPU执行的指令。</li>
+<li>数据存储器需要在执行指令时存储临时数据。</li>
+<li>通常，<code>程序存储器是只读存储器（ROM），数据存储器是随机存取存储器（RAM）</code>。</li>
+</ul>
+</li>
+<li><p>输入&#x2F;输出端口<br>单片机与外部世界的接口由输入&#x2F;输出端口（I&#x2F;O端口）提供。</p>
+<ul>
+<li>开关、键盘等输入设备以二进制数据的形式从用户向CPU提供信息。CPU在接收到来自输入设备的数据后，执行适当的指令并通过LED、显示器、打印机等输出设备做出响应。</li>
+</ul>
+</li>
+<li><p>定时器&#x2F;计数器<br>单片机的重要组件之一是定时器和计数器。它们提供时间延迟和计数外部事件的操作。此外，定时器和计数器可以提供<code>函数生成、脉宽调制、时钟控制</code>等。</p>
+</li>
+<li><p>总线</p>
+</li>
+</ul>
+<p>单片机的另一个重要组件是系统总线。系统总线是一组连接线，将CPU与其他外围设备（如内存、I&#x2F;O端口和其他支持组件）连接起来。</p>
+<h1 id="主控芯片"><a href="#主控芯片" class="headerlink" title="主控芯片"></a>主控芯片</h1><p>型号：STM32F103VGT6</p>
+<h2 id="引脚说明"><a href="#引脚说明" class="headerlink" title="引脚说明"></a>引脚说明</h2><p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p12.png" srcset="/img/loading.gif" lazyload alt="引脚说明1"></p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p13.png" srcset="/img/loading.gif" lazyload alt="引脚说明2"></p>
+<h3 id="温度感应器"><a href="#温度感应器" class="headerlink" title="温度感应器"></a>温度感应器</h3><p>温度传感器必须产生随温度线性变化的电压。转换范围在2 V &lt;VDDA ❤️.6 V之间。温度传感器内部连接到ADC1_IN16输入通道，该通道用于将传感器输出电压转换为数字值。</p>
+<h2 id="Boot-modes"><a href="#Boot-modes" class="headerlink" title="Boot modes"></a>Boot modes</h2><p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p1.png" srcset="/img/loading.gif" lazyload alt="Boot modes"></p>
+<ol>
+<li><p>芯片手册的原文如下：</p>
+<blockquote>
+<p>At startup, boot pins are used to select one of three boot options:</p>
+<ul>
+<li>Boot from <code>user Flash</code>: you have an option to boot from any of two memory banks.</li>
+</ul>
+</blockquote>
+<ul>
+<li>By default, boot from Flash memory bank 1 is selected. </li>
+<li>You can choose to boot from Flash memory bank 2 by setting a bit in the option bytes.<blockquote>
+<ul>
+<li>Boot from <code>system memory</code></li>
+<li>Boot from <code>embedded SRAM</code><br>The boot loader is located in system memory. It is used to reprogram the Flash memory by<br>using USART1.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>详解：</p>
+</li>
+</ol>
+<ul>
+<li><p>第一种方式<code>(boot0 = 0)</code>：Flash memory启动方式<br>启动地址：0x08000000 是STM32内置的Flash，一般我们使用<code>JTAG或者SWD模式下载程序</code>时，就是下载到这个里面，重启后也直接从这启动程序。<br><code>基本上都是采用这种模式</code>。</p>
+</li>
+<li><p>第二种方式<code>(boot0 = 1；boot1 = 0)</code>：System memory启动方式<br>启动地址：0x1FFF0000从系统存储器启动，这种模式启动的程序功能是由厂家设置的。</p>
+<ul>
+<li>一般来说，这种启动方式用的比较少。系统存储器是芯片内部一块特定的区域，STM32在出厂时，由ST在这个区域内部预置了一段BootLoader， 也就是我们常说的ISP程序， 这是一块ROM，出厂后无法修改。一般来说，我们选用这种启动模式时，是为了<code>从串口下载程序</code>，因为在厂家提供的BootLoader 中，提供了串口下载程序的固件，可以通过这个BootLoader将程序下载到系统的Flash中。<br>  但是这个下载方式需要以下步骤：</li>
+<li>将BOOT0设置为1，BOOT1设置为0，然后按下复位键，这样才能从系统存储器启动BootLoader</li>
+<li>最后在BootLoader的帮助下，通过串口下载程序到Flash中</li>
+<li>程序下载完成后，又有需要将BOOT0设置为GND，<code>手动复位</code>，这样，STM32才可以从Flash中启动可以看到， 利用串口下载程序还是比较的麻烦，需要跳帽跳来跳去的，非常的不注重用户体验。</li>
+</ul>
+</li>
+<li><p>第三种方式(boot0 &#x3D; 1;boot1 &#x3D; 1)：SRAM启动方式。<br>启动地址：0x20000000 内置SRAM，既然是SRAM，自然也就<code>没有程序存储</code>的能力了.</p>
+<ul>
+<li>这个模式一般用于<code>程序调试</code>。假如我只修改了代码中一个小小的地方，然后就需要重新擦除整个Flash，比较的费时，可以考虑从这个模式启动代码（也就是STM32的内存中），用于快速的程序调试，等程序调试完成后，在将程序下载到SRAM中。</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于flash死锁的解决办法-Flash-memory启动方式"><a href="#关于flash死锁的解决办法-Flash-memory启动方式" class="headerlink" title="关于flash死锁的解决办法(Flash memory启动方式)"></a>关于flash死锁的解决办法(Flash memory启动方式)</h3><p>开发调试过程中，由于某种原因导致内部Flash锁死，无法连接SWD以及JTAG调试，无法读到设备，可以通过修改BOOT模式重新刷写代码。修改为<code>BOOT0=1，BOOT1=0</code>即可从系统存储器启动，ST出厂时自带Bootloader程序，SWD以及JTAG调试接口都是专用的。<code>重新烧写程序后，将BOOT模式重新更换到BOOT0=0，BOOT1=X</code>即可正常使用。</p>
+<blockquote>
+<p>在芯片中，Boot1的引脚就是BOOT0,Boot1的引脚是PB2。<br>我采用了第一种Flash memory启动方式，需要将boot0和&gt;boot1默认为低电平，摁下boot0的按键，boot0变为高电平。</p>
+</blockquote>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p3.png" srcset="/img/loading.gif" lazyload alt="启动模式"></p>
+<h2 id="Power-supply-schemes"><a href="#Power-supply-schemes" class="headerlink" title="Power supply schemes"></a>Power supply schemes</h2><p>芯片手册的原文：</p>
+<blockquote>
+<ul>
+<li>VDD &#x3D; 2.0 to 3.6 V: external power supply for I&#x2F;Os and the internal regulator.<br>Provided externally through VDD pins.</li>
+<li>VSSA, VDDA &#x3D; 2.0 to 3.6 V: external analog power supplies for ADC, DAC, Reset blocks,<br>RCs and PLL (minimum voltage to be applied to VDDA is 2.4 V when the ADC or DAC<br>is used). VDDA and VSSA must be connected to VDD and VSS, respectively.</li>
+<li>VBAT &#x3D; 1.8 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and backup<br>registers (through power switch) when VDD is not present.</li>
+</ul>
+</blockquote>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p11.png" srcset="/img/loading.gif" lazyload alt="电源电路"></p>
+<p>从官方的电路图可知：</p>
+<ul>
+<li><p>每个VDD各接一个100nF陶瓷电容，其中VDD3需要再接一个4.7uF的钽电容；</p>
+</li>
+<li><p>VDDA：接10nF陶瓷电容+1uF钽电容；</p>
+</li>
+<li><p>VREF+：可接VDDA，也可接外部参考源，此时也需要接10nF陶瓷电容+1uF钽电容；</p>
+</li>
+</ul>
+<p>在这里，我选择了最常用的3.3V。</p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p2.png" srcset="/img/loading.gif" lazyload alt="滤波电容"></p>
+<h2 id="电源设计"><a href="#电源设计" class="headerlink" title="电源设计"></a>电源设计</h2><p>我们用电池给PCB板供电，电池电压可能是3.7V、7.4V或者是12V的。然而，板上的元器件需要的供电电压，可能与外部电源电压不符。比如，单片机往往需要3.3V供电，一些超声波传感器需要5V供电，有些电机还需要12V供电。这样就要求我们，通过<code>设计升压、降压或者升降压电路</code>，<code>变换外部电源输入</code>从而满足所有元器件的要求。这也就是这里所说的——电源设计。</p>
+<ol>
+<li>我们常使用线性稳压器(LDO)来完成电压的转换。这里使用的型号为me6206a33,3.3V固定输出，Iout&#x3D;300mA，Vin&#x3D;6V(Max)。<br>参考该元件的说明书，可以知道LDO的电路连接方式：</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p10.png" srcset="/img/loading.gif" lazyload alt="LDO电路连接"></p>
+<ol start="2">
+<li>参考芯片手册中关于电源的说明：<blockquote>
+<p>Power supply schemes</p>
+<ul>
+<li>VDD &#x3D; 2.0 to 3.6 V: <br>external power supply for I&#x2F;Os and the internal regulator.<br>Provided externally through VDD pins.</li>
+<li>VSSA, VDDA &#x3D; 2.0 to 3.6 V: <br>external analog power supplies for ADC, DAC, Reset blocks,<br>RCs and PLL (minimum voltage to be applied to VDDA is 2.4 V when the ADC or DAC<br>is used). <br>VDDA and VSSA must be connected to VDD and VSS, respectively.</li>
+<li>VBAT &#x3D; 1.8 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and backup<br>registers (through power switch) when VDD is not present.</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>再结合官方给出的电源设计图，可知VDD为正，VSS为负，直接接在滤波电容上。</p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p11.png" srcset="/img/loading.gif" lazyload alt="电源电路"></p>
+<p>STM32的工作电压(VDD )为2.0～3.6V，通过内置的电压调节器提供所需的1.8V电源，当主电源VDD 掉电后，通过VBAT 脚为实时时钟(RTC)和备份寄存器提供电源。</p>
+<table>
+<thead>
+<tr>
+<th>VCC</th>
+<th>电路的供电正电压</th>
+<th>VDDD</th>
+<th>芯片的工作数字正电压</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GND</td>
+<td>电路的供电负电压</td>
+<td>VSSD</td>
+<td>芯片的工作数字正电压</td>
+</tr>
+<tr>
+<td>VDD</td>
+<td>芯片的工作正电压</td>
+<td>VREF+</td>
+<td>ADC基准参考正电压</td>
+</tr>
+<tr>
+<td>VSS</td>
+<td>芯片的工作负电压</td>
+<td>VREF-</td>
+<td>ADC基准参考负电压</td>
+</tr>
+<tr>
+<td>VDDA</td>
+<td>芯片的工作模拟正电压</td>
+<td>VBAT</td>
+<td>电池或其他电源供电</td>
+</tr>
+<tr>
+<td>VSSA</td>
+<td>芯片的工作模拟负电压</td>
+<td>VEE</td>
+<td>负电压供电</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>RTC电源管脚</code>为VBAT, 电源范围为1.8~3.6V，主要用于RTC时钟的供电， RTC在大部分场合用于保存一些重要的参数，比如在电脑主板上用于保存boss的信息， 如果这个电源丢了将导致无法重启，在单片机中低功耗设备常常也会使用这个RTC进行定时的唤醒功能，在普通的MCU中常用于做实时时钟。</li>
+<li><code>VDD</code>为数字电源，电源范围也是1.8~3.6V，在芯片内部集成了电压转化器，一般芯片内核供电为1.2V，图示的Regulator为转换器，将VDD电源稳压至1.2V。数据手册建议加入11个100nF和4.7uF的电容，不过实际应用中，只需要每个VDD加入一个100nF的去耦电容。</li>
+<li><code>ADC和DAC</code>:模拟电源部分，V_DDA的电源用于芯片模拟器件，PLL锁相环等供电，还用于ADC和DAC模数数模转化器供电，图示的VREF为ADC和DAC的参考电压，在一些常用的设计中，可将这个参考电源直接与VREF相连接，但是在一些微弱信号的模拟电路中，建议接一个<code>电压基准芯片</code>，以确保参考<code>电压的稳定</code>。<ul>
+<li>数据手册建议VDDA加入一个10nF和1uF的电容， 在这我们使用<code>10uF+100nF</code>的电容，而VREF也是建议使用10nF+1uF，我们还是采用10uF+100nF。</li>
+<li><code>ADC(模数转换器)</code><br>  STM32F103系列嵌入了三个12位模数转换器，ADC可由DMA控制器提供服务，模拟看门狗功能可以精确地<code>监视所有选定通道的转换电压</code>，当转换后的电压超过设定的阈值后，将产生中断。</li>
+<li><code>DAC(数模转换器)</code><br>  STM32F103系列提供二个12位缓冲DAC通道，可用于将两个数字信号转换为两个模拟电压信号输出，设计结构有集成电阻串和反向配置的放大器组成。</li>
+</ul>
+</li>
+</ul>
+<h3 id="独立的A-D转换器供电和参考电压"><a href="#独立的A-D转换器供电和参考电压" class="headerlink" title="独立的A&#x2F;D转换器供电和参考电压"></a>独立的A&#x2F;D转换器供电和参考电压</h3><p>为了提高转换的精确度，ADC使用一个独立的电源供电，过滤和屏蔽来自印刷电路板上的毛刺干扰，ADC的电源引脚为VDDA，独立的电源地VSSA，如果有VREF- 引脚(根据封装而定)，它必须连接到VSSA，确保共地。</p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p15.png" srcset="/img/loading.gif" lazyload alt="ADC独立供电"></p>
+<h3 id="电池备份区域"><a href="#电池备份区域" class="headerlink" title="电池备份区域"></a>电池备份区域</h3><p>使用电池或其他电源连接到VBAT 脚上，当VDD 断电时，可以保存备份寄存器的内容和维持RTC的功能。</p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p14.png" srcset="/img/loading.gif" lazyload alt="电池备份区域"></p>
+<h2 id="复位电路"><a href="#复位电路" class="headerlink" title="复位电路"></a>复位电路</h2><ol>
+<li>芯片中复位电路的引脚为<code>NRST</code>,查看芯片手册中的“<code>NRST pin characteristics</code>”,原文说明：<blockquote>
+<p>The NRST pin input driver uses CMOS technology. It is connected to a permanent pull-up<br>resistor, RPU (see Table 49).<br>Unless otherwise specified, the parameters given in Table 52 are derived from tests<br>performed under ambient temperature and VDD supply voltage conditions summarized in<br>Table 10</p>
+</blockquote>
+</li>
+</ol>
+<p>可知，默认该引脚上拉，摁下复位按键的时候，连接低电平。</p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p0.png" srcset="/img/loading.gif" lazyload alt="NRST的输入电位要求"></p>
+<p>一般来说，我们接GND和VCC，都能满足NRST的输入电位要求。</p>
+<ol start="2">
+<li>在复位电路的设计中，添加了一个电容，保证当电源打开时，电容充电相当于导线接通，使NRST自动接地一次，初始化复位，之后再默认接高电平，只有摁下按键手动复位。</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p4.png" srcset="/img/loading.gif" lazyload alt="NRST复位电路"></p>
+<h2 id="时钟电路-外部晶振"><a href="#时钟电路-外部晶振" class="headerlink" title="时钟电路(外部晶振)"></a>时钟电路(外部晶振)</h2><ol>
+<li><p>stm32主控芯片的内部是有两个时钟的，分别是内部高速和内部低速，但是一般不会特别精准，所以需要外接时钟电路。</p>
+</li>
+<li><p>外接时钟电路，一般高速晶振的频率是8 MHZ，通过倍频器可以达到72 MHZ。低速晶振的频率是32.768KHZ。</p>
+</li>
+</ol>
+<ul>
+<li>36.768KHZ是2的15次方，是可以分频到最小单位HZ的。</li>
+</ul>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p5.png" srcset="/img/loading.gif" lazyload alt="高速外部晶振"></p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p6.png" srcset="/img/loading.gif" lazyload alt="低速外部晶振"></p>
+<ol start="3">
+<li>芯片手册提供了高速外部晶振的典型电路：</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p7.png" srcset="/img/loading.gif" lazyload alt="高速外部晶振典型电路"></p>
+<blockquote>
+<p>For CL1 and CL2, it is recommended to use high-quality external ceramic capacitors in the<br><code>5 pF to 25 pF</code> range (typ.), designed for high-frequency applications, and selected to match<br>the requirements of the crystal or resonator (see Figure 20). CL1 and CL2 are usually the<br>same size. The crystal manufacturer typically specifies a load capacitance which is the<br>series combination of CL1 and CL2. PCB and MCU pin capacitance must be included (<code>10 pF can be used as a rough estimate of the combined pin and board capacitance</code>) when sizing<br>CL1 and CL2. </p>
+</blockquote>
+<p>官方给出了两个电容的大小范围，只要在<code>5 pF to 25 pF</code> range (typ.)之间应该不会有什么问题，更严谨一点，可以参考官方给的计算公式：</p>
+<blockquote>
+<p>Note: For CL1 and CL2, it is recommended to use high-quality ceramic capacitors in the 5 pF to 15 pF range selected to match the requirements of the crystal or resonator (see Figure 21).<br> <code>CL1 and CL2, are usually the same size</code>. The crystal manufacturer typically specifies a load<br>capacitance which is the series combination of CL1 and CL2.</p>
+</blockquote>
+<blockquote>
+<p>Load capacitance CL has the following formula: <code>CL = CL1 x CL2 / (CL1 + CL2) + Cstray </code>where<br>Cstray is the pin capacitance and board or trace PCB-related capacitance. Typically, it is<br>between 2 pF and 7 pF.</p>
+</blockquote>
+<blockquote>
+<p>Caution: To avoid exceeding the maximum value of CL1 and CL2 (15 pF) it is strongly recommended to use a resonator with a load capacitance CL ≤ 7 pF. Never use a resonator with a load capacitance of 12.5 pF.</p>
+<blockquote>
+<p>警告: 为了避免超过 CL1和 CL2(15pF)的最大值，强烈建议使用使用负载电容 CL ≤7pF 的谐振器。永远不要使用负载的谐振器电容为12.5 pF。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Example: if you choose a resonator with a load capacitance of CL &#x3D; 6 pF, and Cstray &#x3D; 2 pF,<br>then CL1 &#x3D; CL2 &#x3D; 8 pF</p>
+<blockquote>
+<p>如果你选择一个谐振器，其负载电容为 CL &#x3D; 6pF，而 Cstray &#x3D; 2pF,<br>那么 CL1 &#x3D; CL2 &#x3D; 8pF.</p>
+</blockquote>
+</blockquote>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p8.png" srcset="/img/loading.gif" lazyload alt="无源晶振"></p>
+<p>图中的20pF是CL，也就是负载电容的值，高速晶振的Cstray，官方给的估计值为10pF，带入公式计算CL1和CL2，可求出二者电容均为20pF。</p>
+<p>同理，可以绘制外部低速晶振电路。</p>
+<ol start="4">
+<li>主控芯片给了两组外部时钟电路的引脚，其中：</li>
+</ol>
+<ul>
+<li><code>OSC_IN</code>和<code>OSC_OUT</code>分别为外部高速时钟的引脚</li>
+<li><code>OSC32_IN</code>和<code>OSC32_OUT</code>分别为外部低速时钟的引脚</li>
+</ul>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p9.png" srcset="/img/loading.gif" lazyload alt="外部晶振电路"></p>
+<h2 id="串口转USB"><a href="#串口转USB" class="headerlink" title="串口转USB"></a>串口转USB</h2><h3 id="CH340"><a href="#CH340" class="headerlink" title="CH340"></a>CH340</h3><ol>
+<li>CH340 是一个 USB 总线的转接芯片，实现 USB 转串口或者 USB 转打印口。<br> 在串口方式下，CH340 提供常用的 MODEM 联络信号，用于为计算机扩展异步串口，或者将普通的串口设备直接升级到 USB 总线。</li>
+<li>我选择的是SOP-8 封装，标准的 8 脚贴片，型号为CH340N。</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p16.png" srcset="/img/loading.gif" lazyload alt="CH340的引脚介绍1"></p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p17.png" srcset="/img/loading.gif" lazyload alt="CH340的引脚介绍2"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A1%AC%E4%BB%B6%E6%96%B9%E5%90%91/" class="category-chain-item">硬件方向</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PCB%E8%AE%BE%E8%AE%A1%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" class="print-no-link">#PCB设计项目实战</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>stm32最小系统板</div>
+      <div>http://zoechen04616.github.io/2024/02/13/stm32最小系统板/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yunru Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/12/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/" title="PCB设计入门笔记">
+                        <span class="hidden-mobile">PCB设计入门笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
