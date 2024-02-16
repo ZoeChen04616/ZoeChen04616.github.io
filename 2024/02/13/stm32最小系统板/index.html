@@ -47,8 +47,9 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p20.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p21.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p22.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p23.jpg">
 <meta property="article:published_time" content="2024-02-13T08:21:21.000Z">
-<meta property="article:modified_time" content="2024-02-16T09:41:44.232Z">
+<meta property="article:modified_time" content="2024-02-16T15:53:13.875Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="PCB设计项目实战">
 <meta name="twitter:card" content="summary_large_image">
@@ -305,7 +306,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.6k 字
+          9.9k 字
         
       </span>
     
@@ -316,7 +317,7 @@
         
         
         
-          80 分钟
+          83 分钟
         
       </span>
     
@@ -366,7 +367,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年2月16日 下午
+                    本文最后更新于：2024年2月16日 晚上
                   
                 
               </p>
@@ -793,6 +794,22 @@
 <li>外部晶振的滤波电容要靠近外部晶振，外部晶振要靠近主控芯片</li>
 <li>参考入门笔记里面的布局和飞线原则</li>
 <li>3D视图可以查看成品效果</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p23.jpg" srcset="/img/loading.gif" lazyload alt="成品效果1.0"></p>
+<h1 id="第一次画板子存在的问题和后续优化的安排"><a href="#第一次画板子存在的问题和后续优化的安排" class="headerlink" title="第一次画板子存在的问题和后续优化的安排"></a>第一次画板子存在的问题和后续优化的安排</h1><h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><ol>
+<li>滤波电容要靠近电流流入的io口</li>
+<li>排针的顺序分布要按着芯片引脚的实际顺序来，不要按着顺序从A0直接到A15，布线太痛苦了，而且很丑很不优雅</li>
+<li>晶振越接近芯片引脚越好</li>
+<li>晶振和电源模块还可以选择更小的封装</li>
+<li>type-c的四个固定脚要焊上，不然容易掉</li>
+<li>电流线20mils以上，信号线10mils也ok</li>
+</ol>
+<h1 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h1><ol>
+<li>开学后，重新做一下stm32的最小系统板</li>
+<li>逐步摸索stm32的其他模块，扩大板子的功能</li>
+<li>同时跟上学电控，了解板子的使用，以及学会使用成品板</li>
+<li>学一下有刷电机和无刷电机，画驱动四轮正反转的板子</li>
+<li>学一下通信部分怎么画</li>
 </ol>
 
                 
