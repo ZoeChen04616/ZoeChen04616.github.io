@@ -42,8 +42,13 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p9.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p16.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p17.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p18.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p19.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p20.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p21.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p22.png">
 <meta property="article:published_time" content="2024-02-13T08:21:21.000Z">
-<meta property="article:modified_time" content="2024-02-14T08:38:10.161Z">
+<meta property="article:modified_time" content="2024-02-16T09:41:44.232Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="PCB设计项目实战">
 <meta name="twitter:card" content="summary_large_image">
@@ -300,7 +305,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.1k 字
+          9.6k 字
         
       </span>
     
@@ -311,7 +316,7 @@
         
         
         
-          59 分钟
+          80 分钟
         
       </span>
     
@@ -361,7 +366,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年2月14日 下午
+                    本文最后更新于：2024年2月16日 下午
                   
                 
               </p>
@@ -550,7 +555,7 @@
 <p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p0.png" srcset="/img/loading.gif" lazyload alt="NRST的输入电位要求"></p>
 <p>一般来说，我们接GND和VCC，都能满足NRST的输入电位要求。</p>
 <ol start="2">
-<li>在复位电路的设计中，添加了一个电容，保证当电源打开时，电容充电相当于导线接通，使NRST自动接地一次，初始化复位，之后再默认接高电平，只有摁下按键手动复位。</li>
+<li>在复位电路的设计中，添加了一个电容，作用为<code>按键消抖</code>：<br>由于电容两端电压不能突变，使得按键两端的电压平缓变化，直至电容充放电到达一定电压阈值时，单片机才读取到电平变化。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yechongbinbin/article/details/114821661">单片机按键消抖及原理（硬件和软件方法详解）</a></li>
 </ol>
 <p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p4.png" srcset="/img/loading.gif" lazyload alt="NRST复位电路"></p>
 <h2 id="时钟电路-外部晶振"><a href="#时钟电路-外部晶振" class="headerlink" title="时钟电路(外部晶振)"></a>时钟电路(外部晶振)</h2><ol>
@@ -607,6 +612,188 @@
 </ol>
 <p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p16.png" srcset="/img/loading.gif" lazyload alt="CH340的引脚介绍1"></p>
 <p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p17.png" srcset="/img/loading.gif" lazyload alt="CH340的引脚介绍2"></p>
+<ul>
+<li>两个芯片的串口接线就是RX和TX反着对应，发对收。</li>
+</ul>
+<h3 id="USB接口"><a href="#USB接口" class="headerlink" title="USB接口"></a>USB接口</h3><ol>
+<li>USB接口的版本：</li>
+</ol>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p18.png" srcset="/img/loading.gif" lazyload alt="USB 传输标准与接口"></p>
+<h3 id="Type-C"><a href="#Type-C" class="headerlink" title="Type C"></a>Type C</h3><ol>
+<li>Type C是一组对称的连接器，在使用的过程中不需要如同使用 USBA，MinUSB，MicroUSB 那样来辨别接口方向。<br>特点：</li>
+</ol>
+<ul>
+<li>①可盲插、无方向性</li>
+<li>②PD最大支持功率100W（20V&#x2F;5A）</li>
+<li>③单组最高速率支持10Gbps。</li>
+<li>④能够给不同电压的设备充电。</li>
+</ul>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p19.png" srcset="/img/loading.gif" lazyload alt="USB Type C 母口"></p>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p20.png" srcset="/img/loading.gif" lazyload alt="USB Type C 公口"></p>
+<p>从上图的 Type C 公头和母口的引脚排列可以知道 Type C 的引脚功能是上下对称的，所以公头无论以什么方向接入母口两者的功能引脚都可以完美对接。</p>
+<ol start="2">
+<li>具体引脚，及其详细描述查看如下表格：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">Pin</th>
+<th align="center">名称</th>
+<th align="center">功能描述</th>
+<th align="center">Pin</th>
+<th align="center">名称</th>
+<th align="center">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A1</td>
+<td align="center">GND</td>
+<td align="center">接地</td>
+<td align="center">B12</td>
+<td align="center">GND</td>
+<td align="center">接地</td>
+</tr>
+<tr>
+<td align="center">A2</td>
+<td align="center">SSTXp1</td>
+<td align="center">SuperSpeed 差分信号<code>#1</code>，TX，正</td>
+<td align="center">B11</td>
+<td align="center">SSRXp1</td>
+<td align="center">SuperSpeed 差分信号<code>#1</code>，RX，正</td>
+</tr>
+<tr>
+<td align="center">A3</td>
+<td align="center">SSTXn1</td>
+<td align="center">SuperSpeed 差分信号<code>#1</code>，TX，负</td>
+<td align="center">B10</td>
+<td align="center">SSRXn1</td>
+<td align="center">SuperSpeed 差分信号<code>#1</code>，RX，负</td>
+</tr>
+<tr>
+<td align="center">A4</td>
+<td align="center">VBUS</td>
+<td align="center">总线电源</td>
+<td align="center">B9</td>
+<td align="center">VBUS</td>
+<td align="center">总线电源</td>
+</tr>
+<tr>
+<td align="center">A5</td>
+<td align="center">CC1</td>
+<td align="center">Configuration channel</td>
+<td align="center">B8</td>
+<td align="center">SBU2</td>
+<td align="center">Sideband use (SBU)</td>
+</tr>
+<tr>
+<td align="center">A6</td>
+<td align="center">Dp1</td>
+<td align="center">USB 2.0 差分信号，position 1，正</td>
+<td align="center">B7</td>
+<td align="center">Dn2</td>
+<td align="center">USB 2.0 差分信号，position 2，负</td>
+</tr>
+<tr>
+<td align="center">A7</td>
+<td align="center">Dn1</td>
+<td align="center">USB 2.0 差分信号，position 1，负</td>
+<td align="center">B6</td>
+<td align="center">Dp2</td>
+<td align="center">USB 2.0 差分信号，position 2，正</td>
+</tr>
+<tr>
+<td align="center">A8</td>
+<td align="center">SBU1</td>
+<td align="center">Sideband use (SBU)</td>
+<td align="center">B5</td>
+<td align="center">CC2</td>
+<td align="center">Configuration channel</td>
+</tr>
+<tr>
+<td align="center">A9</td>
+<td align="center">VBUS</td>
+<td align="center">总线电源</td>
+<td align="center">B4</td>
+<td align="center">VBUS</td>
+<td align="center">总线电源</td>
+</tr>
+<tr>
+<td align="center">A10</td>
+<td align="center">SSRXn2</td>
+<td align="center">SuperSpeed 差分信号<code>#2</code>，RX，负</td>
+<td align="center">B3</td>
+<td align="center">SSTXn2</td>
+<td align="center">SuperSpeed 差分信号<code>#2</code>，TX，负</td>
+</tr>
+<tr>
+<td align="center">A11</td>
+<td align="center">SSRXp2</td>
+<td align="center">SuperSpeed 差分信号<code>#2</code>，RX，正</td>
+<td align="center">B2</td>
+<td align="center">SSTXp2</td>
+<td align="center">SuperSpeed 差分信号<code>#2</code>，TX，正</td>
+</tr>
+<tr>
+<td align="center">A12</td>
+<td align="center">GND</td>
+<td align="center">接地</td>
+<td align="center">B1</td>
+<td align="center">GND</td>
+<td align="center">接地</td>
+</tr>
+</tbody></table>
+<ul>
+<li>有24根信号，其中电源和地占了9根，有4个地和4个Vbus，用于提升电流传输能力。</li>
+<li>A6、A7：用于传输USB2.0的两组信号是交叉连接的，所以会使得插头以任意方向插入时数据都是连通的。</li>
+<li>A2、A3，A10、A11：有两组（8根）高速数据通路，用于传输数据</li>
+<li>CC1、CC2：用于传输方向确认和正反插确认，以及USB PD BCM码信号传输功能，实现负载的功能配置，当其中一根作为TypeC接口的配置信号时，另一根则变成供电电源。（SUB1\SUB2作为辅助信号，在一些特殊模式下使用）。</li>
+</ul>
+<ol start="3">
+<li>我在选择type-c接口的时候，选择了16脚的，因为6脚的只能充电。</li>
+</ol>
+<ul>
+<li><p><code>16Pin Type C</code> 在 24Pin 全功能版本的基础上移除了 USB3.0 的 TX1&#x2F;2、RX1&#x2F;2 引脚，保留了 SBU1&#x2F;2、CC1&#x2F;2、USB2.0 的 D+ 和 D- 引脚，除了不支持 USB3.0&#x2F;3.1 高速传输外，其他没有任何的差别，同样可以支持 PD 快充、音频传输、HDMI 传输、调试模式等其他功能。</p>
+<ul>
+<li><code>16 Pin Type C </code>实际上仅有12 Pin，这是因为 16 Pin 接口在设计时将 Type C 母口两端的两个 <code>Vbus 和 GND</code> 引脚两两相互靠近，注意仅仅是相互靠近并不是共用引脚所以接口实际还是存在 16 Pin，但对于<code>其封装只要 12 Pin</code>，其中<code>相互靠近的引脚共用一个封装引脚</code>，具体可以看下图的实物图。</li>
+</ul>
+</li>
+<li><p>对于仅需支持充电，那么 USB2.0 D+ 和 D- 引脚也可移除进一步节约接口制造成本。<code>6Pin Type C </code>仅保留Vbus、GND、CC1、CC2 引脚。接口两侧同样对称分布 Vbus 和 GND ，CC1，CC2 引脚用于支持正反接入，以及快充协议的支持</p>
+</li>
+</ul>
+<h4 id="DFP、UFP、DRP用途解析"><a href="#DFP、UFP、DRP用途解析" class="headerlink" title="DFP、UFP、DRP用途解析"></a>DFP、UFP、DRP用途解析</h4><ul>
+<li>①DFP：下行端口，可以理解为一个Host，DFP作为source给VBUS和vcon供电的，简单理解为一个提供电源的设备，如：电源适配器。</li>
+<li>②UFP：上行端口，可以理解为Device，UFP可以理解为受电端口，DFP为供电端口，UFP从VBUS中取电，并可提供数据。典型设备如：U盘、移动硬盘。</li>
+<li>③DRP：双角色端口，DRP既可以做DFP又可以做UFP，也可以在DFP和UFP间动态切换，典型设备是：笔记本电脑。</li>
+</ul>
+<h4 id="Type-C-接口-CC1-2-作用"><a href="#Type-C-接口-CC1-2-作用" class="headerlink" title="Type C 接口 CC1&#x2F;2 作用"></a>Type C 接口 CC1&#x2F;2 作用</h4><blockquote>
+<p>PD 快充协议对电源设备的识别通过 CC1 和 CC2 引脚来进行，避免 QC 协议中 对 DP 和 DM 引脚的占用。使得 PD 协议快充在充电的同时，数据传输也可以稳定进行。</p>
+</blockquote>
+<p><code>CC：配置通道</code>，作用是检测USB连接，检测正反插，USB设备间数据与VBUS的连接建立与管理。</p>
+<ul>
+<li>探测连接，区分正反面，区分DFP和UFP的主从关系。</li>
+<li>配置Vbus，有USB TypeC和USB Power Delivery两种模式。</li>
+<li>配置Vconn，当线缆里有Emark芯片的时候，一路CC通道传输CC信号，另一路CC通道变成Vconn，给EMark芯片供电。<ul>
+<li>如果CC通道连接其他配置，如连接音频配件、DP、PCIE时，CC通道配置是不同的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p21.png" srcset="/img/loading.gif" lazyload alt="TypeC的CC通道连接图"><br>上图分析：</p>
+<ul>
+<li>在DFP的CC pin有<code>上拉电阻Rp</code>，在UFP有<code>下拉电阻Rd</code>。</li>
+<li>在未连接时，DFP的VBUS是无输出的，连接后CC pin相连，DFP的CC pin会检测到UFP的下拉电阻Rd，说明连接上了，DFP就打开Vbus电源开关，输出电源给UFP。而哪个CC pin（CC1、CC2）检测到下拉电阻就确定接口插入的方向，顺便切换RX\TX。</li>
+<li>电阻Rd&#x3D;5.1k，电阻Rp为不确定的值，USB TypeC有几种<code>供电模式，靠Rp</code>的值来甄别，Rp的值不一样，CC pin检测的电源就不一样，然后来控制DFP端执行哪种供电模式。</li>
+</ul>
+<p><img src="/images/stm32%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF/p22.png" srcset="/img/loading.gif" lazyload alt="DFP端执行的供电模式"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43533553/article/details/124973694">CC识别模式</a></p>
+<h3 id="SWIO和SWCLK引脚"><a href="#SWIO和SWCLK引脚" class="headerlink" title="SWIO和SWCLK引脚"></a>SWIO和SWCLK引脚</h3><ol>
+<li>SWIO和SWCLK分别是JTAG接口中用于<code>数据引脚</code>和<code>时钟引脚</code>的信号线。在STM32F103C8T6芯片中，它们通常用于调试和测试，以便开发人员可以检查芯片中各种模块的状态和执行跟踪。它们也可用于编程和其他与芯片的内部工作有关的操作。</li>
+<li>PA13的引脚就是SWIO的引脚。</li>
+</ol>
+<h1 id="PCB布局和飞线"><a href="#PCB布局和飞线" class="headerlink" title="PCB布局和飞线"></a>PCB布局和飞线</h1><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><ol>
+<li>外部晶振的滤波电容要靠近外部晶振，外部晶振要靠近主控芯片</li>
+<li>参考入门笔记里面的布局和飞线原则</li>
+<li>3D视图可以查看成品效果</li>
+</ol>
 
                 
               </div>
