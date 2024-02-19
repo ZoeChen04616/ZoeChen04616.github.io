@@ -1,0 +1,972 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon_cat.png">
+  <link rel="icon" href="/img/icon_cat.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yunru Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="码头工人，启动！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker使用指南">
+<meta property="og:url" content="http://zoechen04616.github.io/2024/02/19/Docker%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="码头工人，启动！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-19T14:14:55.000Z">
+<meta property="article:modified_time" content="2024-02-19T15:33:53.011Z">
+<meta property="article:author" content="Yunru Chen">
+<meta property="article:tag" content="my technology stack">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Docker使用指南 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zoechen04616.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":21845181,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":"ture"}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//js.users.51.la/21845181.js');
+      }
+    </script>
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>My Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://localhost:4000/admin/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>CodeCloud</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E7%99%BD%E5%A4%A9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Docker使用指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-19 22:14" pubdate>
+          2024年2月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Docker使用指南</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年2月19日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>码头工人，启动！</p>
+<span id="more"></span> 
+<h1 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h1><p>Docker容器是与系统其他部分隔离开的一系列进程，运行这些进程所需的所有文件都由另一个镜像提供，从开发到测试再到生产的整个过程中，Linux 容器都具有可移植性和一致性。相对于依赖重复传统测试环境的开发渠道，容器的运行速度要快得多，并且支持在多种主流云平台（PaaS）和本地系统上部署。Docker容器很好地解决了“开发环境能正常跑，一上线就各种崩”的尴尬。</p>
+<h2 id="Docker容器的特点："><a href="#Docker容器的特点：" class="headerlink" title="Docker容器的特点："></a>Docker容器的特点：</h2><ul>
+<li>轻量</li>
+<li>快速：容器的启动和创建无需启动GuestOS，可以实现秒级甚至毫秒级的启动。</li>
+<li>可移植性：Docker容器技术是将应用及所依赖的库和运行时的环境技术改造包成容器镜像，可以在不同的平台运行。</li>
+<li>自动化：容器生态中的容器编排工作（如：Kubernetes）可帮助我们实现容器的自动化管理。</li>
+</ul>
+<p>使用表格对比如下：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>普通虚拟机</th>
+<th>Docker</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跨平台</td>
+<td>通常只能在桌面级系统运行，例如 Windows&#x2F;Mac，无法在不带图形界面的服务器上运行</td>
+<td>支持的系统非常多，各类 windows 和 Linux 都支持</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>性能损耗大，内存占用高，因为是把整个完整系统都虚拟出来了</td>
+<td>性能好，只虚拟软件所需运行环境，最大化减少没用的配置</td>
+</tr>
+<tr>
+<td>自动化</td>
+<td>需要手动安装所有东西</td>
+<td>一个命令就可以自动部署好所需环境</td>
+</tr>
+<tr>
+<td>稳定性</td>
+<td>稳定性不高，不同系统差异大</td>
+<td>稳定性好，不同系统都一样部署方式</td>
+</tr>
+</tbody></table>
+<h2 id="打包、分发、部署"><a href="#打包、分发、部署" class="headerlink" title="打包、分发、部署"></a>打包、分发、部署</h2><ul>
+<li>打包：就是把你软件运行所需的依赖、第三方库、软件打包到一起，变成一个安装包</li>
+<li>分发：你可以把你打包好的“安装包”上传到一个镜像仓库，其他人可以非常方便的获取和安装</li>
+<li>部署：拿着“安装包”就可以一个命令运行起来你的应用，自动模拟出一摸一样的运行环境，不管是在 Windows&#x2F;Mac&#x2F;Linux。</li>
+</ul>
+<h2 id="镜像、容器"><a href="#镜像、容器" class="headerlink" title="镜像、容器"></a>镜像、容器</h2><ul>
+<li>镜像：可以理解为软件安装包，可以方便的进行传播和安装。</li>
+<li>容器：软件安装后的状态，每个软件运行环境都是独立的、隔离的，称之为容器。</li>
+</ul>
+<h1 id="基本教程"><a href="#基本教程" class="headerlink" title="基本教程"></a>基本教程</h1><p><a target="_blank" rel="noopener" href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP">基础教程网站看这里！</a></p>
+<h1 id="怎么编写Dockerfile"><a href="#怎么编写Dockerfile" class="headerlink" title="怎么编写Dockerfile"></a>怎么编写Dockerfile</h1><p>Dockerfile是用来描述文件的构成的文本文档，其中包含了用户可以在使用行调用以组合Image的所有命令，用户还可以使用Docker build实现连续执行多个命令指今行的自动构建。</p>
+<p>Dockerfile的语法非常简单，常用的只有11个：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FROM</td>
+<td>基于哪个镜像来实现</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td>镜像的创建者</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>声明环境变量</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>执行的命令</td>
+</tr>
+<tr>
+<td>ADD</td>
+<td>添加宿主机文件到容器里，有需要解压的文件会自动解压</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>添加宿主机文件到容器里</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>工作目录</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>容器内应用可使用的端口</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>容器启动后所执行的程序，如果执行docker run后面跟启动命令会被覆盖掉</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>与CMD功能相同，但需docker run不会覆盖，如果需要覆盖可增加参数-entrypoint来覆盖</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>将宿主机的目录挂载到容器里</td>
+</tr>
+</tbody></table>
+<h3 id="一些命令的详细介绍"><a href="#一些命令的详细介绍" class="headerlink" title="一些命令的详细介绍"></a>一些命令的详细介绍</h3><ul>
+<li><p>FROM：定制的镜像都是基于 FROM 的镜像，例如 ：<br><code>FROM ros:humble</code> , 这个Docker镜像是从名为 ros 的镜像中的 humble 版本构建的。（ros 是ROS官方提供的Docker镜像，humble 是其版本或标签）。<br>后续的操作都是基于 ros。</p>
+</li>
+<li><p>RUN：用于执行后面跟着的命令行命令。有以下俩种格式：</p>
+<ul>
+<li>shell 格式：  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">RUN</span> &lt;命令行命令&gt;<br><span class="hljs-comment"># &lt;命令行命令&gt; 等同于，在终端操作的 shell 命令。</span><br></code></pre></td></tr></table></figure></li>
+<li>exec 格式：  <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">RUN</span> [<span class="hljs-string">&quot;可执行文件&quot;</span>, <span class="hljs-string">&quot;参数1&quot;</span>, <span class="hljs-string">&quot;参数2&quot;</span>]<br># 例如：<br># <span class="hljs-keyword">RUN</span> [<span class="hljs-string">&quot;./test.php&quot;</span>, <span class="hljs-string">&quot;dev&quot;</span>, <span class="hljs-string">&quot;offline&quot;</span>] 等价于 <span class="hljs-keyword">RUN</span> ./<span class="hljs-keyword">test</span>.php dev offline<br></code></pre></td></tr></table></figure></li>
+<li>设置在容器内部执行命令时所使用的Shell类型，指定为bash的命令：<br><code>SHELL [&quot;/bin/bash&quot;, &quot;-c&quot;]</code></li>
+<li>Dockerfile 的指令每执行一次都会在 docker 上新建一层。过多无意义的层，会造成镜像膨胀过大。以<code>&amp;&amp;</code> 符号连接命令，这样执行后，只会创建 1 层镜像。</li>
+</ul>
+</li>
+<li><p>ENV： 设置环境变量，将在Docker容器启动时生效，并可供容器内的应用程序或脚本使用。</p>
+<ul>
+<li>格式：<code>ENV &lt;key&gt; &lt;value&gt; </code></li>
+<li>例如：  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">ENV NVIDI<span class="hljs-built_in">A_VISIBLE</span>_DEVICES all<br>ENV NVIDI<span class="hljs-built_in">A_DRIVER</span>_CAPABILITIES compute,utility,graphics,video<br></code></pre></td></tr></table></figure></li>
+<li>NVIDIA_VISIBLE_DEVICES: 使用CUDA环境变量CUDA_VISIBLE_DEVICES来限定CUDA程序所能使用的GPU设备</li>
+<li>NVIDIA_DRIVER_CAPABILITIES: 设置容器中允许使用显卡的某些能力</li>
+</ul>
+</li>
+<li><p>NVIDIA_DRIVER_CAPABILITIES 变量的可能值是:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>可能的值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>compute,video</code> 或 <code>graphics,utility</code></td>
+<td>容器需要的驱动程序功能的逗号分隔列表。</td>
+</tr>
+<tr>
+<td><code>all</code></td>
+<td>启用所有可用的驱动程序功能。</td>
+</tr>
+<tr>
+<td>为空或未设置</td>
+<td>使用默认驱动程序功能：<code>utility</code>，<code>compute</code>。</td>
+</tr>
+</tbody></table>
+<p>下面提供了支持的驱动程序功能：</p>
+<table>
+<thead>
+<tr>
+<th>驱动能力</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>compute</code></td>
+<td>CUDA 和 OpenCL 应用程序需要。</td>
+</tr>
+<tr>
+<td><code>compat32</code></td>
+<td>运行 32 位应用程序所必需的。</td>
+</tr>
+<tr>
+<td><code>graphics</code></td>
+<td>运行 OpenGL 和 Vulkan 应用程序所必需的。</td>
+</tr>
+<tr>
+<td><code>utility</code></td>
+<td>需要使用 <code>nvidia-smi</code> 和 NVML。</td>
+</tr>
+<tr>
+<td><code>video</code></td>
+<td>需要使用视频编解码器 SDK。</td>
+</tr>
+<tr>
+<td><code>display</code></td>
+<td>利用 X11 显示所需的。</td>
+</tr>
+<tr>
+<td><code>all</code></td>
+<td>启用所有可用的驱动程序功能。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>CMD ：<br>类似于 RUN 指令，用于运行程序，但二者运行的时间点不同:<ul>
+<li>CMD 在docker run 时运行。</li>
+<li>RUN 是在 docker build。<br>作用：为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束。CMD 指令指定的程序可被 docker run 命令行参数中指定要运行的程序所覆盖。</li>
+</ul>
+</li>
+</ul>
+<p>注意：如果 Dockerfile 中如果存在<code>多个 CMD 指令，仅最后一个生效</code>。</p>
+<ul>
+<li><p>COPY :复制指令，从上下文目录中复制文件或者目录到容器里指定路径。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml">COPY [--chown=<span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span>:<span class="hljs-tag">&lt;<span class="hljs-name">group</span>&gt;</span>] <span class="hljs-tag">&lt;<span class="hljs-name">源路径1</span>&gt;</span>...  <span class="hljs-tag">&lt;<span class="hljs-name">目标路径</span>&gt;</span><br>COPY [--chown=<span class="hljs-tag">&lt;<span class="hljs-name">user</span>&gt;</span>:<span class="hljs-tag">&lt;<span class="hljs-name">group</span>&gt;</span>] [&quot;<span class="hljs-tag">&lt;<span class="hljs-name">源路径1</span>&gt;</span>&quot;,...  &quot;<span class="hljs-tag">&lt;<span class="hljs-name">目标路径</span>&gt;</span>&quot;]<br></code></pre></td></tr></table></figure>
+<ul>
+<li>[–chown&#x3D;<user>:<group>]：可选参数，用户改变复制到容器内文件的拥有者和属组。</group></user></li>
+<li>&lt;源路径&gt;：源文件或者源目录，这里可以是通配符表达式，其通配符规则要满足 Go 的 filepath.Match 规则。<br>  例如：  <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">COPY</span> hom* <span class="hljs-regexp">/mydir/</span><br><span class="hljs-keyword">COPY</span> hom?.txt <span class="hljs-regexp">/mydir/</span><br></code></pre></td></tr></table></figure></li>
+<li>&lt;目标路径&gt;：容器内的指定路径，该路径不用事先建好，路径不存在的话，会自动创建。</li>
+</ul>
+</li>
+<li><p>EXPOSE : 仅仅只是声明端口。</p>
+<ul>
+<li>作用：<br>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射。<br>在运行时使用随机端口映射时，也就是 docker run -P 时，会自动随机映射 EXPOSE 的端口。  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">EXPOSE</span> &lt;端口<span class="hljs-number">1</span>&gt;<span class="hljs-meta"> [&lt;端口2&gt;...]</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>WORKDIR :<br>指定工作目录。<br>用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在。以后各层的当前目录就被改为指定的目录，如该目录不存在，WORKDIR 会帮你建立目录。</p>
+<ul>
+<li>docker build 构建镜像过程中的，每一个 RUN 命令都是新建的一层。只有通过 WORKDIR 创建的目录才会一直存在。  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">FROM</span> ubuntu<br><br><span class="hljs-comment"># 设置工作目录为 /app</span><br>WORKDIR /app<br><br><span class="hljs-comment"># 将当前目录下的所有文件复制到 /app 目录下</span><br>COPY . .<br><br><span class="hljs-comment"># 在 /app 目录下执行命令</span><br><span class="hljs-built_in">RUN</span> apt-<span class="hljs-built_in">get</span> update &amp;&amp; apt-<span class="hljs-built_in">get</span> install -y python3<br><br><span class="hljs-comment"># 当容器启动时，默认进入 /app 目录</span><br>CMD [<span class="hljs-string">&quot;python3&quot;</span>, <span class="hljs-string">&quot;app.py&quot;</span>]<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="Dockerfile的基本结构"><a href="#Dockerfile的基本结构" class="headerlink" title="Dockerfile的基本结构"></a>Dockerfile的基本结构</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">11</span><br><span class="hljs-keyword">MAINTAINER</span> easydoc.net<br><br><span class="hljs-comment"># 复制代码</span><br><span class="hljs-keyword">ADD</span><span class="language-bash"> . /app</span><br><br><span class="hljs-comment"># 设置容器启动后的默认运行目录</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><br><span class="hljs-comment"># 运行命令，安装依赖</span><br>RRUN apt-get update &amp;&amp; \             <span class="hljs-comment"># 更新Ubuntu软件包列表</span><br>    apt-get -y install \             <span class="hljs-comment"># 使用apt-get命令安装一系列软件包,-y标志用于在安装过程中自动确认所有的提示信息</span><br>    vim wget curl \                  <span class="hljs-comment"># 安装vim、wget和curl这三个工具</span><br>    libopencv-dev \                  <span class="hljs-comment"># 安装OpenCV的开发文件</span><br>    python3 python3-pip \            <span class="hljs-comment"># 安装Python3解释器和Python3的包管理工具pip</span><br>    &amp;&amp; rm -rf /var/lib/apt/lists/*   <span class="hljs-comment"># 清理apt-get update生成的缓存文件，以减少Docker镜像的大小</span><br><br><span class="hljs-comment"># CMD 指令只能一个，是容器启动后执行的命令，算是程序的入口。</span><br><span class="hljs-comment"># 如果还需要运行其他命令可以用 &amp;&amp; 连接，也可以写成一个shell脚本去执行。</span><br><span class="hljs-comment"># 例如 CMD cd /app &amp;&amp; ./start.sh</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> node app.js</span><br><br><span class="hljs-comment"># ENV 设置环境变量</span><br><span class="hljs-keyword">ENV</span> NVIDIA_VISIBLE_DEVICES all<br><span class="hljs-keyword">ENV</span> NVIDIA_DRIVER_CAPABILITIES compute,utility,graphics,video<br></code></pre></td></tr></table></figure>
+<h1 id="Build-为镜像（安装包）和运行"><a href="#Build-为镜像（安装包）和运行" class="headerlink" title="Build 为镜像（安装包）和运行"></a>Build 为镜像（安装包）和运行</h1><p>在 Dockerfile 文件的存放目录下，执行构建动作：<br>step 1 : 编译</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t test:<span class="hljs-built_in">v1</span> .<br></code></pre></td></tr></table></figure>
+<p><code>-t</code> 设置镜像名字和版本号<br><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/build/">命令参考</a></p>
+<p>step 2 ：运行</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata">docker <span class="hljs-keyword">run</span> -p 8080:8080 --name <span class="hljs-keyword">test</span>-hello <span class="hljs-keyword">test</span>:v1<br></code></pre></td></tr></table></figure>
+
+<p><code>-p</code> 映射容器内端口到宿主机</p>
+<p><code>--name</code> 容器名字</p>
+<p><code>-d</code> 后台运行</p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/run/">命令参考文档</a></p>
+<p>更多相关命令：</p>
+<ul>
+<li>docker ps 查看当前运行中的容器</li>
+<li>docker images 查看镜像列表</li>
+<li>docker rm container-id 删除指定 id 的容器</li>
+<li>docker stop&#x2F;start container-id 停止&#x2F;启动指定 id 的容器</li>
+<li>docker rmi image-id 删除指定 id 的镜像</li>
+<li>docker volume ls 查看 volume 列表</li>
+<li>docker network ls 查看网络列表</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%8A%80%E8%83%BD/" class="category-chain-item">计算机基础技能</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/my-technology-stack/" class="print-no-link">#my technology stack</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Docker使用指南</div>
+      <div>http://zoechen04616.github.io/2024/02/19/Docker使用指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yunru Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/17/OpenCV%E5%85%89%E6%B5%81%E8%B7%9F%E8%B8%AA%E9%A1%B9%E7%9B%AE/" title="OpenCV光流跟踪项目">
+                        <span class="hidden-mobile">OpenCV光流跟踪项目</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
