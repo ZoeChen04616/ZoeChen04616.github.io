@@ -23,11 +23,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="跟着正点原子，参考官方手册，记录一下我的学习过程~">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p8.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p7.png">
 <meta property="article:published_time" content="2024-03-02T13:23:03.000Z">
-<meta property="article:modified_time" content="2024-03-02T13:59:13.039Z">
+<meta property="article:modified_time" content="2024-03-03T14:45:25.950Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p8.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -280,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          98 字
+          1.4k 字
         
       </span>
     
@@ -291,7 +294,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -341,7 +344,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月2日 晚上
+                    本文最后更新于：2024年3月3日 晚上
                   
                 
               </p>
@@ -351,14 +354,78 @@
                 
                 <p>跟着正点原子，参考官方手册，记录一下我的学习过程~</p>
 <span id="more"></span> 
-<h1 id="芯片解读"><a href="#芯片解读" class="headerlink" title="芯片解读"></a>芯片解读</h1><h2 id="芯片资源"><a href="#芯片资源" class="headerlink" title="芯片资源"></a>芯片资源</h2><ol>
-<li>内核：</li>
-</ol>
-<ul>
+<h1 id="芯片解读"><a href="#芯片解读" class="headerlink" title="芯片解读"></a>芯片解读</h1><h2 id="芯片资源"><a href="#芯片资源" class="headerlink" title="芯片资源"></a>芯片资源</h2><h4 id="1-内核："><a href="#1-内核：" class="headerlink" title="1. 内核："></a>1. 内核：</h4><ul>
 <li>32 位 高性能 ARM Cortex-M4 处理器</li>
-<li>时钟：高达 168MHZ, 实际还可以超屏一点点</li>
-<li>支持 FPU （浮点运算）和 DSP 指令<br>ST</li>
+<li>时钟：高达 <code>168MHZ</code>, 实际还可以超屏一点点</li>
+<li>支持 FPU （浮点运算）和 DSP 指令<br>STM32F407VET6: 100 个引脚，7组IO。<br>分别为<code>GPIOA~GPIOG</code>，每组IO有16个IO口，共有112个IO口 ，通常称为 PAx、PBx、PCx、PDx、PEx、PFx、PGx，其中x为0-15。</li>
+<li>大部分 IO 口都耐 5V( 模拟通道除外 )</li>
+<li>支持调试： <code>SWD</code> 和 <code>JTAG</code> ， SWD只要2根数据线</li>
 </ul>
+<h4 id="2-时钟，复位和电源管理："><a href="#2-时钟，复位和电源管理：" class="headerlink" title="2. 时钟，复位和电源管理："></a>2. 时钟，复位和电源管理：</h4><p>① 1.8~3.6V 电源和 IO 电压<br>② 上电复位，掉电复位和可编程的电压监控<br>③ 强大的时钟系统</p>
+<ul>
+<li>4~26M 的外部高速晶振</li>
+<li>内部 16MHz 的高速 RC 振荡器</li>
+<li>内部 32KHz 低速 RC 振荡器，看门狗时钟</li>
+<li>内部锁相环（ PLL ，倍频），一般系统时钟都是外部或者内部高速时钟经过 PLL 倍频后得到</li>
+<li>外部低速 32.768K 的晶振，主要做 RTC 时钟源</li>
+</ul>
+<h4 id="3-低功耗："><a href="#3-低功耗：" class="headerlink" title="3. 低功耗："></a>3. 低功耗：</h4><ul>
+<li>睡眠，停止和待机三种低功耗模式</li>
+<li>可用电池为 <code>RTC</code> 和<code>备份寄存器供电</code></li>
+</ul>
+<h4 id="4-AD-模电信号转换为数电信号的通道"><a href="#4-AD-模电信号转换为数电信号的通道" class="headerlink" title="4. AD(模电信号转换为数电信号的通道):"></a>4. <code>AD</code>(模电信号转换为数电信号的通道):</h4><ul>
+<li>3个12 位 AD 【多达 24 个外部测量通道】</li>
+<li>内部通道可以用于内部温度测量</li>
+<li>内置参考电压</li>
+</ul>
+<h4 id="5-DA-数电信号转换为模电信号的通道"><a href="#5-DA-数电信号转换为模电信号的通道" class="headerlink" title="5. DA(数电信号转换为模电信号的通道):"></a>5. DA(数电信号转换为模电信号的通道):</h4><p>2 个 12 位 DA通道</p>
+<h4 id="6-DMA"><a href="#6-DMA" class="headerlink" title="6. DMA:"></a>6. DMA:</h4><p>16 个 DMA 通道 ，带 FIFO 和突发支持<br>支持外设：定时器， ADC,DAC,SDIO,I2S,SPI,I2C,和 USART。</p>
+<ul>
+<li>DMA是什么：<br>DMA，全称Direct Memory Access，即直接存储器访问。<br>DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138573828">关于DMA的详细介绍</a></p>
+<h3 id="7-定时器：多达-17-个定时器"><a href="#7-定时器：多达-17-个定时器" class="headerlink" title="7.定时器：多达 17 个定时器"></a>7.定时器：多达 17 个定时器</h3><ul>
+<li>10 个通用定时器（ TIM2 和 TIM5 是 32 位）</li>
+<li>2 个基本定时器</li>
+<li>2 个高级定时器</li>
+<li>1 个系统定时器</li>
+<li>2 个看门狗定时器</li>
+</ul>
+<h4 id="8-通信接口：多达-15-个通信接口"><a href="#8-通信接口：多达-15-个通信接口" class="headerlink" title="8. 通信接口：多达 15 个通信接口"></a>8. 通信接口：多达 15 个通信接口</h4><ul>
+<li>3 个 I2C 接口</li>
+<li>4 个串口</li>
+<li>3 个 SPI 接口</li>
+<li>2 个 CAN2.0</li>
+<li>2 个 USB OTG</li>
+<li>1 个 SDIO</li>
+</ul>
+<h2 id="芯片结构和引脚"><a href="#芯片结构和引脚" class="headerlink" title="芯片结构和引脚"></a>芯片结构和引脚</h2><p><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p8.png" srcset="/img/loading.gif" lazyload alt="芯片结构"></p>
+<p>引脚和功能的对应，查看芯片手册。</p>
+<h2 id="STM32-最小系统包含的功能模块"><a href="#STM32-最小系统包含的功能模块" class="headerlink" title="STM32 最小系统包含的功能模块"></a>STM32 最小系统包含的功能模块</h2><ul>
+<li><p>供电</p>
+</li>
+<li><p>复位</p>
+</li>
+<li><p>时钟：外部晶振（ 2 个）</p>
+</li>
+<li><p>Boot 启动模式选择</p>
+<ul>
+<li>STM32 直接通过两个引脚 Boot0 和 Boot1 设置启动模式：<br><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p7.png" srcset="/img/loading.gif" lazyload alt="Boot启动模式"></li>
+</ul>
+</li>
+<li><p>下载电路(串口 &#x2F;JTAG&#x2F;SWD)</p>
+</li>
+<li><p>后备电池</p>
+</li>
+</ul>
+<h1 id="程序下载的五种方式"><a href="#程序下载的五种方式" class="headerlink" title="程序下载的五种方式"></a>程序下载的五种方式</h1><h2 id="一-JLINK烧录程序"><a href="#一-JLINK烧录程序" class="headerlink" title="一.JLINK烧录程序"></a>一.JLINK烧录程序</h2><p>JLINK 是一个兼容 JTAG 的仿真器，可以<code>烧录程序和调试</code>。</p>
+<p>调试 ARM ，需要遵循 ARM 的调试接口协议， JTAG 就是其中的一种。JTAG 是一种国际标准测试协议，也叫 ARM 调试协议。现在多数的高级器件都支持 JTAG 协议，如 DSP 、 FPGA 器件等。</p>
+<ul>
+<li>需要下载JLINK驱动<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41990294/article/details/123821868">JLINK驱动安装教程</a></li>
+</ul>
+<h3 id="硬件连线"><a href="#硬件连线" class="headerlink" title="硬件连线"></a>硬件连线</h3><p>烧 STM32 只要用 4 条杜邦线就可以了，和 STM32 ST-LINK Utility 下载连线一样，采用SWD 接口模式。<br>即：<code>GND接GND,SWDIO接SWDIO(TMS),SWCLK接SWCLK(TCK),3V3接3V3</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xinghuanmeiying/article/details/78026561">正版ST-link&#x2F;V2 J-LINK JTAG&#x2F;SWD引脚定义和注意事项</a></p>
+<h3 id="程序下载"><a href="#程序下载" class="headerlink" title="程序下载"></a>程序下载</h3><h2 id="二-使用ch340串口烧录程序"><a href="#二-使用ch340串口烧录程序" class="headerlink" title="二.使用ch340串口烧录程序"></a>二.使用ch340串口烧录程序</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38326581/article/details/109084359">教程</a></p>
 
                 
               </div>
@@ -448,6 +515,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/03/03/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="STM32F103C8T6最小系统板(电控)学习指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">STM32F103C8T6最小系统板(电控)学习指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
