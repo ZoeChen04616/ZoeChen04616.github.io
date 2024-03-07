@@ -31,8 +31,12 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p3.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p4.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p9.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p10.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p11.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32CubeMX%E6%95%99%E7%A8%8B/p12.png">
 <meta property="article:published_time" content="2024-03-02T06:25:40.000Z">
-<meta property="article:modified_time" content="2024-03-04T15:33:21.624Z">
+<meta property="article:modified_time" content="2024-03-07T11:30:37.120Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
@@ -289,7 +293,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          4.2k 字
         
       </span>
     
@@ -300,7 +304,7 @@
         
         
         
-          28 分钟
+          35 分钟
         
       </span>
     
@@ -350,7 +354,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月4日 晚上
+                    本文最后更新于：2024年3月7日 晚上
                   
                 
               </p>
@@ -400,7 +404,10 @@
 </li>
 </ul>
 </li>
-<li><p>JLINK驱动安装：安装了驱动之后，就可以在 windows 下配合MDK 进行程序下载和调试。<br>  -<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41990294/article/details/123821868">JLINK安装教程</a></p>
+<li><p>JLINK驱动安装：安装了驱动之后，就可以在 windows 下配合MDK 进行程序下载和调试。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41990294/article/details/123821868">JLINK安装教程</a></li>
+</ul>
 </li>
 </ul>
 <h1 id="快速开始（以STM32F407VEST为例）"><a href="#快速开始（以STM32F407VEST为例）" class="headerlink" title="快速开始（以STM32F407VEST为例）"></a>快速开始（以STM32F407VEST为例）</h1><p>补充：stm32系列的命名规则：</p>
@@ -464,6 +471,44 @@
 <li><a target="_blank" rel="noopener" href="http://www.stmcu.org.cn/">ST中文社区</a>，里面的资料全部由ST中国区的人负责更新和整理，包含了所有ST公司的MCU资料，比如：STM32F4最新的芯片文档（参考手册、数据手册、勘误手册、编程手册等）、软件资源（固件库、配置工具、PC软件等）、硬件资源（各种官方评估板）等。</li>
 </ul>
 <h2 id="正点原子的教程"><a href="#正点原子的教程" class="headerlink" title="正点原子的教程"></a>正点原子的教程</h2><p><a target="_blank" rel="noopener" href="http://www.openedv.com/docs/boards/stm32/zdyz_stm32f407_mini_sysboard.html">教程看这里</a></p>
+<h1 id="程序下载的五种方式"><a href="#程序下载的五种方式" class="headerlink" title="程序下载的五种方式"></a>程序下载的五种方式</h1><h2 id="一-JLINK烧录程序"><a href="#一-JLINK烧录程序" class="headerlink" title="一.JLINK烧录程序"></a>一.JLINK烧录程序</h2><p>JLINK 是一个兼容 JTAG 的仿真器，可以<code>烧录程序和调试</code>。</p>
+<p>调试 ARM ，需要遵循 ARM 的调试接口协议， JTAG 就是其中的一种。JTAG 是一种国际标准测试协议，也叫 ARM 调试协议。现在多数的高级器件都支持 JTAG 协议，如 DSP 、 FPGA 器件等。</p>
+<ul>
+<li>需要下载JLINK驱动<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41990294/article/details/123821868">JLINK驱动安装教程</a></li>
+</ul>
+<h3 id="硬件连线"><a href="#硬件连线" class="headerlink" title="硬件连线"></a>硬件连线</h3><p>烧 STM32 只要用 4 条杜邦线就可以了，和 STM32 ST-LINK Utility 下载连线一样，采用SWD 接口模式。<br>即：<code>GND接GND,SWDIO接SWDIO(TMS),SWCLK接SWCLK(TCK),3V3接3V3</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xinghuanmeiying/article/details/78026561">正版ST-link&#x2F;V2 J-LINK JTAG&#x2F;SWD引脚定义和注意事项</a></p>
+<h3 id="程序下载"><a href="#程序下载" class="headerlink" title="程序下载"></a>程序下载</h3><h2 id="二-使用ch340串口烧录程序"><a href="#二-使用ch340串口烧录程序" class="headerlink" title="二.使用ch340串口烧录程序"></a>二.使用ch340串口烧录程序</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38326581/article/details/109084359">教程</a></p>
+<h2 id="三-使用STLink烧录程序"><a href="#三-使用STLink烧录程序" class="headerlink" title="三.使用STLink烧录程序"></a>三.使用STLink烧录程序</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52102933/article/details/126830904">教程</a></p>
+<h3 id="在Keil中配置ST-Link"><a href="#在Keil中配置ST-Link" class="headerlink" title="在Keil中配置ST-Link"></a>在Keil中配置ST-Link</h3><ol>
+<li>点击魔术棒：</li>
+</ol>
+<p><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p9.png" srcset="/img/loading.gif" lazyload alt="连接STLink"></p>
+<ol start="2">
+<li>设置“Cortex-M Target Driver Setup”窗口中的“Debug”页面。</li>
+</ol>
+<ul>
+<li>点击“Debug”。</li>
+<li>将“Unit”选择为“ST-Link&#x2F;V2”。</li>
+<li>将Port设置为“<code>SW</code>”。<br>使用 JTAG 需要占用比 SWD 模式更多的 IO 口，而在开发板上这些 IO 口可能被其他外设用到，可能造成部分外设无法使用。所以在调试的时候，一定要选择 SW 模式。</li>
+<li>设置数据传输速率。</li>
+</ul>
+<p><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p10.png" srcset="/img/loading.gif" lazyload alt="设置STLink参数"></p>
+<ol start="3">
+<li>设置“Cortex-M Target Driver Setup”窗口中的“Flash Download”页面</li>
+</ol>
+<ul>
+<li>点击“Flash Download”。</li>
+<li>选择“Erase Full Chip”。</li>
+<li>勾选“Program”、“Verify”、“Reset and Run”。</li>
+<li>添加“Flash Program Algorithm”，我使用的是STM32F429，所以选择“STM32F4xx Flash”。</li>
+<li>最后点击“确定”，完成配置。</li>
+</ul>
+<p><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p11.png" srcset="/img/loading.gif" lazyload alt="设置STLink参数"></p>
+<ol start="4">
+<li>确认一下，“Utilities”页中，“Use Debug Driver”和“Update Target before Debugging”两项已经勾选上。<br>  “Use Debug Driver”指的是选择 ST-Link 来给目标器件的 FLASH 烧录编程。<br>  “Update Target before Debugging”指的是先将程序烧录到 FLASH 上，再开始调试。</li>
+</ol>
+<h3 id="F8烧录程序"><a href="#F8烧录程序" class="headerlink" title="F8烧录程序"></a>F8烧录程序</h3><p><img src="/images/STM32CubeMX%E6%95%99%E7%A8%8B/p12.png" srcset="/img/loading.gif" lazyload alt="烧录程序"></p>
 
                 
               </div>
