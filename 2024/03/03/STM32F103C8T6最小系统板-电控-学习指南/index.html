@@ -49,8 +49,13 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p23.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p24.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p25.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p26.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p27.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p28.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p29.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p30.png">
 <meta property="article:published_time" content="2024-03-03T14:52:40.000Z">
-<meta property="article:modified_time" content="2024-03-10T06:37:42.717Z">
+<meta property="article:modified_time" content="2024-03-10T08:18:52.662Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
@@ -307,7 +312,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          5.1k 字
         
       </span>
     
@@ -318,7 +323,7 @@
         
         
         
-          37 分钟
+          43 分钟
         
       </span>
     
@@ -432,29 +437,27 @@
 </ul>
 <p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p4.png" srcset="/img/loading.gif" lazyload alt="keil5界面"></p>
 <ul>
-<li>找到Drivers文件夹里的stm32f1xx_hal_gpio.c（双击打开），找到第465行的HAL_GPIO_WritrPin函数，复制其函数名，并在main方法里的wihile(1)调用<ul>
+<li><p>找到Drivers文件夹里的stm32f1xx_hal_gpio.c（双击打开），找到第465行的HAL_GPIO_WritrPin函数，复制其函数名，并在main方法里的wihile(1)调用</p>
+<ul>
 <li>注意使用了别名LED0后，可直接在里面传入参数<code>LED0_GPIO_Port, LED0_Pin, GPIO_PIN_RESET</code><ul>
 <li>参数1：GPIO端口；<br>  参数2：GPIO引脚；<br>  参数3：输出电平，使LED灯亮，输出低电平</li>
-<li>GPIO_PIN_RESET :   代表低电平\</li>
+<li>GPIO_PIN_RESET :   代表低电平<br>  GPIO_PIN_SET :   代表高电平</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<p>GPIO_PIN_SET :   代表高电平</p>
-<ul>
-<li>左上角编译，0错误，0警告</li>
+<li><p>左上角编译，0错误，0警告</p>
+</li>
 </ul>
 <h3 id="函数介绍"><a href="#函数介绍" class="headerlink" title="函数介绍"></a>函数介绍</h3><ul>
 <li><p>void <code>HAL_GPIO_TogglePin</code>(GPIO_TypeDef GPIOx, uint16_t GPIO_Pin)：<br>这个函数用于<code>反转（切换）指定的GPIO引脚的输出状态</code>。它的参数包括：</p>
 <ul>
 <li>GPIOx：GPIO端口的基址，指明要操作的GPIO端口（如GPIOA、GPIOB等）。</li>
-<li>GPIO_Pin：指定要反转状态的GPIO引脚（可以是一个或多个引脚的位域）。\</li>
+<li>GPIO_Pin：指定要反转状态的GPIO引脚（可以是一个或多个引脚的位域）。<br>  例如，如果之前引脚是高电平，调用这个函数后引脚将变为低电平，反之亦然。</li>
+<li>由于系统运行太快，想看到LED灯闪烁，要加上延时函数：  <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">void</span> `HAL_Delay`(<span class="hljs-built_in">uint32</span>_t Delay)<br></code></pre></td></tr></table></figure>
+  此函数为<code>毫秒级延时</code>。如果想要指定间隔时间控制LED灯的亮灭，也是使用这个延时函数。</li>
 </ul>
 </li>
-</ul>
-<p>例如，如果之前引脚是高电平，调用这个函数后引脚将变为低电平，反之亦然。<br>    - 由于系统运行太快，想看到LED灯闪烁，要加上延时函数：<br>        - void <code>HAL_Delay</code>(uint32_t Delay)<br>此函数为毫秒级延时。<br>如果想要指定间隔时间控制LED灯的亮灭，也是使用这个延时函数。</p>
-<ul>
 <li><p>void <code>HAL_GPIO_WritePin</code>(GPIO_TypeDef GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)：<br>这个函数用于<code>设置指定GPIO引脚的输出状态</code>。它的参数包括：</p>
 <ul>
 <li>GPIOx：GPIO端口的基址，指明要操作的GPIO端口（如GPIOA、GPIOB等）。</li>
@@ -552,14 +555,15 @@
 <p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p15.png" srcset="/img/loading.gif" lazyload alt="推挽输出-输出高电平"></p>
 <p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p16.png" srcset="/img/loading.gif" lazyload alt="推挽输出-输出低电平"></p>
 <ul>
-<li><p>开漏输出：<br>当外设元器件需要的电压不是3.3V时，可以使用开漏输出，此时只有N-MOS工作，外接GND变为器件需要的工作电压VCC。</p>
-<ul>
+<li>开漏输出：<br>当外设元器件需要的电压不是3.3V时，可以使用开漏输出，此时只有N-MOS工作，外接GND变为器件需要的工作电压VCC。<ul>
 <li>开漏输出必须依靠外接的电压源来进行驱动，当外接电压大于3.3V时，需要选择<code>5V容忍</code>的I&#x2F;O口。</li>
-<li>当要求I&#x2F;O口输出低电平时，N-MOS断开，反之则N-MOS连接GND为0V。<br><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p17.png" srcset="/img/loading.gif" lazyload alt="开漏输出"></li>
+<li>当要求I&#x2F;O口输出低电平时，N-MOS断开，反之则N-MOS连接GND为0V。</li>
 </ul>
 </li>
-<li><p>由于输出驱动器的控制指令来源有2个：</p>
+</ul>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p17.png" srcset="/img/loading.gif" lazyload alt="开漏输出"></p>
 <ul>
+<li>由于输出驱动器的控制指令来源有2个：<ul>
 <li>一个是写入(HAL_GPIO_WritePin函数)控制的输出寄存器</li>
 <li>另一个是片上外设，例如串口模块，I^2C模块的复用功能输入</li>
 </ul>
@@ -628,7 +632,75 @@
 </li>
 </ul>
 <h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>在正规的项目中，在中断中调用HAL_Delay()函数是不被推荐的，需要尽可能的保证中断任务可以尽快执行完成，将中断对正常执行流程的影响降到最低。</p>
-<h2 id="深入中断"><a href="#深入中断" class="headerlink" title="深入中断"></a>深入中断</h2>
+<h2 id="深入外部中断"><a href="#深入外部中断" class="headerlink" title="深入外部中断"></a>深入外部中断</h2><h3 id="EXTI"><a href="#EXTI" class="headerlink" title="EXTI"></a>EXTI</h3><p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p26.png" srcset="/img/loading.gif" lazyload alt="外部中断/事件控制器框图"></p>
+<p>在stm32f1系列芯片中一共有19个这样的外部中断&#x2F;事件控制器，它们共用一套寄存器，但连线是独立的，称为<code>外部中断线</code>。</p>
+<ul>
+<li>前16条外部中断线，即EXTI0~EXTI15分别对应其同号的GPIO口。<ul>
+<li>从PA0，PB0，PC0，PD0进入的电平信号都可以进入EXTI0。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>事件信号：<br>事件是和中断类似的概念，但是事件信号直接送达相应的外设，由外设自行处理，不会中断正常代码执行流程。</li>
+</ol>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p27.png" srcset="/img/loading.gif" lazyload alt="事件信号处理部分"></p>
+<ol start="2">
+<li>软件中断事件寄存器可以用代码模拟产生一个中断。</li>
+<li>边沿检测电路就是用来检测电平变化的，经过一个或门，传输中断数据到<code>请求挂起寄存器</code>，其输出的信号和<code>中断屏蔽寄存器</code>的信号通过一个与门, 进入NVIC中断控制器。</li>
+</ol>
+<h3 id="NVIC-嵌套向量中断控制器"><a href="#NVIC-嵌套向量中断控制器" class="headerlink" title="NVIC 嵌套向量中断控制器"></a>NVIC 嵌套向量中断控制器</h3><ol>
+<li>关于中断向量：</li>
+</ol>
+<ul>
+<li>EXTI0~EXTI4 ： 拥有自己的中断向量</li>
+<li>EXTI5~EXTI9： 共享中断向量 EXTI9_5</li>
+<li>EXTI10~EXTI15: 共享中断向量EXTI15_10</li>
+</ul>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p28.png" srcset="/img/loading.gif" lazyload alt="中断向量"></p>
+<ol start="2">
+<li>为了让中断处理函数只执行一遍而不是无限重复，需要在中断处理函数中，将请求挂起寄存器的对应位清零。<ul>
+<li>CubeMX生成的代码中，中断处理函数里面自动调用了该清零的函数_HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN)。<br> 所以不需要额外写。</li>
+</ul>
+</li>
+<li>优先级</li>
+</ol>
+<ul>
+<li>两中断同时发生时，先比较抢占优先级；若抢占优先级相同，再比较响应优先级。</li>
+<li>某中断正在进行中，另一中断突然发生，只比较二者抢占优先级。</li>
+</ul>
+<center class="half">
+<img src="/images/STM32F103C8T6最小系统板-电控-学习指南/p29.png" srcset="/img/loading.gif" lazyload width="300/">
+<img src="/images/STM32F103C8T6最小系统板-电控-学习指南/p30.png" srcset="/img/loading.gif" lazyload width="280/">
+</center>
+
+<p>默认CubeMX设置的四位均为抢占优先级。</p>
+<h2 id="一些其他的中断"><a href="#一些其他的中断" class="headerlink" title="一些其他的中断"></a>一些其他的中断</h2><ul>
+<li>串口USART：<ul>
+<li>空暇中断</li>
+<li>接收中断</li>
+<li>发送完成中断</li>
+<li>奇偶校验中断</li>
+<li>…</li>
+</ul>
+</li>
+<li>定时器TIM：<ul>
+<li>刹车中断</li>
+<li>触发和通信中断</li>
+<li>捕获比较中断</li>
+<li>…</li>
+</ul>
+</li>
+<li>I^2C:<ul>
+<li>传输完成终端</li>
+<li>地址发送终端</li>
+<li>起始位发送中断</li>
+<li>接收缓存区非空中断</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p>这些中断虽然没有外部中断线这套结构，但是也有相关的请求挂起寄存器和中断屏蔽寄存器，触发中断后依旧需要NVIC通过中断向量找到并执行中断处理函数。</p>
+<h1 id="串口通信"><a href="#串口通信" class="headerlink" title="串口通信"></a>串口通信</h1>
                 
               </div>
             
