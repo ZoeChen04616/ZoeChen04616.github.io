@@ -56,8 +56,10 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p30.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p31.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p32.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p33.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p34.png">
 <meta property="article:published_time" content="2024-03-03T14:52:40.000Z">
-<meta property="article:modified_time" content="2024-03-10T17:04:49.942Z">
+<meta property="article:modified_time" content="2024-03-11T15:52:42.351Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
@@ -314,7 +316,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k 字
+          7.2k 字
         
       </span>
     
@@ -325,7 +327,7 @@
         
         
         
-          47 分钟
+          60 分钟
         
       </span>
     
@@ -375,7 +377,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月11日 凌晨
+                    本文最后更新于：2024年3月11日 晚上
                   
                 
               </p>
@@ -734,10 +736,38 @@
 <h2 id="初识串口——项目实战"><a href="#初识串口——项目实战" class="headerlink" title="初识串口——项目实战"></a>初识串口——项目实战</h2><h3 id="CubeMX设置"><a href="#CubeMX设置" class="headerlink" title="CubeMX设置"></a>CubeMX设置</h3><p>stm32F103C8T6的芯片中，调试串口的I&#x2F;O口为PA2和PA3。<br>设置USART2为异步模式，设置波特率为115200,保存设置并生成代码。</p>
 <p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p32.png" srcset="/img/loading.gif" lazyload alt="CubeMX设置串口"></p>
 <h3 id="代码编写-1"><a href="#代码编写-1" class="headerlink" title="代码编写"></a>代码编写</h3><h4 id="函数介绍-2"><a href="#函数介绍-2" class="headerlink" title="函数介绍"></a>函数介绍</h4><ol>
-<li>MX_USART2_UART_Init()：初始化USART2串口。</li>
-<li></li>
+<li>MX_USART2_UART_Init()：初始化USART2串口。<br>这个函数通常在微控制器固件的初始化阶段被调用，用于根据在 STM32CubeMX 中配置的参数（如波特率、数据位、停止位和校验位）设置和配置 USART2 外设（在本例中为 UART2）。</li>
+<li>发送数据 :<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">HAL_StatusTypeDef <span class="hljs-constructor">HAL_UART_Transmit(UART_HandleTypeDef <span class="hljs-operator">*</span><span class="hljs-params">huart</span>, <span class="hljs-params">uint8_t</span> <span class="hljs-operator">*</span><span class="hljs-params">pData</span>, <span class="hljs-params">uint16_t</span> Size, <span class="hljs-params">uint32_t</span> Timeout)</span>;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
+<ul>
+<li>参数：<ul>
+<li>huart：指向 UART 外设的句柄的指针，包含了 UART 的配置和状态信息。</li>
+<li>pData：指向要发送的数据缓冲区的指针。</li>
+<li>Size：要发送的数据字节数。</li>
+<li>Timeout：发送操作的超时时间（以毫秒为单位）。如果在超时时间内未完成发送操作，则函数可能会返回超时错误。<ul>
+<li><code>HAL_MAX_DELAY</code> :表示不设超时时间，可以无限等待到发送完成。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>返回值：<ul>
+<li>HAL_OK：操作成功完成。</li>
+<li>其他错误代码，例如超时错误或者传输中断。</li>
+</ul>
+</li>
+<li>功能：<ul>
+<li>当调用 HAL_UART_Transmit() 函数时，它会尝试将指定数量的数据字节发送到 UART 外设。</li>
+<li>如果 UART 外设正在发送其他数据或者处于忙状态，该函数将等待直到 UART 外设空闲，然后再发送数据。</li>
+<li>如果发送过程中发生错误（例如超时或者传输中断），函数将返回相应的错误代码。</li>
+</ul>
+</li>
+</ul>
+<h4 id="实战项目：串口控制LED灯的亮灭"><a href="#实战项目：串口控制LED灯的亮灭" class="headerlink" title="实战项目：串口控制LED灯的亮灭"></a>实战项目：串口控制LED灯的亮灭</h4><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> main(void)<br>    &#123;<br>  <span class="hljs-comment">/* MCU Configuration--------------------------------------------------------*/</span><br>  <span class="hljs-constructor">HAL_Init()</span>;<br>  <span class="hljs-constructor">SystemClock_Config()</span>;<br>  <span class="hljs-comment">/* Initialize all configured peripherals */</span><br>  <span class="hljs-constructor">MX_GPIO_Init()</span>;<br>  <span class="hljs-constructor">MX_USART2_UART_Init()</span>;<br><br>  <span class="hljs-comment">/* USER CODE BEGIN 2 */</span><br>	<span class="hljs-built_in">char</span> message_1<span class="hljs-literal">[]</span>=<span class="hljs-string">&quot;Normal situation : The LED is extincting ...&quot;</span>;<br>	<span class="hljs-built_in">char</span> message_2<span class="hljs-literal">[]</span>=<span class="hljs-string">&quot;The LED is lit up !!!&quot;</span>;<br>	uint8_t receiveData<span class="hljs-literal">[<span class="hljs-number">1</span>]</span>;<br>  <span class="hljs-comment">/* USER CODE END 2 */</span><br><br>  <span class="hljs-comment">/* Infinite loop */</span><br>  <span class="hljs-comment">/* USER CODE BEGIN WHILE */</span><br>  <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)<br>  &#123;<br>			<span class="hljs-constructor">HAL_UART_Receive(&amp;<span class="hljs-params">huart2</span>,<span class="hljs-params">receiveData</span>,1,100)</span>;<br>			<span class="hljs-comment">//Normal situation--Flashing light</span><br>			<span class="hljs-constructor">HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET)</span>;<br>		  <span class="hljs-constructor">HAL_Delay(1000)</span>;<br>			<span class="hljs-keyword">if</span>(receiveData<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>==<span class="hljs-character">&#x27;0&#x27;</span>)&#123;<br>				<span class="hljs-constructor">HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET)</span>;<br>				<span class="hljs-constructor">HAL_UART_Transmit(&amp;<span class="hljs-params">huart2</span>,(<span class="hljs-params">uint8_t</span><span class="hljs-operator">*</span>)</span>message_2,strlen(message_2),<span class="hljs-number">100</span>);<br>				<span class="hljs-constructor">HAL_Delay(5000)</span>;<br>			&#125;<br>			<span class="hljs-keyword">else</span>&#123;<br>				<span class="hljs-constructor">HAL_UART_Transmit(&amp;<span class="hljs-params">huart2</span>,(<span class="hljs-params">uint8_t</span><span class="hljs-operator">*</span>)</span>message_1,strlen(message_1),<span class="hljs-number">100</span>);<br>				<span class="hljs-constructor">HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET)</span>;<br>				<span class="hljs-constructor">HAL_Delay(1000)</span>;<br>			&#125;<br>			receiveData<span class="hljs-literal">[<span class="hljs-number">0</span>]</span>=<span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">/* USER CODE END WHILE */</span><br>&#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<center class="half">
+<img src="/images/STM32F103C8T6最小系统板-电控-学习指南/p33.png" srcset="/img/loading.gif" lazyload width="420/">
+<img src="/images/STM32F103C8T6最小系统板-电控-学习指南/p34.png" srcset="/img/loading.gif" lazyload width="420/">
+</center>
+# 未完待续
                 
               </div>
             
