@@ -61,8 +61,13 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p34.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p36.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p37.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p38.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p39.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p40.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p41.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p42.png">
 <meta property="article:published_time" content="2024-03-03T14:52:40.000Z">
-<meta property="article:modified_time" content="2024-03-12T16:49:35.092Z">
+<meta property="article:modified_time" content="2024-03-14T16:47:10.713Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="STM32">
 <meta name="twitter:card" content="summary_large_image">
@@ -319,7 +324,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.6k 字
+          12k 字
         
       </span>
     
@@ -330,7 +335,7 @@
         
         
         
-          72 分钟
+          97 分钟
         
       </span>
     
@@ -380,7 +385,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月13日 凌晨
+                    本文最后更新于：2024年3月15日 凌晨
                   
                 
               </p>
@@ -829,12 +834,107 @@
 </li>
 <li>功能：<ul>
 <li>当调用 HAL_UART_Receive_IT() 函数时，它会启动接收过程，并将接收到的数据存储到指定的缓冲区中。</li>
-<li>函数将立即返回，不会等待数据接收完成。数据将在后台通过中断的方式进行接收。</li>
+<li>函数将立即返回，不会等待数据接收完成。数据将在后台通过中断的方式进行接收。<ul>
+<li>因此不能把这个函数放到while循环中，否则会出现新一轮循环调用它时，上一次的接收还未结束</li>
+<li>需要设置回调函数，并且记得在HAL_UART_RxCpltCallback()中开启下一次串口的接收</li>
+</ul>
+</li>
 <li>一旦接收到指定数量的数据字节或者接收超时，将触发相应的 UART 接收<code>完成中断</code>(接收数据寄存器非空中断)，可以在中断处理函数中获取接收到的数据。</li>
 </ul>
 </li>
 </ul>
-<p>3. </p>
+<ol start="3">
+<li>回调函数</li>
+</ol>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p38.png" srcset="/img/loading.gif" lazyload alt="USART中断请求"></p>
+<p>一个USART只有一个中断向量，使用回调函数，可以更好的处理各种中断事件。</p>
+<ul>
+<li><code>HAL_UART_RxCpltCallback()</code>函数<br>当串口接收到指定数量的数据字节后，将触发接收完成中断。此时，HAL 库将自动调用 HAL_UART_RxCpltCallback() 函数（如果已经在代码中定义了该函数），并将 UART 句柄作为参数传递给它。<br>此类函数虽然定义在stm32的库函数中，但是都是<code>_weak</code>定义，可以在其他地方重新定义此函数，然后在中间加入处理部分的代码。<ul>
+<li>一般单开一个文件对这类函数重新定义的。<br>通常情况下，可以在 HAL_UART_RxCpltCallback() 函数中进行以下操作：</li>
+<li>处理接收到的数据，例如解析数据包、执行相应的操作或者存储数据到缓冲区中。</li>
+<li>启动下一次接收过程，以便继续接收数据。</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs scss">void <span class="hljs-built_in">HAL_UART_RxCpltCallback</span>(UART_HandleTypeDef *huart) &#123;<br>    if (huart == &amp;huart2) &#123;<br>        <span class="hljs-comment">// 在这里处理接收到的数据，例如打印到终端或者执行特定的操作</span><br>        <span class="hljs-comment">// 以下示例假设接收到的数据存储在 rxBuffer 中，并且数据长度为 RX_BUFFER_SIZE</span><br>        <span class="hljs-built_in">printf</span>(&quot;Received data: %s\n&quot;, rxBuffer);<br><br>        <span class="hljs-comment">// 启动下一次接收过程</span><br>        <span class="hljs-built_in">HAL_UART_Receive_IT</span>(&amp;huart2, rxBuffer, RX_BUFFER_SIZE);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>补充一个代码规范：用户自定义的全局变量，放在<code>USER CODE PV</code>注释块中</li>
+</ol>
+<h2 id="串口DMA模式和接收不定长数据"><a href="#串口DMA模式和接收不定长数据" class="headerlink" title="串口DMA模式和接收不定长数据"></a>串口DMA模式和接收不定长数据</h2><h3 id="DMA的概念"><a href="#DMA的概念" class="headerlink" title="DMA的概念"></a>DMA的概念</h3><p>DMA（Direct Memory Access，<code>直接内存访问</code>）是一种计算机系统中用于实现高效数据传输的技术。它允许外部设备（如网络适配器、硬盘控制器、串口等）直接访问系统内存，而无需 CPU 的干预。DMA 可以大大提高数据传输的效率，因为它可以在数据传输过程中释放 CPU，使 CPU 可以同时执行其他任务。</p>
+<ul>
+<li><p>数据传输效率：DMA 允许<code>数据在外设和内存之间直接传输</code>，无需 CPU 的介入。这消除了 CPU 在数据传输期间的等待时间，从而提高了系统的总体效率。</p>
+</li>
+<li><p>减少 CPU 负载：由于 DMA 可以独立地管理数据传输，CPU 可以将更多的时间用于执行其他任务，从而减少了 CPU 的负载。这对于实时系统和多任务系统尤其有用。</p>
+</li>
+<li><p><code>多通道</code>支持：许多 DMA 控制器支持多个 DMA 通道，每个通道可以独立地管理一个数据传输任务。这允许系统<code>同时执行多个数据传输</code>，提高了系统的并发性。</p>
+</li>
+</ul>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p39.png" srcset="/img/loading.gif" lazyload alt="形象理解DMA"></p>
+<ul>
+<li><p>工作原理：在 DMA 操作中，<code>CPU 配置 DMA 控制器来指定数据传输的源地址、目的地址和数据长度等参数</code>。一旦 DMA 控制器被配置好，它可以独立地控制数据传输，直到传输完成或者遇到错误。一旦数据传输完成，DMA 控制器触发一个<code>DMA传输完成中断</code>或者通知 CPU。</p>
+</li>
+<li><p>适用场景：DMA 主要用于大量数据的传输，例如大文件的读写、图像传输、音频处理等场景。</p>
+</li>
+</ul>
+<h4 id="四种情况的数据传输如下："><a href="#四种情况的数据传输如下：" class="headerlink" title="四种情况的数据传输如下："></a>四种情况的数据传输如下：</h4><p>Dirction ： DMA传输方向<br>(1)外设到内存 Peripheral To Memory<br>(2)内存到外设 Memory To Peripheral<br>(3)内存到内存 Memory To Memory<br>(4)外设到外设 Peripheral To Peripheral</p>
+<h4 id="DMA基础工作原理"><a href="#DMA基础工作原理" class="headerlink" title="DMA基础工作原理"></a>DMA基础工作原理</h4><p>当用户将参数设置好，主要涉及<code>源地址</code>、<code>目标地址</code>、<code>传输数据量</code>这三个，DMA控制器就会启动数据传输，当剩余传输数据量为0时 达到传输终点，结束DMA传输。</p>
+<ul>
+<li>当然，DMA 还有循环传输模式 当到达传输终点时会重新启动DMA传输。<ul>
+<li>也就是说只要剩余传输数据量不是0，而且DMA是启动状态，那么就会发生数据传输。</li>
+</ul>
+<p>　</p>
+</li>
+<li>总之，每次DMA传送由3个操作组成：<ul>
+<li>从外设数据寄存器或者从当前外设&#x2F;存储器地址寄存器指示的存储器地址取数据，第一次传输时的开始地址是DMA_CPARx或DMA_CMARx寄存器指定的外设基地址或存储器单元；</li>
+<li>存数据到外设数据寄存器或者当前外设&#x2F;存储器地址寄存器指示的存储器地址，第一次传输时的开始地址是DMA_CPARx或DMA_CMARx寄存器指定的外设基地址或存储器单元；</li>
+<li>执行一次DMA_CNDTRx寄存器的递减操作，该寄存器包含未完成的操作数目</li>
+</ul>
+</li>
+</ul>
+<h4 id="DMA传输方式"><a href="#DMA传输方式" class="headerlink" title="DMA传输方式"></a>DMA传输方式</h4><ul>
+<li>方法1：<code>DMA_Mode_Normal</code>，正常模式<br>当一次DMA数据传输完后，停止DMA传送 ，也就是只传输一次</li>
+<li>方法2：<code>DMA_Mode_Circular</code> ，循环传输模式<br>当传输结束时，硬件自动会将传输数据量寄存器进行重装，进行下一轮的数据传输。 也就是多次传输模式</li>
+</ul>
+<h3 id="CubeMX配置DMA"><a href="#CubeMX配置DMA" class="headerlink" title="CubeMX配置DMA"></a>CubeMX配置DMA</h3><p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p40.png" srcset="/img/loading.gif" lazyload alt="CubeMX配置DMA"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as480133937/article/details/104827639">详细参考配置教程</a></p>
+<ul>
+<li>DMA Request ： DMA传输的对应外设<ul>
+<li>注意： 如果你是在DMA设置界面添加DMA 而没有开启对应外设的话 ，默认为MENTOMEN</li>
+</ul>
+</li>
+<li>Channel DMA传输通道设置:<br>DMA1 : DMA1 Channel 0<del>DMA1 Channel 7<br>DMA2: DMA2 Channel 1</del>DMA1 Channel 5</li>
+<li>Priority： 传输速度<br>最高优先级 Very Hight<br>高优先级 Hight<br>中等优先级 Medium<br>低优先级；Low</li>
+<li>DMA指针递增设置<br>Increment Address：地址指针递增。<br>(1)左侧Src Memory 表示外设地址寄存器<br>功能：设置传输数据的时候<code>外设地址</code>是不变还是递增。如果设置为递增，那么下一次传输的时候地址加 Data Width个字节。<br>(2)右侧Dst Memory 表示内存地址寄存器<br>功能：设置传输数据时候<code>内存地址</code>是否递增。如果设置为递增，那么下一次传输的时候地址加 Data Width个字节。</li>
+</ul>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p41.png" srcset="/img/loading.gif" lazyload alt="DMA指针递增设置"></p>
+<ul>
+<li>串口发送数据是将数据不断存进固定外设地址串口的发送数据寄存器(USARTx_TDR)。所以外设的地址是不递增。</li>
+<li>而内存储器存储的是要发送的数据，所以地址指针要递增，保证数据依次被发出</li>
+</ul>
+<p><img src="/images/STM32F103C8T6%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E6%9D%BF-%E7%94%B5%E6%8E%A7-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/p42.png" srcset="/img/loading.gif" lazyload alt="DMA指针递增原理"></p>
+<ul>
+<li>串口数据发送寄存器只能存储8bit,每次发送一个字节，所以数据长度选择Byte</li>
+</ul>
+<h3 id="函数介绍-3"><a href="#函数介绍-3" class="headerlink" title="函数介绍"></a>函数介绍</h3><ul>
+<li>HAL_UART_Transmit_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)<br>串口DMA模式发送</li>
+<li>HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size)<br>串口DMA模式接收</li>
+</ul>
+<p>前两个函数的形参和串口中断模式一样。</p>
+<ul>
+<li><p>HAL_UART_DMAPause(&amp;huart1) <br>暂停串口DMA</p>
+</li>
+<li><p>HAL_UART_DMAResume(&amp;huart1)<br> 恢复串口DMA</p>
+<ul>
+<li>作用： 恢复DMA的传输</li>
+<li>返回值： 0 正在恢复 1 完成DMA恢复</li>
+</ul>
+</li>
+<li><p>HAL_UART_DMAStop(&amp;huart1)<br>结束串口DMA</p>
+</li>
+</ul>
+<h3 id="STM32-IDLE-接收空闲中断-可接收不定长数据"><a href="#STM32-IDLE-接收空闲中断-可接收不定长数据" class="headerlink" title="STM32 IDLE 接收空闲中断(可接收不定长数据)"></a>STM32 IDLE 接收空闲中断(可接收不定长数据)</h3><p>如果勾选了<code>为每个外设生成单独的.c.h文件</code>，在按照视频关闭dma半传输中断时会报错，需要在代码的开头加上:</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">extern DM<span class="hljs-built_in">A_HandleTypeDef</span> hdm<span class="hljs-built_in">a_usart2</span>_rx；<br></code></pre></td></tr></table></figure>
 <h2 id="简单帧格式串口通信"><a href="#简单帧格式串口通信" class="headerlink" title="简单帧格式串口通信"></a>简单帧格式串口通信</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_65489379/article/details/122792920">https://blog.csdn.net/weixin_65489379/article/details/122792920</a></p>
 <h3 id="轮询模式的底层机制-1"><a href="#轮询模式的底层机制-1" class="headerlink" title="轮询模式的底层机制"></a>轮询模式的底层机制</h3><h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
                 
