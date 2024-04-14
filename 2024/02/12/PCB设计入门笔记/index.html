@@ -45,8 +45,16 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/222.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/4.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p14.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p15.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/5.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/55.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p17.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p18.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p19.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p20.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p21.png">
 <meta property="article:published_time" content="2024-02-12T05:26:49.000Z">
-<meta property="article:modified_time" content="2024-04-14T07:33:55.468Z">
+<meta property="article:modified_time" content="2024-04-14T10:43:15.444Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="PCB设计">
 <meta name="twitter:card" content="summary_large_image">
@@ -303,7 +311,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.5k 字
+          6.1k 字
         
       </span>
     
@@ -314,7 +322,7 @@
         
         
         
-          47 分钟
+          51 分钟
         
       </span>
     
@@ -364,7 +372,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年4月14日 下午
+                    本文最后更新于：2024年4月14日 晚上
                   
                 
               </p>
@@ -559,6 +567,49 @@
 <p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/4.png" srcset="/img/loading.gif" lazyload alt="更新3D模型"></p>
 <h3 id="在工程中使用个人库中的封装电阻"><a href="#在工程中使用个人库中的封装电阻" class="headerlink" title="在工程中使用个人库中的封装电阻"></a>在工程中使用个人库中的封装电阻</h3><p>在自己的工程中，点击下方的库，选择个人，找到R0603电阻封装，点击放置即可。</p>
 <p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p14.png" srcset="/img/loading.gif" lazyload alt="在工程中使用个人库中的封装电阻"></p>
+<h2 id="专业模式：建立贴片LM393封装元器件"><a href="#专业模式：建立贴片LM393封装元器件" class="headerlink" title="专业模式：建立贴片LM393封装元器件"></a>专业模式：建立贴片LM393封装元器件</h2><ul>
+<li>先切换为专业模式，然后新建器件，器件分类需要新建<code>比较器</code>，保存进入器件编辑界面。</li>
+<li>专业模式下还需要对符号分类进行设置，新建<code>比较器</code>符号分类。</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p15.png" srcset="/img/loading.gif" lazyload alt="新建器件设置"></p>
+<ul>
+<li><p>新建符号：打开LM393数据手册，然后在界面中点击<code>向导</code>，选择类型为DIP，左右引脚均为4，其余参数默认，点击<code>生成符号</code>。</p>
+</li>
+<li><p>根据数据手册中的引脚设置，编辑器件的引脚标签。</p>
+</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/5.png" srcset="/img/loading.gif" lazyload alt="新建符号"></p>
+<h2 id="如果引脚很多切由多个独立部分组成，可以分离设计封装"><a href="#如果引脚很多切由多个独立部分组成，可以分离设计封装" class="headerlink" title="如果引脚很多切由多个独立部分组成，可以分离设计封装"></a>如果引脚很多切由多个独立部分组成，可以分离设计封装</h2><p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/55.png" srcset="/img/loading.gif" lazyload alt="LM393数据手册"></p>
+<ul>
+<li>切换最小间隔为0.05mm，用折线绘制符号。两个独立的部件分开绘制，然后保存。</li>
+</ul>
+<center class="half">
+<img src="/images/PCB设计入门笔记/p17.png" srcset="/img/loading.gif" lazyload width="300/">
+<img src="/images/PCB设计入门笔记/p18.png" srcset="/img/loading.gif" lazyload width="300/">
+</center>
+
+<ul>
+<li>新建封装：点击<code>文件-新建-封装</code>，命名为SOP-8（这个是LM393厂家采用的封装规格），同样新建<code>比较器</code>的封装类，进入封装设计界面。根据数据手册的封装尺寸要求，绘制封装。</li>
+</ul>
+<p> <img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p19.png" srcset="/img/loading.gif" lazyload alt="LM393数据手册"></p>
+<ul>
+<li><p>在原点处放置一个焊盘，顶层，长圆形。一般绘制的时候，这种多引脚的器件，焊盘需要<code>比既定尺寸扩大1.4倍</code>。</p>
+</li>
+<li><p>可以使用<code>底部对齐</code>快速对齐焊盘。</p>
+</li>
+<li><p>切换到顶层丝印层，绘制矩形，根据数据手册调整长宽。注意不要让丝印层和焊盘有接触，稍微调整一下。</p>
+</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p20.png" srcset="/img/loading.gif" lazyload alt="LM393封装绘制"></p>
+<ul>
+<li><p>这样做如果嫌麻烦，也可以点击向导，提供了许多封装规格，可一键生成。</p>
+</li>
+<li><p>绑定封装和3D模型，注意3D模型中搜索sop-8需要对齐小圆孔，顺序一致。</p>
+</li>
+<li><p>多部件单独设计时，原理图是独立分开的，一定要全部放上去，不要遗漏。</p>
+</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p21.png" srcset="/img/loading.gif" lazyload alt="LM393放置元器件"></p>
 <h1 id="入门的第一块板子"><a href="#入门的第一块板子" class="headerlink" title="入门的第一块板子"></a>入门的第一块板子</h1><h2 id="原理图设计"><a href="#原理图设计" class="headerlink" title="原理图设计"></a>原理图设计</h2><ul>
 <li>第一步：文件-新建工程</li>
 <li>第二步：原理图设计</li>
