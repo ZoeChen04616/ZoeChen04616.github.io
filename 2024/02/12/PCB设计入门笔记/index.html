@@ -34,8 +34,19 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p9.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p10.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p11.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/0.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p12.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p13.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/1.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/2.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/3.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/22.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/222.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/4.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p14.png">
 <meta property="article:published_time" content="2024-02-12T05:26:49.000Z">
-<meta property="article:modified_time" content="2024-02-16T09:40:58.034Z">
+<meta property="article:modified_time" content="2024-04-14T07:33:55.468Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="PCB设计">
 <meta name="twitter:card" content="summary_large_image">
@@ -292,7 +303,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          5.5k 字
         
       </span>
     
@@ -303,7 +314,7 @@
         
         
         
-          41 分钟
+          47 分钟
         
       </span>
     
@@ -353,7 +364,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年2月16日 下午
+                    本文最后更新于：2024年4月14日 下午
                   
                 
               </p>
@@ -498,6 +509,56 @@
 <li>有些IC既有VDD引脚又有VCC引脚，说明这种器件自身带有电压转换功能。 </li>
 <li>在场效应管（或COMS器件）中，VDD为漏极，VSS为源极，VDD和VSS指的是元件引脚，而不表示供电电压。</li>
 </ul>
+<h1 id="封装实践"><a href="#封装实践" class="headerlink" title="封装实践"></a>封装实践</h1><p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p11.png" srcset="/img/loading.gif" lazyload alt="封装模式的选择"></p>
+<p>在嘉立创EDA专业版中支持2种符号库管理：</p>
+<ul>
+<li>简易模式： 与标准版建库兼容</li>
+<li>专业模式： 支持更多复用功能</li>
+</ul>
+<h2 id="简易模式：建立0603大小的贴片电阻器件"><a href="#简易模式：建立0603大小的贴片电阻器件" class="headerlink" title="简易模式：建立0603大小的贴片电阻器件"></a>简易模式：建立0603大小的贴片电阻器件</h2><p>点击<code>新建器件</code>，命名符合规范：R0603,R表示电阻，0603为尺寸规则。</p>
+<p>这里的分类是元器件的分类，起初默认没有，需要自己新建。根据需要添加描述。</p>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/0.png" srcset="/img/loading.gif" lazyload alt="设置"></p>
+<p>再点击保存，进入器件的编辑页面。</p>
+<h3 id="新建元器件"><a href="#新建元器件" class="headerlink" title="新建元器件"></a>新建元器件</h3><ul>
+<li>位号修改为R，因为我们的器件是电阻。</li>
+<li>开始新建电阻的符号（中间是矩形，两侧引脚引出），先将<code>格点尺寸固定为0.05</code></li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p12.png" srcset="/img/loading.gif" lazyload alt="基础设置"></p>
+<ul>
+<li>点击<code>放置</code>，绘制一个<code>矩形</code>，调整为合适的大小，再放置两个引脚，<code>摁空格键进行旋转</code>，Ctrl+S保存。</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p13.png" srcset="/img/loading.gif" lazyload alt="新建元器件"></p>
+<h3 id="新建封装"><a href="#新建封装" class="headerlink" title="新建封装"></a>新建封装</h3><p>点击<code>文件-新建-封装</code></p>
+<ul>
+<li>命名仍为R0603,分类表示是封装的分类，描述按需要填写。</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/1.png" srcset="/img/loading.gif" lazyload alt="封装分类"></p>
+<ul>
+<li><p>点击保存，进入封装界面。</p>
+</li>
+<li><p>封装的大小直接决定实物能否成功焊接，需要按照厂商的数据手册进行设计。</p>
+</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/2.png" srcset="/img/loading.gif" lazyload alt="电阻封装数据手册"></p>
+<ul>
+<li>放置一个焊盘，选择图层为<code>顶层</code>，形状为<code>矩形</code>,根据数据手册的封装尺寸设置<code>长和宽</code>。数据手册的焊盘有两个，因此复制一下，修改一下焊盘编号，要求<code>焊盘编号和引脚的编号一一对应</code>。</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/3.png" srcset="/img/loading.gif" lazyload alt="电阻封装数据手册"></p>
+<ul>
+<li><p>点击<code>工具-智能尺寸</code>，设置两个焊盘之间的间距。之后退出智能尺寸，这样焊盘就绘制完成了。</p>
+</li>
+<li><p>选择图层为<code>顶层丝印层</code>，放置<code>线条-折线</code>,绘制边框用于提示作用，再Ctrl+S保存。</p>
+</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/22.png" srcset="/img/loading.gif" lazyload alt="电阻封装绘制"></p>
+<h3 id="绑定到个人库"><a href="#绑定到个人库" class="headerlink" title="绑定到个人库"></a>绑定到个人库</h3><p>回到符号编辑器页面，选择<code>封装-个人-电阻-R0603-确认</code>进行绑定。</p>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/222.png" srcset="/img/loading.gif" lazyload alt="绑定到个人库"></p>
+<ul>
+<li>更新3D模型：目前嘉立创不支持用户自己绘制3D模型，可以直接在系统中搜索相同尺寸的模型更新。</li>
+</ul>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/4.png" srcset="/img/loading.gif" lazyload alt="更新3D模型"></p>
+<h3 id="在工程中使用个人库中的封装电阻"><a href="#在工程中使用个人库中的封装电阻" class="headerlink" title="在工程中使用个人库中的封装电阻"></a>在工程中使用个人库中的封装电阻</h3><p>在自己的工程中，点击下方的库，选择个人，找到R0603电阻封装，点击放置即可。</p>
+<p><img src="/images/PCB%E8%AE%BE%E8%AE%A1%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/p14.png" srcset="/img/loading.gif" lazyload alt="在工程中使用个人库中的封装电阻"></p>
 <h1 id="入门的第一块板子"><a href="#入门的第一块板子" class="headerlink" title="入门的第一块板子"></a>入门的第一块板子</h1><h2 id="原理图设计"><a href="#原理图设计" class="headerlink" title="原理图设计"></a>原理图设计</h2><ul>
 <li>第一步：文件-新建工程</li>
 <li>第二步：原理图设计</li>
