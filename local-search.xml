@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Blender学习笔记</title>
+    <link href="/2024/07/11/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2024/07/11/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<p>在3D建模和动画设计领域，Blender 是一款强大且免费的开源软件，具有优秀的性能和对众多技术的支持。</p><span id="more"></span> <h1 id="安装下载以及中文设置"><a href="#安装下载以及中文设置" class="headerlink" title="安装下载以及中文设置"></a>安装下载以及中文设置</h1><p><a href="https://blog.csdn.net/jieyucx/article/details/132066814">教程点这里</a></p><h1 id="基础篇：第一节——让手听话"><a href="#基础篇：第一节——让手听话" class="headerlink" title="基础篇：第一节——让手听话"></a>基础篇：第一节——让手听话</h1><h2 id="视图和视角的控制"><a href="#视图和视角的控制" class="headerlink" title="视图和视角的控制"></a>视图和视角的控制</h2><p>一、视角的调节</p><ol><li>控制观察视角：鼠标中键</li><li>平移视图：Shift+鼠标中键</li><li>缩放视图：滚动鼠标中键的滚轮</li></ol><p>二、摄像机视图<br>摄像机视图是最后渲染出来视频的样子。</p><p>三、正交视图和透视视图的切换<br>点击摄像机按钮下面的一个按钮进行切换。</p><p>四、主视图，侧视图，底视图的切换：<br>使用<code>~目录</code></p><h2 id="物体的控制"><a href="#物体的控制" class="headerlink" title="物体的控制"></a>物体的控制</h2><ol><li>左侧竖列，分别控制：</li></ol><ul><li>选中物体进行自由移动 <ul><li><code>快捷键：g</code></li><li>初始默认是框选，长按可以切换选择的模式：<code>调整、刷选(快捷键c)、套选工具</code></li></ul></li><li>沿XYZ轴三个方向平移  <ul><li><code>快捷键：g+x；g+y;g+z</code></li></ul></li><li>旋转物体 <ul><li><code>快捷键：r</code>默认垂直视图方向进行旋转</li><li><code>r+x;r+y;r+z</code></li></ul></li><li>沿XYZ轴三个方向缩放物体 <ul><li><code>快捷键：f+移动鼠标；f+x;f+y;f+z</code></li><li>按鼠标右键退出移动&#x2F;缩放&#x2F;旋转模式</li></ul></li><li>Alt+s：撤销缩放<br>Alt+r:撤销旋转<br>Alt+g:回到原初始新建的位置</li></ul><ol start="2"><li><code>删除</code>物体：选中然后delete;或者直接按键盘X，也可以直接删除物体。</li><li><code>新建</code>物体：Shift+A，出现菜单，点击网格，有很多默认的新建物体模型。</li><li><code>隐藏</code>物体：</li></ol><ul><li>隐藏选中的物体：选中物体，按快捷键H</li><li>把没有选中的物体隐藏：Shift+h</li><li>取消隐藏：Alt+h<ul><li>可以通过查看物体列表的小眼睛来判断是否隐藏好</li></ul></li></ul><ol start="5"><li><code>复制</code>物体：Shift+d移动并复制</li></ol><h2 id="课堂小结"><a href="#课堂小结" class="headerlink" title="课堂小结"></a>课堂小结</h2><p><img src="/images/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" alt="笔记截图"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>建模技能</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>3D建模</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Ansys仿真——三相感应电机</title>
     <link href="/2024/07/11/Ansys%E4%BB%BF%E7%9C%9F%E2%80%94%E2%80%94%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA/"/>
     <url>/2024/07/11/Ansys%E4%BB%BF%E7%9C%9F%E2%80%94%E2%80%94%E4%B8%89%E7%9B%B8%E6%84%9F%E5%BA%94%E7%94%B5%E6%9C%BA/</url>
@@ -45,7 +70,7 @@
     
     <tags>
       
-      <tag>建模</tag>
+      <tag>数学建模</tag>
       
     </tags>
     
@@ -295,7 +320,7 @@
     
     <tags>
       
-      <tag>建模</tag>
+      <tag>数学建模</tag>
       
     </tags>
     
@@ -539,7 +564,7 @@
     
     <tags>
       
-      <tag>建模</tag>
+      <tag>数学建模</tag>
       
     </tags>
     
