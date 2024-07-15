@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>PSCAD电气仿真学习记录</title>
+    <link href="/2024/07/16/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/07/16/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大二暑期实验室学习记录</title>
+    <link href="/2024/07/15/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/07/15/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>记录大二暑假在实验室的专业学习~</p><span id="more"></span> <h1 id="学习任务"><a href="#学习任务" class="headerlink" title="学习任务"></a>学习任务</h1><h2 id="软件部分"><a href="#软件部分" class="headerlink" title="软件部分"></a>软件部分</h2><ol><li>Ansys仿真PP电缆</li><li>学习使用pscad仿真软件，对PP电缆进行仿真</li><li>深度学习部分</li></ol><h2 id="硬件部分"><a href="#硬件部分" class="headerlink" title="硬件部分"></a>硬件部分</h2><ol><li>使用运放电路对电流互感器进行数据采样</li><li>摸鱼时间，完成至少一个嘉立创的开源硬件项目<br>PS：拜托！！ 这里有焊台，有常用的检测仪表，还有白嫖的一堆元器件！！</li></ol><h1 id="电气小知识集萃"><a href="#电气小知识集萃" class="headerlink" title="电气小知识集萃"></a>电气小知识集萃</h1><h2 id="电力系统"><a href="#电力系统" class="headerlink" title="电力系统"></a>电力系统</h2><h3 id="Q：电力系统中，谐波的存在会产生什么影响？"><a href="#Q：电力系统中，谐波的存在会产生什么影响？" class="headerlink" title="Q：电力系统中，谐波的存在会产生什么影响？"></a>Q：电力系统中，谐波的存在会产生什么影响？</h3><ol><li>n次谐波，表示该谐波的频率是基频的n倍。</li><li>谐波会带来电流或电压的扭曲，闪变或者异常波动，这种情况会导致设备体温度升高，产生信号串扰，并使中性点的电压升高，进而造成一些不可预测的风险：<br>比如设备意外停机，火灾，电气事故等等。</li><li>谐波的监测设备：<code>谐波检测仪</code>，又称<code>谐波分析仪</code>。<br>绝大部分谐波测量仪器都使用傅立叶变换的方法来进行谐波测量，使用<code>傅立叶变换</code>进行谐波分析的前提是要求被分析的波形必须是一个周期波形，也就是说，使用傅立叶变换只能<code>测量整数次谐波</code>。极少数谐波检测仪可以检测分数谐波，测量分数谐波不能使用傅立叶变换的方法，</li></ol><h1 id="电流互感器"><a href="#电流互感器" class="headerlink" title="电流互感器"></a>电流互感器</h1><p>作用：</p><ol><li>扩大电流表的量程，实现用小量程的表测量大电流。</li><li>隔离高压线路，确保人身和设备安全。</li></ol><p>电流互感器其实是一种特殊的变压器。<br>$$<br>\frac{I_1}{I_2}&#x3D;\frac{N_1}{N_2}&#x3D;K_i<br>$$<br>因此，电流互感器上二次侧导线穿几圈都是根据变比K来决定的。</p><p><img src="/images/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/1.png" alt="实物图"></p><p><img src="/images/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/1.1.png" alt="电路原理图"></p><p><img src="/images/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/1.2.png" alt="注意要点"></p><p><a href="https://www.bilibili.com/video/BV1n14y1z7ik/?spm_id_from=333.337.search-card.all.click&vd_source=0997900aaf2a5d972f902ba195bbd223">感觉不错的哔站视频1——电流互感器采样电路设计</a></p><p><a href="https://www.bilibili.com/video/BV1kZ421K77W/?spm_id_from=333.337.search-card.all.click&vd_source=0997900aaf2a5d972f902ba195bbd223">感觉不错的哔站视频1——电流互感器穿几圈</a></p><p><a href="https://www.bilibili.com/video/BV1pm421W78b/?spm_id_from=333.788.recommend_more_video.-1&vd_source=0997900aaf2a5d972f902ba195bbd223">感觉不错的哔站视频1——电流互感器的使用</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研课题组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>电气工程及其自动化专业</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Blender学习笔记</title>
     <link href="/2024/07/11/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <url>/2024/07/11/Blender%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
