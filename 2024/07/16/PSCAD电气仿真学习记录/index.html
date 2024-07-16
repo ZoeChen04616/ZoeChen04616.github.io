@@ -43,8 +43,9 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/7.8.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/7.9.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/7.99.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.png">
 <meta property="article:published_time" content="2024-07-15T16:04:11.000Z">
-<meta property="article:modified_time" content="2024-07-16T08:34:30.525Z">
+<meta property="article:modified_time" content="2024-07-16T08:52:46.863Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -506,7 +507,7 @@ $$
 </li>
 </ol>
 <ul>
-<li><code>气隙因子(AirGrapFactor)取1.0的时候，$X_L=X_P$</code>。</li>
+<li><code>气隙因子(AirGrapFactor)取1.0的时候</code> $X_L&#x3D;X_P$。</li>
 </ul>
 <ol start="8">
 <li>仿真需要满足一些隐形的运行前提。</li>
@@ -514,6 +515,10 @@ $$
 <ul>
 <li>交轴次暂态电抗值必须小于交轴不饱和同步电抗值，否则无法运行仿真。</li>
 </ul>
+<ol start="9">
+<li>国内的基频是50HZ，因此在Basic Data中需要修改: $2 \pi f$</li>
+</ol>
+<p><img src="/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.png" srcset="/img/loading.gif" lazyload alt="参数设置"></p>
 
                 
               </div>
