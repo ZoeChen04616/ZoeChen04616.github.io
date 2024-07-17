@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/1.1.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/%E5%A4%A7%E4%BA%8C%E6%9A%91%E6%9C%9F%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/1.2.png">
 <meta property="article:published_time" content="2024-07-15T15:17:39.000Z">
-<meta property="article:modified_time" content="2024-07-16T16:42:32.161Z">
+<meta property="article:modified_time" content="2024-07-17T16:33:26.246Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="电气工程及其自动化专业">
 <meta name="twitter:card" content="summary_large_image">
@@ -284,7 +284,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          3.9k 字
         
       </span>
     
@@ -295,7 +295,7 @@
         
         
         
-          18 分钟
+          33 分钟
         
       </span>
     
@@ -345,7 +345,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年7月17日 凌晨
+                    本文最后更新于：2024年7月18日 凌晨
                   
                 
               </p>
@@ -369,7 +369,8 @@
 <li>谐波会带来电流或电压的扭曲，闪变或者异常波动，这种情况会导致设备体温度升高，产生信号串扰，并使中性点的电压升高，进而造成一些不可预测的风险：<br>比如设备意外停机，火灾，电气事故等等。</li>
 <li>谐波的监测设备：<code>谐波检测仪</code>，又称<code>谐波分析仪</code>。<br>绝大部分谐波测量仪器都使用傅立叶变换的方法来进行谐波测量，使用<code>傅立叶变换</code>进行谐波分析的前提是要求被分析的波形必须是一个周期波形，也就是说，使用傅立叶变换只能<code>测量整数次谐波</code>。极少数谐波检测仪可以检测分数谐波，测量分数谐波不能使用傅立叶变换的方法，</li>
 </ol>
-<h3 id="Q-什么是零序阻抗？"><a href="#Q-什么是零序阻抗？" class="headerlink" title="Q:什么是零序阻抗？"></a>Q:什么是零序阻抗？</h3><p>零序阻抗（Zero-Sequence Impedance）是电力系统中用于分析<code>不对称故障</code>（如单相接地故障）的一种参数。它是指在<code>零序分量</code>（所有三相电流或电压相等且同相位）的条件下，电力系统元件对零序电流的阻抗。</p>
+<h3 id="Q-什么是零序阻抗？"><a href="#Q-什么是零序阻抗？" class="headerlink" title="Q:什么是零序阻抗？"></a>Q:什么是零序阻抗？</h3><pre><code class="hljs">零序阻抗（Zero-Sequence Impedance）是电力系统中用于分析`不对称故障`（如单相接地故障）的一种参数。它是指在`零序分量`（所有三相电流或电压相等且同相位）的条件下，电力系统元件对零序电流的阻抗。
+</code></pre>
 <ul>
 <li><p>零序阻抗的背景<br>在电力系统中，电流和电压的对称分量法（Symmetrical Components）将不对称的三相系统分解为对称的正序、负序和零序分量：</p>
 <ul>
@@ -398,6 +399,27 @@
 </ul>
 </li>
 <li>输电线路：输电线路的零序阻抗包括导线的零序电阻和电抗，通常较大，因为零序电流流经地线或回路电阻。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Q：什么是Surge-Impedance？"><a href="#Q：什么是Surge-Impedance？" class="headerlink" title="Q：什么是Surge Impedance？"></a>Q：什么是Surge Impedance？</h3><pre><code class="hljs">Surge Impedance：浪涌阻抗，也称为特性阻抗，是在传输线（如电力线或通信线）上描述波动（如电压波或电流波）如何传播的一个重要参数。它是电力工程和电信领域中的一个核心概念，对于理解和设计传输线系统至关重要。
+</code></pre>
+<p>定义和公式<br>Surge impedance 是传输线的电阻、电感和电容参数的函数，其公式为：<br>$$<br>Z_0&#x3D;\sqrt{\frac{R+jwL}{G+jwC}}<br>$$</p>
+<p>其中：<br>$Z_0$是特性阻抗，单位是欧姆（Ohms）。<br>$R$ 是单位长度的电阻，单位是欧姆&#x2F;米。<br>$L$ 是单位长度的电感，单位是亨利&#x2F;米。<br>$G$ 是单位长度的导纳，单位是西门子&#x2F;米。<br>$C$ 是单位长度的电容，单位是法拉&#x2F;米。</p>
+<p>物理意义:<br>在理想情况下，如果传输线是无损的（即$R$和$G$都是零），特性阻抗简化为：<br>$$Z_0&#x3D;\sqrt{\frac{L}{C}}$$</p>
+<p>这表明特性阻抗主要由线的电感和电容决定。特性阻抗是传输线的一个重要属性，因为它描述了线路如何响应电压和电流的变化，特别是在快速变化的情况下，如电压冲击。</p>
+<h3 id="Q：什么是Susceptance？"><a href="#Q：什么是Susceptance？" class="headerlink" title="Q：什么是Susceptance？"></a>Q：什么是Susceptance？</h3><pre><code class="hljs">Susceptance，电纳Y的虚数部分，是电气工程中一个重要的概念，表示交流电路中对电流的容许性或接受度，通常用于描述电容或电感元件的行为。电纳是电阻（impedance）的倒数。电纳、电阻、电容和电感这些量都用于分析和设计交流电路，特别是在电力系统和信号处理中非常重要。
+</code></pre>
+<p>电纳$Y$可以分解为电导$G$（实部）和电纳$B$（虚部）:<br>$$<br>Y&#x3D;G+jB<br>$$<br>电导$G$表示电路的真实功率消耗，而电纳$B$表示电路的无功功率，即能量在源和负载之间往复移动但不进行实际功率转换的部分。</p>
+<ul>
+<li><p>对于电容元件，Susceptance $B$为正值，表示其积累能量的能力。</p>
+</li>
+<li><p>对于电感元件，Susceptance $B$为负值，表示其释放能量的能力。</p>
+</li>
+<li><p>对于纯电容或纯电感的理想元件，Susceptance 的计算公式如下：</p>
+<ul>
+<li>电容的 Susceptance $B_C$：<br>$<br>B_C&#x3D;wC<br>$<br>其中，$w$是角频率，C是电容值。$w&#x3D;2\pi f$</li>
+<li>电感的 Susceptance$B_L$:<br>  $B_L&#x3D;-\frac{1}{wL}$<br>  其中$L$是电感值。</li>
 </ul>
 </li>
 </ul>
@@ -437,6 +459,7 @@
 <li><p>提高测量精度(实际测量中)<br>测量设备和技术，如四端测量法和LCR测量仪，通常需要直接连接到目标导体上进行精确测量。<br>通过去除导体层，可以确保测量设备直接接触到内导体，从而提高测量精度。</p>
 </li>
 </ul>
+<h3 id="电缆相关的专业术语"><a href="#电缆相关的专业术语" class="headerlink" title="电缆相关的专业术语"></a>电缆相关的专业术语</h3><p> <code>Coaxial Cable</code>：同轴电缆 &emsp;&emsp;&emsp;&nbsp; <code>Arrester</code>：避雷器<br><br> <code>conductor</code>:导体  &emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<code>source impedence</code>:源阻抗 <br> <code>sheath</code>：护套     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  <code>Aerial shunt conductance</code>:架空分流电导<br> <code>insulator</code>：绝缘层&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; <code>Aerial</code>:架空<br> <code>armour</code>：铠层       &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; <code>resistivity</code>:电阻率<br><code>permittivity</code>：介电常数&emsp;  &emsp;  &emsp;  <code>relative permeability</code>:相对渗透系数<br> <code>SC layer</code>：屏蔽层    &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;  <code>outer radius</code>:外半径<br> <code>interface</code>：接口    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  <code>encompass</code>:围绕<br> <code>instantaneous</code>：瞬时的 &emsp;   &emsp; &emsp;&nbsp;<code>active power</code>:有功功率<br><code>reactive power</code>:无功功率 &emsp; &emsp;&nbsp;&nbsp;&nbsp;<code>RMS</code>：有效值<br><code>phase angle</code>:相位角  &emsp; &emsp;&nbsp;&emsp; &emsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>semi-conductor</code>：半导体<br><code>Resistance</code>：电阻 &emsp; &emsp;&nbsp;&emsp; &emsp; &emsp;&nbsp;<code>Reactance </code>:电抗</p>
 
                 
               </div>
