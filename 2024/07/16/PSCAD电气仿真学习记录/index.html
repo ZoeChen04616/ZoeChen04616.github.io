@@ -44,8 +44,11 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/7.9.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/7.99.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.2.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.1.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/9.png">
 <meta property="article:published_time" content="2024-07-15T16:04:11.000Z">
-<meta property="article:modified_time" content="2024-07-17T07:06:47.975Z">
+<meta property="article:modified_time" content="2024-07-18T05:57:41.092Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -302,7 +305,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          5.3k 字
         
       </span>
     
@@ -313,7 +316,7 @@
         
         
         
-          19 分钟
+          45 分钟
         
       </span>
     
@@ -363,7 +366,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年7月17日 下午
+                    本文最后更新于：2024年7月18日 下午
                   
                 
               </p>
@@ -519,8 +522,358 @@ $$
 <li>国内的基频是50HZ，因此在Basic Data中需要修改: $2 \pi f$</li>
 </ol>
 <p><img src="/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.png" srcset="/img/loading.gif" lazyload alt="参数设置"></p>
-<h1 id="PP电缆仿真"><a href="#PP电缆仿真" class="headerlink" title="PP电缆仿真"></a>PP电缆仿真</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><h3 id="1、中压运行环境下聚丙烯电缆的线路建模及仿真研究"><a href="#1、中压运行环境下聚丙烯电缆的线路建模及仿真研究" class="headerlink" title="1、中压运行环境下聚丙烯电缆的线路建模及仿真研究"></a>1、中压运行环境下聚丙烯电缆的线路建模及仿真研究</h3><p>了解聚丙烯电缆内部线路结构，根据其内部的电气参数，建立电缆详细的电磁暂态模型；计算中压情况下电缆模型的阻抗参数，在ANSYS&#x2F;EMTDC有限元分析软件中进行非线性分析并搭建电缆线路仿真模型加以验证。</p>
-<h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="2-1-聚丙烯电缆建模"><a href="#2-1-聚丙烯电缆建模" class="headerlink" title="2.1 聚丙烯电缆建模"></a>2.1 聚丙烯电缆建模</h3><h4 id="步骤1-在电路中创建一个电缆配置组件："><a href="#步骤1-在电路中创建一个电缆配置组件：" class="headerlink" title="步骤1 - 在电路中创建一个电缆配置组件："></a>步骤1 - 在电路中创建一个电缆配置组件：</h4><p>（使用右键点击“Component Wizard…”然后选择“Cable”）</p>
+<h1 id="实验项目：PP电缆仿真"><a href="#实验项目：PP电缆仿真" class="headerlink" title="实验项目：PP电缆仿真"></a>实验项目：PP电缆仿真</h1><h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><h3 id="1-1-中压运行环境下聚丙烯电缆的线路建模及仿真研究"><a href="#1-1-中压运行环境下聚丙烯电缆的线路建模及仿真研究" class="headerlink" title="1.1 中压运行环境下聚丙烯电缆的线路建模及仿真研究"></a>1.1 中压运行环境下聚丙烯电缆的线路建模及仿真研究</h3><ul>
+<li>了解聚丙烯电缆内部线路结构，根据其内部的电气参数，建立电缆详细的电磁暂态模型；</li>
+<li>计算中压情况下电缆模型的阻抗参数，在ANSYS&#x2F;EMTDC有限元分析软件中进行非线性分析并搭建电缆线路仿真模型加以验证。</li>
+</ul>
+<h3 id="1-2-对不同工况下聚丙烯电缆的模拟测试"><a href="#1-2-对不同工况下聚丙烯电缆的模拟测试" class="headerlink" title="1.2 对不同工况下聚丙烯电缆的模拟测试"></a>1.2 对不同工况下聚丙烯电缆的模拟测试</h3><ul>
+<li>明确聚丙烯的电气性能，模拟聚丙烯电缆在不同温度情况下的工作情况；</li>
+<li>研究空间电荷效应在聚丙烯电缆中的绝缘老化现象；</li>
+<li>研究聚丙烯电缆在不同机械应力强度和化学环境下的绝缘特性；</li>
+<li>模拟聚丙烯电缆在不同环境情况下的运行状况，建立其绝缘老化模型。</li>
+</ul>
+<h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="2-1-聚丙烯电缆建模"><a href="#2-1-聚丙烯电缆建模" class="headerlink" title="2.1 聚丙烯电缆建模"></a>2.1 聚丙烯电缆建模</h3><h4 id="2-1-1-建立电缆详细的电磁暂态模型"><a href="#2-1-1-建立电缆详细的电磁暂态模型" class="headerlink" title="2.1.1 建立电缆详细的电磁暂态模型"></a>2.1.1 建立电缆详细的电磁暂态模型</h4><p><img src="/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.2.png" srcset="/img/loading.gif" lazyload alt="电缆建模"></p>
+<p>（1） Cable Summary</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cable Name</td>
+<td>Cable_1</td>
+</tr>
+<tr>
+<td>Cable Length</td>
+<td>40.0</td>
+</tr>
+<tr>
+<td>Steady State Frequency</td>
+<td>50.0</td>
+</tr>
+</tbody></table>
+<p>（2）Frequency Dep. (Phase) Model Options</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Interpolate Travel Times</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Infinite Line Length</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Curve Fitting Start Frequency</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Curve Fitting End Frequency</td>
+<td>1000000.0</td>
+</tr>
+<tr>
+<td>Total Number of Frequency Increments</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Maximum # of Poles for Surge Admittance Fit</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Maximum # of Poles for Attenuation Constant Fit</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Maximum Fitting Error (%) for Surge Admittance</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Maximum Fitting Error (%) for Attenuation Constant</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Maximum Residue&#x2F;Pole Ratio Tolerance</td>
+<td>2000000.0</td>
+</tr>
+<tr>
+<td>Weighting Factor 1</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Weighting Factor 2</td>
+<td>1000.0</td>
+</tr>
+<tr>
+<td>Weighting Factor 3</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Write Detailed Output Files</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>（3）Line Constants Ground Data</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ground Resistivity Type</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Ground Resistivity</td>
+<td>100.0</td>
+</tr>
+<tr>
+<td>Ground Permeability</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Earth Impedance Formula</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Earth U Impedance Formula</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Earth M Impedance Formula</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>（4）Output File Display Options</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Frequency for Calculation</td>
+<td>50.0</td>
+</tr>
+<tr>
+<td>Zero Tolerance for Display</td>
+<td>1.0e-19</td>
+</tr>
+<tr>
+<td>Base Voltage for Display</td>
+<td>110.0</td>
+</tr>
+<tr>
+<td>Base MVA for Display</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Create PI-Section</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>（5）Pipe-Type Cable</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pipe Number</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>0.0 3.0</td>
+</tr>
+<tr>
+<td>Number of Inner Cables</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Inner Insulator Outer Radius</td>
+<td>0.035</td>
+</tr>
+<tr>
+<td>Inner Ins. Relative Permittivity</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>Inner Ins. Relative Permeability</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Conductor Outer Radius</td>
+<td>0.037</td>
+</tr>
+<tr>
+<td>Conductor Resistivity</td>
+<td>1.71e-07</td>
+</tr>
+<tr>
+<td>Conductor Permeability</td>
+<td>200.0</td>
+</tr>
+<tr>
+<td>Identical Cables</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Outer Insulator Outer Radius</td>
+<td>0.036</td>
+</tr>
+<tr>
+<td>Outer Ins. Relative Permittivity</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>Outer Ins. Relative Permeability</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Outer Insulator Layer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Ground Pipe</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Overhead Pipe</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>（6）Coax Cables</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>Coax Cable 1</th>
+<th>Coax Cable 2</th>
+<th>Coax Cable 3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cable Number</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>-2.97589172193e-18 -0.0162 0.0162 270.0</td>
+<td>0.0140296115413 0.0081 0.0162 30.0</td>
+<td>-0.0140296115413 0.0081 0.0162 150.0</td>
+</tr>
+<tr>
+<td>Overhead Cable</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Layers</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Ground Last Layer</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Conductor Inner Radius</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Conductor Outer Radius</td>
+<td>0.003</td>
+<td>0.003</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td>Conductor Resistivity</td>
+<td>1.72e-08</td>
+<td>1.72e-08</td>
+<td>1.72e-08</td>
+</tr>
+<tr>
+<td>Conductor Permeability</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Insulator 1 Outer Radius</td>
+<td>0.006</td>
+<td>0.006</td>
+<td>0.006</td>
+</tr>
+<tr>
+<td>Insulator 1 Relative Permittivity</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>Insulator 1 Relative Permeability</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Sheath Outer Radius</td>
+<td>0.0105</td>
+<td>0.0105</td>
+<td>0.0105</td>
+</tr>
+<tr>
+<td>Sheath Resistivity</td>
+<td>1.72e-08</td>
+<td>1.72e-08</td>
+<td>1.72e-08</td>
+</tr>
+<tr>
+<td>Sheath Permeability</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Insulator 2 Outer Radius</td>
+<td>0.014</td>
+<td>0.014</td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>Insulator 2 Relative Permittivity</td>
+<td>3.72</td>
+<td>3.72</td>
+<td>3.72</td>
+</tr>
+<tr>
+<td>Insulator 2 Relative Permeability</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<h4 id="2-1-2-详细仿真步骤"><a href="#2-1-2-详细仿真步骤" class="headerlink" title="2.1.2 详细仿真步骤"></a>2.1.2 详细仿真步骤</h4><h4 id="步骤1-在电路中创建一个电缆配置组件："><a href="#步骤1-在电路中创建一个电缆配置组件：" class="headerlink" title="步骤1 - 在电路中创建一个电缆配置组件："></a>步骤1 - 在电路中创建一个电缆配置组件：</h4><p>（使用右键点击“Component Wizard…”然后选择“Cable”）</p>
 <p>选择“Edit Parameters…”并输入线路长度和稳态频率。</p>
 <h4 id="步骤-2-将此电缆接口组件复制到电路中"><a href="#步骤-2-将此电缆接口组件复制到电路中" class="headerlink" title="步骤 2 - 将此电缆接口组件复制到电路中"></a>步骤 2 - 将此电缆接口组件复制到电路中</h4><p>（或使用右键菜单 - Add Component | Cable Interface）<br>编辑参数：</p>
 <ul>
@@ -529,9 +882,81 @@ $$
 <li>输入每根电缆的电气连接（导体、护套、铠装）。</li>
 <li>将此组件复制到电缆电气系统的接收端。</li>
 </ul>
+<p><img src="/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/8.1.png" srcset="/img/loading.gif" lazyload alt="交流电路设计"></p>
 <h4 id="步骤-3-打开电缆配置"><a href="#步骤-3-打开电缆配置" class="headerlink" title="步骤 3 - 打开电缆配置"></a>步骤 3 - 打开电缆配置</h4><p>（右键点击 - Edit Definition…）</p>
 <h4 id="步骤-4-选择一个传输模型和选项"><a href="#步骤-4-选择一个传输模型和选项" class="headerlink" title="步骤 4 - 选择一个传输模型和选项"></a>步骤 4 - 选择一个传输模型和选项</h4><p>仅需将以下模型中的一个复制到电缆模块中。默认传输模型会自动创建。如果默认模型不是所需的模型，则删除默认模型并选择一个传输模型。<br>（右键菜单 “Select Transmission Model”）</p>
 <h4 id="步骤-5-输入电缆数据"><a href="#步骤-5-输入电缆数据" class="headerlink" title="步骤 5 - 输入电缆数据"></a>步骤 5 - 输入电缆数据</h4><p>编辑接地组件的参数。<br>添加“电缆横截面”组件并编辑参数。</p>
+<h4 id="步骤-6-Build-Modified"><a href="#步骤-6-Build-Modified" class="headerlink" title="步骤 6- Build &amp; Modified"></a>步骤 6- Build &amp; Modified</h4><p>遇到的问题：</p>
+<ol>
+<li>电缆尺寸矛盾，注意调整尺寸的大小，比如：</li>
+</ol>
+<ul>
+<li>内部两根电缆的中心距离小于半径和——error</li>
+<li>电缆是三根内部电缆总包成一根，因此不能直接采用官网例程中的三相分开，单根单相模型，需要修改模型。</li>
+<li>接入交流信号（3信号维度）的元器件不能和直流信号（单信号维度）元件直接连接，需要加一个三叉戟样式的转换器件，接地GND也是。</li>
+<li>需要额外安装一个<code>Intel Fortran Compiler</code>编译器。</li>
+</ul>
+<p>110KV pp电缆的科研参考材料中电缆的尺寸数据和本项目的电缆尺寸不同，按照不同层等比例缩小进行仿真尺寸设计。</p>
+<h4 id="步骤-7-Run"><a href="#步骤-7-Run" class="headerlink" title="步骤 7- Run"></a>步骤 7- Run</h4><p>查看.out文件，里面包含了对电缆的阻抗参数分析。</p>
+<p>（1）负载流数据:<br>正序和零序阻抗参数<br>阻抗参数包括电阻$R$和电抗$X$,通常以 per-unit (pu) 表示。下面是.out文件数据：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正序阻抗</td>
+<td>Resistance (R_{sq}) [pu]</td>
+<td>0.217697348E-02</td>
+</tr>
+<tr>
+<td></td>
+<td>Reactance (X_{sq}) [pu]</td>
+<td>0.375423769E-03</td>
+</tr>
+<tr>
+<td></td>
+<td>Susceptance (B_{sq}) [pu]</td>
+<td>36.6116774</td>
+</tr>
+<tr>
+<td></td>
+<td>Surge Impedance (Z_{csq}) [pu]</td>
+<td>0.320221929E-02</td>
+</tr>
+<tr>
+<td>零序阻抗</td>
+<td>Resistance (R_{sq}) [pu]</td>
+<td>0.224356440E-02</td>
+</tr>
+<tr>
+<td></td>
+<td>Reactance (X_{sq}) [pu]</td>
+<td>0.284711498E-03</td>
+</tr>
+<tr>
+<td></td>
+<td>Susceptance (B_{sq}) [pu]</td>
+<td>36.6380254</td>
+</tr>
+<tr>
+<td></td>
+<td>Surge Impedance (Z_{csq}) [pu]</td>
+<td>0.278763863E-02</td>
+</tr>
+</tbody></table>
+<p>正序参数通常与电缆在平衡负载条件下的行为相关，而零序参数与非平衡条件下的行为相关，如单相接地故障。</p>
+<p>（2）阻抗矩阵（Z矩阵）<br>阻抗矩阵提供了关于电缆各相之间的互感和自感的详细信息。</p>
+<ul>
+<li>系列阻抗矩阵 ($Z$)：表示单位长度（米）上的阻抗值，矩阵的每个元素都是一个复数，形式为 $M$,$N$ 表示 $M + jN$。</li>
+<li>并联导纳矩阵 ($Y$)：表示单位长度（米）上的导纳值，矩阵的每个元素也是一个复数。</li>
+</ul>
+<p>.out文件输出了电缆的相域数据和负载流数据。</p>
+<h3 id="2-2-对不同工况下聚丙烯电缆的模拟测试"><a href="#2-2-对不同工况下聚丙烯电缆的模拟测试" class="headerlink" title="2.2 对不同工况下聚丙烯电缆的模拟测试"></a>2.2 对不同工况下聚丙烯电缆的模拟测试</h3><h4 id="2-2-1-模拟聚丙烯电缆在不同温度情况下的工作情况"><a href="#2-2-1-模拟聚丙烯电缆在不同温度情况下的工作情况" class="headerlink" title="2.2.1 模拟聚丙烯电缆在不同温度情况下的工作情况"></a>2.2.1 模拟聚丙烯电缆在不同温度情况下的工作情况</h4><h4 id="2-2-2-空间电荷效应在聚丙烯电缆中的绝缘老化现象"><a href="#2-2-2-空间电荷效应在聚丙烯电缆中的绝缘老化现象" class="headerlink" title="2.2.2 空间电荷效应在聚丙烯电缆中的绝缘老化现象"></a>2.2.2 空间电荷效应在聚丙烯电缆中的绝缘老化现象</h4><p>绝缘层空间电荷的积聚会导致内部电场的畸变，进而引发介质内局部放电、加速聚合物材料老化及电树枝生长，最终导致绝缘击穿故障，严重影响电缆性能和使用寿命。</p>
+<p><img src="/images/PSCAD%E7%94%B5%E6%B0%94%E4%BB%BF%E7%9C%9F%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/9.png" srcset="/img/loading.gif" lazyload alt="电缆绝缘层的电荷输运过程示意图"></p>
 
                 
               </div>
