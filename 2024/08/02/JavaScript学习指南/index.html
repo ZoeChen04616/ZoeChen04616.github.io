@@ -24,7 +24,7 @@
 <meta property="og:description" content="参照廖雪峰老师的教程，整理和记录JavaScript的学习过程~">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-02T06:46:45.000Z">
-<meta property="article:modified_time" content="2024-08-06T13:24:41.478Z">
+<meta property="article:modified_time" content="2024-08-06T16:43:11.155Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -280,7 +280,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33k 字
+          38k 字
         
       </span>
     
@@ -291,7 +291,7 @@
         
         
         
-          276 分钟
+          314 分钟
         
       </span>
     
@@ -341,7 +341,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年8月6日 晚上
+                    本文最后更新于：2024年8月7日 凌晨
                   
                 
               </p>
@@ -660,7 +660,7 @@ navigator的信息可以很容易地被用户修改，所以JavaScript读取的�
 </li>
 <li><p>由于JavaScript能读取到页面的Cookie，而用户的登录信息通常也存在Cookie中，这就造成了巨大的安全隐患，这是因为在HTML页面中引入第三方的JavaScript代码是允许的。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 当前页面在wwwexample.com --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://www.foo.com/jquery.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    ...<br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
-<li><p>如果引入的第三方的JavaScript中存在恶意代码，则<a target="_blank" rel="noopener" href="http://www.foo.com网站将直接获取到www.example.com网站的用户登录信息.服务器在设置cookie时可以使用`httponly`,设定了httponly的cookie将不能被javascript读取.这个行为由浏览器实现,主流浏览器均支持httponly选项,ie从ie6/">www.foo.com网站将直接获取到www.example.com网站的用户登录信息。服务器在设置Cookie时可以使用`httpOnly`，设定了httpOnly的Cookie将不能被JavaScript读取。这个行为由浏览器实现，主流浏览器均支持httpOnly选项，IE从IE6</a> SP1开始支持。</p>
+<li><p>如果引入的第三方的JavaScript中存在恶意代码，则<code>www.foo.com</code>网站将直接获取到<a target="_blank" rel="noopener" href="http://www.example.com网站的用户登录信息.服务器在设置cookie时可以使用`httponly`,设定了httponly的cookie将不能被javascript读取.这个行为由浏览器实现,主流浏览器均支持httponly选项,ie从ie6/">www.example.com网站的用户登录信息。服务器在设置Cookie时可以使用`httpOnly`，设定了httpOnly的Cookie将不能被JavaScript读取。这个行为由浏览器实现，主流浏览器均支持httpOnly选项，IE从IE6</a> SP1开始支持。</p>
 </li>
 </ul>
 <h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p>history对象保存了浏览器的历史记录，JavaScript可以调用<code>history.back()</code>或<code>history.forward ()</code>，相当于用户点击了浏览器的“后退”或“前进”按钮。</p>
@@ -808,7 +808,63 @@ navigator的信息可以很容易地被用户修改，所以JavaScript读取的�
 </li>
 </ul>
 <h2 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h2><p>在HTML表单中，可以上传文件的唯一控件就是<code>&lt;input type=&quot;file&quot;&gt;</code>。</p>
-<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h2 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h2><h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>未完待续……</p>
+<ul>
+<li>注意：当一个表单包含<code>&lt;input type=&quot;file&quot;&gt;</code>时，表单的<code>enctype</code>必须指定为<code>multipart/form-data</code>，<code>method</code>必须指定为<code>post</code>，浏览器才能正确编码并以<code>multipart/form-data</code>格式发送表单的数据。</li>
+<li>通常，上传的文件都由后台服务器处理，JavaScript可以在提交表单时对文件扩展名做检查，以便防止用户上传无效格式的文件：<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">let</span> f = document.get<span class="hljs-constructor">ElementById(&#x27;<span class="hljs-params">test</span>-<span class="hljs-params">file</span>-<span class="hljs-params">upload</span>&#x27;)</span>;<br><span class="hljs-keyword">let</span> filename = f.value; <span class="hljs-comment">// &#x27;C:\fakepath\test.png&#x27;</span><br><span class="hljs-keyword">if</span> (!filename<span class="hljs-operator"> || </span>!(filename.ends<span class="hljs-constructor">With(&#x27;.<span class="hljs-params">jpg</span>&#x27;)</span><span class="hljs-operator"> || </span>filename.ends<span class="hljs-constructor">With(&#x27;.<span class="hljs-params">png</span>&#x27;)</span><span class="hljs-operator"> || </span>filename.ends<span class="hljs-constructor">With(&#x27;.<span class="hljs-params">gif</span>&#x27;)</span>)) &#123;<br>    alert(&#x27;Can only upload image file.&#x27;);<br>    return <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="File-API"><a href="#File-API" class="headerlink" title="File API"></a>File API</h3><p>由于JavaScript对用户上传的文件操作非常有限，尤其是无法读取文件内容，使得很多需要操作文件的网页不得不用Flash这样的第三方插件来实现。</p>
+<p>随着HTML5的普及，新增的File API允许JavaScript读取文件内容，获得更多的文件信息。</p>
+<p>HTML5的File API提供了<code>File</code>和<code>FileReader</code>两个主要对象，可以获得文件信息并读取文件。</p>
+<p>下面的例子演示了如何读取用户选取的图片文件，并在一个<code>&lt;div&gt;</code>中预览图像：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span><br>    fileInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;test-image-file&#x27;</span>),<br>    info = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;test-file-info&#x27;</span>),<br>    preview = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;test-image-preview&#x27;</span>);<br><span class="hljs-comment">// 监听change事件:</span><br>fileInput.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 清除背景图片:</span><br>    preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-comment">// 检查文件是否选择:</span><br>    <span class="hljs-keyword">if</span> (!fileInput.<span class="hljs-property">value</span>) &#123;<br>        info.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&#x27;没有选择文件&#x27;</span>;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// 获取File引用:</span><br>    <span class="hljs-keyword">let</span> file = fileInput.<span class="hljs-property">files</span>[<span class="hljs-number">0</span>];<br>    <span class="hljs-comment">// 获取File信息:</span><br>    info.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&#x27;文件: &#x27;</span> + file.<span class="hljs-property">name</span> + <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span> +<br>                     <span class="hljs-string">&#x27;大小: &#x27;</span> + file.<span class="hljs-property">size</span> + <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span> +<br>                     <span class="hljs-string">&#x27;修改: &#x27;</span> + file.<span class="hljs-property">lastModified</span>;<br>    <span class="hljs-keyword">if</span> (file.<span class="hljs-property">type</span> !== <span class="hljs-string">&#x27;image/jpeg&#x27;</span> &amp;&amp; file.<span class="hljs-property">type</span> !== <span class="hljs-string">&#x27;image/png&#x27;</span> &amp;&amp; file.<span class="hljs-property">type</span> !== <span class="hljs-string">&#x27;image/gif&#x27;</span>) &#123;<br>        <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;不是有效的图片文件!&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-comment">// 读取文件:</span><br>    <span class="hljs-keyword">let</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileReader</span>();<br>    reader.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) &#123;<br>        <span class="hljs-keyword">let</span><br>            data = e.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>; <span class="hljs-comment">// &#x27;data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...&#x27;            </span><br>        preview.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundImage</span> = <span class="hljs-string">&#x27;url(&#x27;</span> + data + <span class="hljs-string">&#x27;)&#x27;</span>;<br>    &#125;;<br>    <span class="hljs-comment">// 以DataURL的形式读取文件:</span><br>    reader.<span class="hljs-title function_">readAsDataURL</span>(file);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<ul>
+<li>上面的代码演示了如何通过HTML5的File API读取文件内容。以<code>DataURL</code>的形式读取到的文件是一个字符串，类似于<code>data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...</code>，常用于设置图像。<ul>
+<li>如果需要服务器端处理，把字符串base64,后面的字符发送给服务器并用Base64解码就可以得到原始文件的二进制内容。</li>
+</ul>
+</li>
+</ul>
+<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><p>上面的代码还演示了JavaScript的一个重要的特性就是<code>单线程执行模式</code>。在JavaScript中，浏览器的JavaScript执行引擎在执行JavaScript代码时，总是以单线程模式执行，也就是说，任何时候，JavaScript代码都不可能同时有多于1个线程在执行。</p>
+<p>单线程模式执行的JavaScript，如何处理多任务？</p>
+<p>在JavaScript中，执行多任务实际上都是<code>异步调用</code>，比如上面的代码：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">reader.read<span class="hljs-constructor">AsDataURL(<span class="hljs-params">file</span>)</span>;<br></code></pre></td></tr></table></figure>
+<p>就会发起一个异步操作来读取文件内容。因为是异步操作，所以我们在JavaScript代码中就不知道什么时候操作结束，因此需要先设置一个<code>回调函数</code>：</p>
+<figure class="highlight wren"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs wren"><span class="hljs-variable">reader</span>.<span class="hljs-property">onload</span> <span class="hljs-operator">=</span> <span class="hljs-title function_">function</span>(<span class="hljs-params">e</span>) &#123;<br>    <span class="hljs-comment">// 当文件读取完成后，自动调用此函数:</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>当文件读取完成后，JavaScript引擎将自动调用我们设置的回调函数。执行回调函数时，文件已经读取完毕，所以我们可以在回调函数内部安全地获得文件内容。</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>AJAX：<code>Asynchronous JavaScript and XML</code>，意思就是用JavaScript执行异步网络请求。</p>
+<p>如果仔细观察一个Form的提交，你就会发现，一旦用户点击“Submit”按钮，表单开始提交，浏览器就会刷新页面，然后在新页面里告诉你操作是成功了还是失败了。如果不幸由于网络太慢或者其他原因，就会得到一个404页面。</p>
+<p>这就是Web的运作原理：<code>一次HTTP请求对应一个页面</code>。</p>
+<p>如果要让用户留在当前页面中，同时发出新的HTTP请求，就必须用JavaScript发送这个新请求，接收到数据后，再用JavaScript更新页面，这样一来，用户就感觉自己仍然停留在当前页面，但是数据却可以不断地更新。</p>
+<p>最早大规模使用AJAX的就是Gmail，Gmail的页面在首次加载后，剩下的所有数据都依赖于AJAX来更新。</p>
+<p>用JavaScript写一个完整的AJAX代码并不复杂，但是需要注意：</p>
+<ul>
+<li>AJAX请求是异步执行的，也就是说，要通过回调函数获得响应。</li>
+</ul>
+<p>在现代浏览器上写AJAX主要依靠XMLHttpRequest对象，如果不考虑早期浏览器的兼容性问题，现代浏览器还提供了原生支持的Fetch API，以Promise方式提供。使用Fetch API发送HTTP请求代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">url</span>) &#123;<br>    <span class="hljs-keyword">let</span> resp = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url);<br>    <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> resp.<span class="hljs-title function_">text</span>();<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-comment">// 发送异步请求:</span><br><span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;./content.html&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">let</span> textarea = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;fetch-response-text&#x27;</span>);<br>    textarea.<span class="hljs-property">value</span> = data;<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>使用<code>Fetch API</code>配合<code>async</code>写法，代码更加简单。</p>
+<p>Fetch API的详细用法可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">MDN</a>文档。</p>
+<h3 id="安全限制"><a href="#安全限制" class="headerlink" title="安全限制"></a>安全限制</h3><p>上面代码的URL使用的是相对路径。如果你把它改为<code>&#39;https://www.sina.com.cn/&#39;</code>，再运行，肯定报错。在Chrome的控制台里，还可以看到错误信息。</p>
+<p>这是因为浏览器的<code>同源策略</code>导致的。默认情况下，JavaScript在发送AJAX请求时，<code>URL的域名必须和当前页面完全一致</code>。</p>
+<p>完全一致的意思是，域名要相同（<code>www.example.com</code>和<code>example.com</code>不同），协议要相同（<code>http</code>和<code>https</code>不同），端口号要相同（http默认是<code>:80</code>端口，它和<code>:8080</code>就不同）。有的浏览器口子松一点，允许端口不同，大多数浏览器都会严格遵守这个限制。</p>
+<p>那是不是用JavaScript无法请求外域（就是其他网站）的URL了呢？方法还是有的，大概有这么几种：</p>
+<ul>
+<li><p>通过Flash插件发送HTTP请求，这种方式可以绕过浏览器的安全限制，但必须安装Flash，并且跟Flash交互。不过Flash用起来麻烦，而且现在用得也越来越少了。</p>
+</li>
+<li><p>通过在同源域名下架设一个代理服务器来转发，JavaScript负责把请求发送到代理服务器：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">&#x27;<span class="hljs-string">/proxy</span>?url=https:<span class="hljs-string">//www.sina.com.cn</span>&#x27;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>代理服务器再把结果返回，这样就遵守了浏览器的同源策略。这种方式麻烦之处在于需要服务器端额外做开发。</p>
+<ul>
+<li>第三种方式称为JSONP，它有个限制，只能用<code>GET</code>请求，并且要求返回JavaScript。这种方式跨域实际上是利用了<code>浏览器允许跨域引用JavaScript资源</code>：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://example.com/abc.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    ...<br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>...<br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+JSONP通常以函数调用的形式返回，例如，返回JavaScript内容如下：<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">foo</span>(&#x27;<span class="hljs-class"><span class="hljs-keyword">data</span>&#x27;);</span><br></code></pre></td></tr></table></figure>
+这样一来，我们如果在页面中先准备好<code>foo()</code>函数，然后给页面动态加一个<code>&lt;script&gt;</code>节点，相当于动态读取外域的JavaScript资源，最后就等着接收回调了。</li>
+</ul>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>如果浏览器支持HTML5，那么就可以一劳永逸地使用新的跨域策略：<code>CORS</code>了。</p>
+<p>CORS全称Cross-Origin Resource Sharing，是HTML5规范定义的如何跨域访问资源。</p>
+<p>了解CORS前，我们先搞明白概念：</p>
+<p>Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查<code>Access-Control-Allow-Origin</code>是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。</p>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h2 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h2><h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>未完待续……</p>
 
                 
               </div>
