@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>web基础知识</title>
+    <link href="/2024/08/07/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <url>/2024/08/07/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    
+    <content type="html"><![CDATA[<p>记录Mmdn Web docs学习笔记~</p><span id="more"></span> <h1 id="互联网是如何工作的"><a href="#互联网是如何工作的" class="headerlink" title="互联网是如何工作的"></a>互联网是如何工作的</h1><p>互联网是一种将所有计算机连接在一起的方式，并确保无论发生什么，它们都能找到保持连接的方法。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>my technology stack</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JavaScript学习指南</title>
     <link href="/2024/08/02/JavaScript%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
     <url>/2024/08/02/JavaScript%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
