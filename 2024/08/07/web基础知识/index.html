@@ -24,8 +24,9 @@
 <meta property="og:description" content="记录Mmdn Web docs学习笔记~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://zoechen04616.github.io/images/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.png">
+<meta property="og:image" content="http://zoechen04616.github.io/images/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.png">
 <meta property="article:published_time" content="2024-08-07T07:06:01.000Z">
-<meta property="article:modified_time" content="2024-08-07T13:39:37.503Z">
+<meta property="article:modified_time" content="2024-08-09T12:15:01.795Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -282,7 +283,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          9.2k 字
         
       </span>
     
@@ -293,7 +294,7 @@
         
         
         
-          51 分钟
+          77 分钟
         
       </span>
     
@@ -343,7 +344,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年8月7日 晚上
+                    本文最后更新于：2024年8月9日 晚上
                   
                 
               </p>
@@ -445,6 +446,62 @@
 <li>某些浏览器仅显示 URL 中“&#x2F;&#x2F;”之后的部分，即域名。</li>
 </ul>
 <p>URL 还可用于文件传输 （FTP）、电子邮件 （SMTP） 和其他应用程序。</p>
+<h3 id="URL的组成"><a href="#URL的组成" class="headerlink" title="URL的组成"></a>URL的组成</h3><p>以下是一些URL示例：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>developer.mozilla.org<br>https:<span class="hljs-regexp">//</span>developer.mozilla.org<span class="hljs-regexp">/en-US/</span>docs<span class="hljs-regexp">/Learn/</span><br>https:<span class="hljs-regexp">//</span>developer.mozilla.org<span class="hljs-regexp">/en-US/</span>search?q=URL<br></code></pre></td></tr></table></figure>
+<p><img src="/images/web%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.png" srcset="/img/loading.gif" lazyload alt="URL组成"></p>
+<p>可以将 URL 视为常规的邮政地址：</p>
+<ul>
+<li>Scheme 代表您要使用的邮政服务，Domain Name(域名)是城市或城镇，Port类似于邮政编码;</li>
+<li>路径代表应将邮件投递的建筑物;这些参数代表额外的信息，例如建筑物中公寓的编号;</li>
+<li>最后，锚点代表向其发送邮件的实际人。</li>
+</ul>
+<h4 id="Scheme"><a href="#Scheme" class="headerlink" title="Scheme"></a>Scheme</h4><p>URL的第一部分是Scheme，它表示浏览器必须用于请求资源的协议。</p>
+<ul>
+<li>协议是在计算机网络中交换或传输数据的固定方法。</li>
+<li>通常对于网站，协议是<code>HTTPS</code>或<code>HTTP</code>（其不安全版本）。<ul>
+<li>寻址网页需要这两者之一，但浏览器也知道如何处理其他方案，例如（打开邮件客户端），因此，如果您看到其他协议，请不要感到惊讶。<code>mailto:</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Authority"><a href="#Authority" class="headerlink" title="Authority"></a>Authority</h4><p>Authority通过<code>://</code>与Scheme分开,包括域 （e.） 和端口 （），用冒号分隔：:&#x2F;&#x2F;<a target="_blank" rel="noopener" href="http://www.example.com80/">www.example.com80</a></p>
+<ul>
+<li>Domain Name:<br>指正在请求的 Web 服务器。通常这是一个域名，但也可以使用 IP 地址（但这很少见，因为它不太方便）。</li>
+<li>Port：<br>端口表示用于访问 Web 服务器上的资源的技术“门”。如果 Web 服务器使用 HTTP 协议的标准端口（HTTP 为 80，HTTPS 为 443）来授予对其资源的访问权限，则通常会省略它。<ul>
+<li>不使用的Authority 的URL 示例是邮件客户端 。它包含一个Scheme，但不使用Authority。因此，冒号后面没有两个斜杠，仅充当方案和邮件地址之间的分隔符。mailto:foobar</li>
+</ul>
+</li>
+</ul>
+<h4 id="Path-to-resouorce"><a href="#Path-to-resouorce" class="headerlink" title="Path to resouorce"></a>Path to resouorce</h4><p><code>/path/to/myfile.html</code>是 Web 服务器上资源的路径。在 Web 的早期，像这样的路径表示 Web 服务器上的物理文件位置。如今，它主要是由 Web 服务器处理的抽象，没有任何物理现实。</p>
+<h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><p><code>?key1=value1&amp;key2=value2</code>是提供给 Web 服务器的额外参数。这些参数是用符号分隔的键&#x2F;值对列表。在返回资源之前，Web 服务器可以使用这些参数来执行额外的操作。每个 Web 服务器都有自己的参数规则。</p>
+<h4 id="Anchor"><a href="#Anchor" class="headerlink" title="Anchor"></a>Anchor</h4><p><code>#SomewhereInTheDocument</code>是资源本身的另一部分的锚点。</p>
+<p>锚点代表资源内部的一种“书签”，为浏览器提供指示，以显示位于该“书签”位置的内容。</p>
+<ul>
+<li>例如，在 HTML 文档上，浏览器将滚动到定义锚点的位置;在视频或音频文档上，浏览器将尝试转到锚点所代表的时间。</li>
+<li><code>#</code> 后面的部分，也称为<code>片段标识符</code>，永远不会随请求一起发送到服务器。</li>
+</ul>
+<h3 id="使用URL"><a href="#使用URL" class="headerlink" title="使用URL"></a>使用URL</h3><p>HTML 语言大量使用 URL：</p>
+<ul>
+<li>使用<code>&lt;a&gt;</code>元素创建指向其他文档的链接;</li>
+<li>通过各种元素（如<code> &lt;link&gt;</code> 或 <code>&lt;script&gt;</code> 将文档与其相关资源链接起来。</li>
+<li>显示媒体，如图像（带有 <code>&lt;img&gt; </code>元素）、视频（带有<code> &lt;video&gt;</code> 元素）、声音和音乐（带有 <code>&lt;audio&gt;</code> 元素）等;</li>
+<li>显示带有<code>&lt;iframe&gt;</code> 元素的其他 HTML 文档。</li>
+</ul>
+<p>注意：在指定 URL 以将资源作为页面的一部分加载时，通常应仅使用 HTTP 和 HTTPS URL。</p>
+<h3 id="绝对URL与相对URL"><a href="#绝对URL与相对URL" class="headerlink" title="绝对URL与相对URL"></a>绝对URL与相对URL</h3><p>URL 标准定义了两者 — 尽管它使用术语<code>绝对 URL 字符串</code>和<code>相对 URL 字符串</code>，以将它们与 URL 对象（它们是 URL 的内存表示形式）区分开来。</p>
+<p>URL 的必需部分在很大程度上取决于使用 URL 的上下文。</p>
+<ul>
+<li><p>在浏览器的地址栏中，URL 没有任何上下文，因此您必须提供一个完整（或绝对）的 URL，就像我们上面看到的一样。您不需要包含协议（浏览器默认使用 HTTP）或端口（仅当目标 Web 服务器使用某些不寻常的端口时才需要），但 URL 的所有其他部分都是必需的。</p>
+</li>
+<li><p>当在文档中使用 URL 时，例如在 HTML 页面中，情况会有所不同。由于浏览器已经拥有文档自己的 URL，因此它可以使用此信息来填充该文档中任何可用 URL 的缺失部分。我们可以通过仅查看 URL 的路径部分来区分绝对 URL 和相对 URL。如果 URL 的路径部分以 <code>/</code> 字符开头，则浏览器将从服务器的顶部根目录获取该资源，而不引用当前文档给出的上下文。</p>
+</li>
+</ul>
+<p>例如：<code>https://developer.mozilla.org/en-US/docs/Learn</code>本身是一个绝对的 URL。它具有找到它指向的资源所需的所有必要部分。</p>
+<ul>
+<li>相对于Scheme的 URL<br> 仅缺少协议。浏览器将使用与用于加载托管该 URL 的文档相同的协议。<code>//developer.mozilla.org/en-US/docs/Learn</code></li>
+<li>Domain Name相对URL：<br>协议和域名都丢失。浏览器将使用与用于加载托管该 URL 的文档相同的协议和相同的域名。<code>/en-US/docs/Learn</code></li>
+<li>子资源：<br>协议和域名缺失，浏览器将尝试在包含当前资源的子目录中查找文档。在这种情况下访问此 URL：<br><code>.Common_questions/Web_mechanics/What_is_a_URL</code></li>
+<li>仅Auchor：<br>除锚外的所有部件都丢失。浏览器将使用当前文档的 URL 并替换或添加锚点部分。当您想要链接到当前文档的特定部分时，这很有用。<code>#semantic_urls</code></li>
+</ul>
 <h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>由于人类可读，URL 已经让事情变得更容易，但是每当您想要访问文档时，都很难输入长 URL。这就是<code>超链接</code>彻底改变一切的地方。链接可以将任何文本字符串与 URL 关联起来，这样用户就可以通过激活链接立即访问目标文档。</p>
 <h4 id="超链接的类型"><a href="#超链接的类型" class="headerlink" title="超链接的类型"></a>超链接的类型</h4><ul>
 <li><p>内部链接<br>两个网页之间的链接，如果两个网页属于同一个网站，则称为内部链接。</p>
@@ -571,7 +628,39 @@
 </ul>
 </li>
 </ul>
-
+<h1 id="Web入门"><a href="#Web入门" class="headerlink" title="Web入门"></a>Web入门</h1><h2 id="处理文件"><a href="#处理文件" class="headerlink" title="处理文件"></a>处理文件</h2><h3 id="网站应该使用什么结构"><a href="#网站应该使用什么结构" class="headerlink" title="网站应该使用什么结构"></a>网站应该使用什么结构</h3><p>在我们创建的任何网站项目中，最常见的是一个主页 HTML 文件和包含图像、样式文件和脚本文件的文件夹。</p>
+<ul>
+<li><code>index.html</code>：这个文件一般会包含主页内容，也就是人们第一次进入网站时看到的文字和图片。<ul>
+<li>使用文本编辑器，创建一个名为index.html的新文件，并将其保存在test-site文件夹内。</li>
+</ul>
+</li>
+<li><code>images</code>文件夹：这个文件夹包含网站上使用的所有图片。<ul>
+<li>在 test-site 文件夹内创建一个名为 images 的文件夹。</li>
+</ul>
+</li>
+<li><code>styles</code> 文件夹：这个文件夹包含用于设置内容样式的 CSS 代码（例如，设置文本和背景颜色）。<ul>
+<li>在你的 test-site 文件夹内创建一个名为 styles 的文件夹。</li>
+</ul>
+</li>
+<li><code>scripts</code> 文件夹：这个文件夹包含所有用于向网站添加交互功能的 JavaScript 代码（例如，点击时加载数据的按钮）。<ul>
+<li>在 test-site 文件夹内创建一个名为 scripts 的文件夹。</li>
+</ul>
+</li>
+</ul>
+<p>备注：在 Windows 上你可能看不到文件扩展名，因为 Windows 有一个默认开启的隐藏已知文件类型的扩展名的选项。一般来说，你可以通过 Windows 资源管理器，选择文件夹选项选项，取消勾选隐藏已知文件类型的扩展名复选框，然后点击确认将其关闭。</p>
+<h3 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h3><p>为使文件间正常交互，应为每个文件提供访问路径，所以一个文件知道另一个文件的位置。</p>
+<p>文件路径的一些通用规则：</p>
+<ul>
+<li>若引用的目标文件与 HTML 文件同级，只需直接使用文件名，例如：my-image.jpg。</li>
+<li>要引用子目录中的文件，请在路径前面写上目录名，再加上一个正斜杠。例如：subdirectory&#x2F;my-image.jpg。</li>
+<li>若引用的目标文件位于 HTML 文件的上级，需要加上两个点。<ul>
+<li>举个例子，如果 index.html 在 test-site 的一个子文件夹内，而 my-image.jpg 在 test-site 内，你可以使用..&#x2F;my-image.jpg 从 index.html 引用 my-image.jpg。</li>
+</ul>
+</li>
+<li>以上方法可以随意组合，比如：..&#x2F;subdirectory&#x2F;another-subdirectory&#x2F;my-image.jpg。</li>
+</ul>
+<p>Windows 的文件系统使用反斜杠而不是正斜杠，例如：C:\Windows。这在 HTML 中并不重要——即使你在 Windows 系统上进行开发，你也应该在代码中使用正斜杠。</p>
+<h3 id="HTML基础"><a href="#HTML基础" class="headerlink" title="HTML基础"></a>HTML基础</h3><h3 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h3>
                 
               </div>
             
