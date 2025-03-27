@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/1.png">
 <meta property="article:published_time" content="2025-03-23T03:42:07.000Z">
-<meta property="article:modified_time" content="2025-03-26T07:53:10.538Z">
+<meta property="article:modified_time" content="2025-03-27T05:01:10.439Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="电气工程及其自动化专业">
 <meta name="twitter:card" content="summary_large_image">
@@ -299,7 +299,7 @@
         
         
         
-          119 分钟
+          121 分钟
         
       </span>
     
@@ -349,7 +349,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年3月26日 下午
+                    本文最后更新于：2025年3月27日 下午
                   
                 
               </p>
@@ -360,9 +360,12 @@
                 <p>在电力系统潮流计算中，我们需要求解非线性功率平衡方程。牛顿-拉夫森法的基本思想就是将这些非线性方程在当前点做泰勒展开，忽略高阶项，从而用雅各比矩阵来描述局部线性关系，迭代求解更新量。</p>
 <span id="more"></span> 
 <style>
-table
+.center 
 {
-    margin: auto;
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 
@@ -422,12 +425,48 @@ table
 <p>$$<br>    Q_i &#x3D; \sum_{j&#x3D;1}^n V_i V_j \left( G_{ij}\sin\theta_{ij} - B_{ij}\cos\theta_{ij} \right)<br>$$<br>其中 $\theta_{ij} &#x3D; \theta_i - \theta_j$，$Y_{ij}&#x3D;G_{ij}+jB_{ij}$ 为导纳矩阵元素。</p>
 <h2 id="Matlab代码"><a href="#Matlab代码" class="headerlink" title="Matlab代码"></a>Matlab代码</h2><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">function</span> <span class="hljs-literal">[P, Q]</span> = calculate<span class="hljs-constructor">_power(V, <span class="hljs-params">theta</span>, G, B, Node, <span class="hljs-params">n</span>)</span><br>    P = zeros(n,<span class="hljs-number">1</span>);<br>    Q = zeros(n,<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span>:n<br>        % 节点并联导纳<br>        G_shunt = <span class="hljs-constructor">Node(<span class="hljs-params">i</span>,14)</span>;     % 并联电导<br>        B_shunt = <span class="hljs-constructor">Node(<span class="hljs-params">i</span>,15)</span>;     % 并联电纳<br>        <br>        <span class="hljs-keyword">for</span> j = <span class="hljs-number">1</span>:n<br>            theta_ij = theta(i) - theta(j);<br>            <span class="hljs-constructor">P(<span class="hljs-params">i</span>)</span> = <span class="hljs-constructor">P(<span class="hljs-params">i</span>)</span> + <span class="hljs-constructor">V(<span class="hljs-params">i</span>)</span>*<span class="hljs-constructor">V(<span class="hljs-params">j</span>)</span>*(<span class="hljs-constructor">G(<span class="hljs-params">i</span>,<span class="hljs-params">j</span>)</span>*cos(theta_ij) + <span class="hljs-constructor">B(<span class="hljs-params">i</span>,<span class="hljs-params">j</span>)</span>*sin(theta_ij));<br>            <span class="hljs-constructor">Q(<span class="hljs-params">i</span>)</span> = <span class="hljs-constructor">Q(<span class="hljs-params">i</span>)</span> + <span class="hljs-constructor">V(<span class="hljs-params">i</span>)</span>*<span class="hljs-constructor">V(<span class="hljs-params">j</span>)</span>*(<span class="hljs-constructor">G(<span class="hljs-params">i</span>,<span class="hljs-params">j</span>)</span>*sin(theta_ij) - <span class="hljs-constructor">B(<span class="hljs-params">i</span>,<span class="hljs-params">j</span>)</span>*cos(theta_ij));<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <h1 id="3-构建雅可比矩阵"><a href="#3-构建雅可比矩阵" class="headerlink" title="3.构建雅可比矩阵"></a>3.构建雅可比矩阵</h1><p>在电力系统潮流计算中，我们需要求解非线性功率平衡方程。牛顿-拉夫森法的基本思想就是将这些非线性方程在当前点做泰勒展开，忽略高阶项，从而用雅各比矩阵来描述局部线性关系，迭代求解更新量。</p>
-<p>对于电力系统，设功率平衡方程为：<br>$$<br>F(\theta, V)&#x3D;<br>\begin{bmatrix}<br>\Delta P \<br>\Delta Q<br>\end{bmatrix}&#x3D;0<br>$$</p>
-<ul>
-<li>其中， $\Delta P$ 和 $\Delta Q$ 分别为有功和无功功率的偏差。</li>
-</ul>
-<p>牛顿-拉夫森迭代公式写作：<br>$$<br>J \cdot<br>\begin{bmatrix}<br>\Delta \theta \<br>\Delta V<br>\end{bmatrix}<br>&#x3D; -<br>\begin{bmatrix}<br>\Delta P \<br>\Delta Q<br>\end{bmatrix}<br>$$</p>
-<p>这里的雅可比矩阵 $J$，由四个子矩阵构成。<br>$$<br>J &#x3D; \begin{bmatrix}<br>\frac{\partial \Delta P}{\partial \theta} &amp; \frac{\partial \Delta P}{\partial V} \<br>\frac{\partial \Delta Q}{\partial \theta} &amp; \frac{\partial \Delta Q}{\partial V}<br>\end{bmatrix}<br>&#x3D;\begin{bmatrix}<br>H &amp; N \<br>J &amp; L<br>\end{bmatrix}<br>$$</p>
+<p>对于电力系统，设功率平衡方程为：</p>
+<div>
+$$
+F(\theta, V)=
+\begin{bmatrix}
+\Delta P \\
+\Delta Q \\
+\end{bmatrix}=0
+$$
+<div>
+* 其中， $\Delta P$ 和 $\Delta Q$ 分别为有功和无功功率的偏差。
+
+<p>牛顿-拉夫森迭代公式写作：</p>
+<div>
+$$
+J \cdot 
+\begin{bmatrix}
+\Delta \theta \\
+\Delta V 
+\end{bmatrix}
+= - 
+\begin{bmatrix}
+\Delta P \\
+\Delta Q \\
+\end{bmatrix}
+$$
+<div>
+
+<p>这里的雅可比矩阵 $J$，由四个子矩阵构成。</p>
+<div>
+$$
+J = \begin{bmatrix}
+\frac{\partial \Delta P}{\partial \theta} & \frac{\partial \Delta P}{\partial V} \\
+\frac{\partial \Delta Q}{\partial \theta} & \frac{\partial \Delta Q}{\partial V} \\
+\end{bmatrix}
+=\begin{bmatrix}
+H & N \\
+J & L \\
+\end{bmatrix}
+$$
+<div>
+
 <p>每个部分反映了功率平衡方程中各变量间的敏感度，帮助确定如何调整节点电压和相角，使得功率偏差趋于零。</p>
 <h3 id="雅各比矩阵的构建"><a href="#雅各比矩阵的构建" class="headerlink" title="雅各比矩阵的构建"></a>雅各比矩阵的构建</h3><ul>
 <li>H矩阵 : $\Delta P$ 对 $\theta$ 的偏导数<br>$$<br>H_{ii} &#x3D; -\left( Q_i + B_{ii}  V_i^2 \right)<br>$$</li>
@@ -518,82 +557,90 @@ table
 <li><strong>Slack 节点</strong>：节点 11</li>
 </ul>
 <h4 id="1-PV-节点"><a href="#1-PV-节点" class="headerlink" title="1. PV 节点"></a>1. PV 节点</h4><p>根据数据：</p>
+<div class="center">
+
 <table>
 <thead>
 <tr>
-<th>节点</th>
-<th>$P_{\text{gen}}$ (MW)</th>
-<th>$P_{\text{load}}$ (MW)</th>
+<th align="center">节点</th>
+<th align="center">$P_{\text{gen}}$ (MW)</th>
+<th align="center">$P_{\text{load}}$ (MW)</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>1</td>
-<td>160</td>
-<td>0</td>
+<td align="center">1</td>
+<td align="center">160</td>
+<td align="center">0</td>
 </tr>
 <tr>
-<td>2</td>
-<td>160</td>
-<td>0</td>
+<td align="center">2</td>
+<td align="center">160</td>
+<td align="center">0</td>
 </tr>
 <tr>
-<td>3</td>
-<td>100</td>
-<td>0</td>
+<td align="center">3</td>
+<td align="center">100</td>
+<td align="center">0</td>
 </tr>
 </tbody></table>
+</div>
+
 <p>因此，</p>
 <p>$$<br>P_{\text{spec},1} &#x3D; 160,\quad P_{\text{spec},2} &#x3D; 160,\quad P_{\text{spec},3} &#x3D; 100.<br>$$</p>
 <p>PV 节点总和为</p>
 <p>$$<br>\sum_{i\in \text{PV}} P_{\text{spec},i} &#x3D; 160 + 160 + 100 &#x3D; 420 , \text{MW}.<br>$$</p>
 <p>同理，<br>$$<br>\sum_{i\in \text{PV}} Q_{\text{spec},i} &#x3D; 30 + 50 + 50 &#x3D; 130 , \text{MW}.<br>$$</p>
 <h4 id="2-PQ-节点"><a href="#2-PQ-节点" class="headerlink" title="2. PQ 节点"></a>2. PQ 节点</h4><p>对于 PQ 节点（无发电机出力），根据数据：</p>
+<div class="center">
+
 <table>
 <thead>
 <tr>
-<th>节点</th>
-<th>$P_{\text{gen}}$ (MW)</th>
-<th>$P_{\text{load}}$ (MW)</th>
+<th align="center">节点</th>
+<th align="center">$P_{\text{gen}}$ (MW)</th>
+<th align="center">$P_{\text{load}}$ (MW)</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>4</td>
-<td>0</td>
-<td>0</td>
+<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr>
-<td>5</td>
-<td>0</td>
-<td>200</td>
+<td align="center">5</td>
+<td align="center">0</td>
+<td align="center">200</td>
 </tr>
 <tr>
-<td>6</td>
-<td>0</td>
-<td>230</td>
+<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">230</td>
 </tr>
 <tr>
-<td>7</td>
-<td>0</td>
-<td>0</td>
+<td align="center">7</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr>
-<td>8</td>
-<td>0</td>
-<td>200</td>
+<td align="center">8</td>
+<td align="center">0</td>
+<td align="center">200</td>
 </tr>
 <tr>
-<td>9</td>
-<td>0</td>
-<td>0</td>
+<td align="center">9</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr>
-<td>10</td>
-<td>0</td>
-<td>0</td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 </tbody></table>
+</div>
+
 <p>所以，</p>
-<p>$$<br>P_{\text{spec},4} &#x3D; 0,\quad P_{\text{spec},5} &#x3D; -200,\quad P_{\text{spec},6} &#x3D; -230,\<br>P_{\text{spec},7} &#x3D; 0,\quad P_{\text{spec},8} &#x3D; -200,\quad P_{\text{spec},9} &#x3D; 0,\quad P_{\text{spec},10} &#x3D; 0.<br>$$</p>
+<p>$$<br>P_{\text{spec},4} &#x3D; 0,\quad P_{\text{spec},5} &#x3D; -200,\<br> P_{\text{spec},6} &#x3D; -230,\quad P_{\text{spec},7} &#x3D; 0,\quad\<br> P_{\text{spec},8} &#x3D; -200,\quad P_{\text{spec},9} &#x3D; 0,\<br>  P_{\text{spec},10} &#x3D; 0.<br>$$</p>
 <p>PQ 节点总和为</p>
 <p>$$<br>\sum_{i\in \text{PQ}} P_{\text{spec},i} &#x3D; -200 -230 -200 &#x3D; -630 , \text{MW}.<br>$$<br>同理，<br>$$<br>\sum_{i\in \text{PQ}} Q_{\text{spec},i} &#x3D; -80 -77 -77 &#x3D; -227 , \text{MW}.<br>$$</p>
 <h4 id="3-非平衡节点总和及-Slack-节点补偿"><a href="#3-非平衡节点总和及-Slack-节点补偿" class="headerlink" title="3. 非平衡节点总和及 Slack 节点补偿"></a>3. 非平衡节点总和及 Slack 节点补偿</h4><p>将 PV 和 PQ 节点的总和相加，</p>
@@ -606,7 +653,11 @@ table
 <p>$$<br>Q_{\text{slack}} \approx -\left(Q_{\text{total, non-slack}}\right) \approx -97 , \text{MW}.<br>$$<br>计算得到的Slack 节点显示：</p>
 <p> $$ P &#x3D; 228.01 MW $$<br> $$ P &#x3D; 109.76 MW $$ </p>
 <p> 这可能由于线路损耗或数值误差导致略有差异，但整体上符合系统平衡的要求。</p>
-
+<h1 id="markdown-表格居中"><a href="#markdown-表格居中" class="headerlink" title="markdown 表格居中"></a>markdown 表格居中</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianmuzi/p/16795528.html">参考博客</a></p>
+<p>现在.md文件的开头插入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.center</span> </span><br><span class="language-css">&#123;</span><br><span class="language-css">  <span class="hljs-attribute">width</span>: auto;</span><br><span class="language-css">  <span class="hljs-attribute">display</span>: table;</span><br><span class="language-css">  <span class="hljs-attribute">margin-left</span>: auto;</span><br><span class="language-css">  <span class="hljs-attribute">margin-right</span>: auto;</span><br><span class="language-css">&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>然后在需要居中的表格：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs axapta">&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;<br><span class="hljs-comment">/*Table*/</span><br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure></div></div></div></div></div></div>
                 
               </div>
             
