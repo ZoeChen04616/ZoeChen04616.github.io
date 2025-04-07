@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://zoechen04616.github.io/images/%E5%9F%BA%E4%BA%8E%E5%98%89%E7%AB%8B%E5%88%9BEDA%E7%9A%84%E7%94%B5%E8%B7%AF%E5%9B%BE%E8%AE%BE%E8%AE%A1/1.png">
 <meta property="og:image" content="http://zoechen04616.github.io/images/3-0HUB%E5%9B%9B%E5%B1%82%E6%9D%BF%E8%AE%BE%E8%AE%A1/111.png">
 <meta property="article:published_time" content="2025-04-05T05:21:13.000Z">
-<meta property="article:modified_time" content="2025-04-05T18:32:55.606Z">
+<meta property="article:modified_time" content="2025-04-07T07:32:52.443Z">
 <meta property="article:author" content="Yunru Chen">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://zoechen04616.github.io/images/%E5%9F%BA%E4%BA%8E%E5%98%89%E7%AB%8B%E5%88%9BEDA%E7%9A%84%E7%94%B5%E8%B7%AF%E5%9B%BE%E8%AE%BE%E8%AE%A1/2.png">
@@ -288,7 +288,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          2.4k 字
         
       </span>
     
@@ -299,7 +299,7 @@
         
         
         
-          19 分钟
+          21 分钟
         
       </span>
     
@@ -349,7 +349,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年4月6日 凌晨
+                    本文最后更新于：2025年4月7日 下午
                   
                 
               </p>
@@ -433,7 +433,11 @@
 <h3 id="在飞线时，可以选择视图-隐藏-隐藏所选，先屏蔽GND线，后面大面积铺铜之后再显示全部。"><a href="#在飞线时，可以选择视图-隐藏-隐藏所选，先屏蔽GND线，后面大面积铺铜之后再显示全部。" class="headerlink" title="在飞线时，可以选择视图-隐藏-隐藏所选，先屏蔽GND线，后面大面积铺铜之后再显示全部。"></a>在飞线时，可以选择<code>视图-隐藏-隐藏所选</code>，先屏蔽GND线，后面大面积铺铜之后再显示全部。</h3><ul>
 <li>同理，其他类型的线也可以先隐藏一部分暂时不连的，这样界面看着不会特别乱。</li>
 </ul>
-<h2 id="规则设计"><a href="#规则设计" class="headerlink" title="规则设计"></a>规则设计</h2><h3 id="图层管理器——设置四层板"><a href="#图层管理器——设置四层板" class="headerlink" title="图层管理器——设置四层板"></a>图层管理器——设置四层板</h3><p><img src="/images/3-0HUB%E5%9B%9B%E5%B1%82%E6%9D%BF%E8%AE%BE%E8%AE%A1/111.png" srcset="/img/loading.gif" lazyload alt="板子层数的设置"></p>
+<h2 id="规则设计"><a href="#规则设计" class="headerlink" title="规则设计"></a>规则设计</h2><p>在规则管理器下，可以在每一种类型的规则下新增、修改、删除规则，对没有特殊设置规则的网络，会使用默认的规则。</p>
+<p><a target="_blank" rel="noopener" href="https://prodocs.lceda.cn/cn/pcb/design-design-rule/">参考官方文档</a></p>
+<p>目前有四大类规则，每个具体规则下创建有一个或多个规则。</p>
+<h3 id="图层管理器——设置四层板"><a href="#图层管理器——设置四层板" class="headerlink" title="图层管理器——设置四层板"></a>图层管理器——设置四层板</h3><p><a target="_blank" rel="noopener" href="https://prodocs.lceda.cn/cn/pcb/tools-layer-manager/index.html">官方文档</a></p>
+<p><img src="/images/3-0HUB%E5%9B%9B%E5%B1%82%E6%9D%BF%E8%AE%BE%E8%AE%A1/111.png" srcset="/img/loading.gif" lazyload alt="板子层数的设置"></p>
 <p>点击<code>工具-图层管理器-铜箔层</code>改为4</p>
 <ul>
 <li>一般将两个内层都设置为内电层，一个用于GND层，一个用于电源层。点击应用，确认保存。</li>
@@ -460,7 +464,17 @@
 <li>过孔的尺寸设计：<br><code>设计规则-过孔尺寸</code>：根据题目要求的尺寸设置</li>
 <li><code>设计规则-导线</code>：根据题目要求的尺寸设置<br>  飞线时，信号线，电源线（3V3和5V）分开连，不同的电源线和信号线的线宽不同。</li>
 </ul>
-<h2 id="飞线"><a href="#飞线" class="headerlink" title="飞线"></a>飞线</h2><h3 id="切换图层"><a href="#切换图层" class="headerlink" title="切换图层"></a>切换图层</h3><ul>
+<h2 id="飞线"><a href="#飞线" class="headerlink" title="飞线"></a>飞线</h2><p>一些可参考的博客：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38012497/article/details/127769628">布线技巧1</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/2302_80627723/article/details/143861899">布线技巧2</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/h050210/article/details/146022420">嘉立创EDA常用快捷键汇总</a></li>
+</ul>
+<h3 id="线宽"><a href="#线宽" class="headerlink" title="线宽"></a>线宽</h3><ul>
+<li>如果你想布一段线段后，下一段线增大线宽，可以按 “<code>SHIFT+W</code>” 快速切换导线宽度。</li>
+<li><code>右键导线</code>可以选择导线连接和整个网络的导线，方便同时修改导线属性，比如批量修改线宽。</li>
+</ul>
+<h3 id="切换图层"><a href="#切换图层" class="headerlink" title="切换图层"></a>切换图层</h3><ul>
 <li>切换到底层：按下<code>Alt + B</code></li>
 <li>切换到顶层：按下<code>Alt + T</code></li>
 </ul>
@@ -473,8 +487,13 @@
 </li>
 <li>布线-等长调节</li>
 </ul>
-<h2 id="铺铜"><a href="#铺铜" class="headerlink" title="铺铜"></a>铺铜</h2><p>内电层到焊盘的间距错误——重建内电层<br>记得重新铺铜！！ SHift+B 全部重新铺铜。</p>
-
+<h2 id="铺铜"><a href="#铺铜" class="headerlink" title="铺铜"></a>铺铜</h2><p>内电层到焊盘的间距错误——重建内电层<br>记得重新铺铜！！</p>
+<ul>
+<li><code>Shift+B</code> 全部区域重新铺铜。</li>
+<li><code>Shift+M</code> 隐藏所有铺铜区</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://prodocs.lceda.cn/cn/pcb/place-copper-region/index.html">官方文档</a></p>
+<h1 id="板子绘制完成后记得DRC检查"><a href="#板子绘制完成后记得DRC检查" class="headerlink" title="板子绘制完成后记得DRC检查"></a>板子绘制完成后记得DRC检查</h1>
                 
               </div>
             
