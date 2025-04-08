@@ -24,7 +24,7 @@
 <meta property="og:description" content="参考知名教程《动手学深度学习》,系统学一下~">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-14T15:27:15.000Z">
-<meta property="article:modified_time" content="2025-03-20T17:02:53.333Z">
+<meta property="article:modified_time" content="2025-04-07T11:24:14.290Z">
 <meta property="article:author" content="Yunru Chen">
 <meta property="article:tag" content="my technology stack">
 <meta name="twitter:card" content="summary_large_image">
@@ -284,7 +284,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12k 字
+          15k 字
         
       </span>
     
@@ -295,7 +295,7 @@
         
         
         
-          96 分钟
+          122 分钟
         
       </span>
     
@@ -345,7 +345,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年3月21日 凌晨
+                    本文最后更新于：2025年4月7日 晚上
                   
                 
               </p>
@@ -355,6 +355,324 @@
                 
                 <p>参考知名教程《动手学深度学习》,系统学一下~</p>
 <span id="more"></span> 
+<h1 id="机器学习任务：回归-vs-分类"><a href="#机器学习任务：回归-vs-分类" class="headerlink" title="机器学习任务：回归 vs 分类"></a>机器学习任务：回归 vs 分类</h1><h2 id="1-回归（Regression）"><a href="#1-回归（Regression）" class="headerlink" title="1. 回归（Regression）"></a>1. 回归（Regression）</h2><h3 id="核心目标"><a href="#核心目标" class="headerlink" title="核心目标"></a>核心目标</h3><ul>
+<li>预测<strong>连续型数值</strong>（如价格、温度等）。</li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>输出为实数范围内的任意数值（整数或浮点数）。</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>房价预测</li>
+<li>股票价格趋势分析</li>
+<li>用户停留时长估计</li>
+</ul>
+<h3 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h3><ul>
+<li>线性回归（Linear Regression）</li>
+<li>决策树回归（Decision Tree Regression）</li>
+<li>支持向量回归（SVR）</li>
+<li>神经网络</li>
+</ul>
+<h3 id="评估指标"><a href="#评估指标" class="headerlink" title="评估指标"></a>评估指标</h3><ul>
+<li>均方误差（MSE）</li>
+<li>平均绝对误差（MAE）</li>
+<li>R²分数（R-squared）</li>
+</ul>
+<hr>
+<h2 id="2-分类（Classification）"><a href="#2-分类（Classification）" class="headerlink" title="2. 分类（Classification）"></a>2. 分类（Classification）</h2><h3 id="核心目标-1"><a href="#核心目标-1" class="headerlink" title="核心目标"></a>核心目标</h3><ul>
+<li>预测<strong>离散型类别标签</strong>（如类别、状态等）。</li>
+</ul>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>输出为有限数量的预定义类别（如“是&#x2F;否”“猫&#x2F;狗”）。</li>
+</ul>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>垃圾邮件检测（垃圾&#x2F;正常）</li>
+<li>图像识别（如MNIST手写数字分类）</li>
+<li>疾病诊断（阳性&#x2F;阴性）</li>
+</ul>
+<h3 id="分类类型"><a href="#分类类型" class="headerlink" title="分类类型"></a>分类类型</h3><ul>
+<li><strong>二分类</strong>：仅两个类别（例：通过&#x2F;未通过）。</li>
+<li><strong>多分类</strong>：多个互斥类别（例：动物分类为猫&#x2F;狗&#x2F;鸟）。</li>
+</ul>
+<h3 id="常用算法-1"><a href="#常用算法-1" class="headerlink" title="常用算法"></a>常用算法</h3><ul>
+<li>逻辑回归（Logistic Regression）</li>
+<li>支持向量机（SVM）</li>
+<li>随机森林（Random Forest）</li>
+<li>卷积神经网络（CNN）</li>
+</ul>
+<h3 id="评估指标-1"><a href="#评估指标-1" class="headerlink" title="评估指标"></a>评估指标</h3><ul>
+<li>准确率（Accuracy）</li>
+<li>精确率（Precision）与召回率（Recall）</li>
+<li>F1分数、ROC-AUC曲线</li>
+</ul>
+<hr>
+<h2 id="关键区别对比表"><a href="#关键区别对比表" class="headerlink" title="关键区别对比表"></a>关键区别对比表</h2><table>
+<thead>
+<tr>
+<th>特征</th>
+<th>回归</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>输出类型</strong></td>
+<td>连续数值（如100.5元）</td>
+<td>离散类别（如“猫”“狗”）</td>
+</tr>
+<tr>
+<td><strong>预测目标</strong></td>
+<td>数值大小</td>
+<td>类别归属</td>
+</tr>
+<tr>
+<td><strong>损失函数</strong></td>
+<td>MSE、MAE</td>
+<td>交叉熵（Cross-Entropy）</td>
+</tr>
+<tr>
+<td><strong>示例输出</strong></td>
+<td>房价&#x3D;650万</td>
+<td>邮件类型&#x3D;“垃圾”</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><strong>逻辑回归</strong>是分类算法，尽管名称含“回归”。</li>
+<li>数值标签的离散化（如成绩等级A&#x2F;B&#x2F;C）仍属分类任务。</li>
+<li>部分算法（如神经网络）可同时处理回归和分类任务，需调整输出层设计。</li>
+</ol>
+<h1 id="神经网络是机器学习中的一类模型吗？"><a href="#神经网络是机器学习中的一类模型吗？" class="headerlink" title="神经网络是机器学习中的一类模型吗？"></a>神经网络是机器学习中的一类模型吗？</h1><p><strong>神经网络（Neural Networks）是机器学习领域中的一类重要模型</strong>，属于<strong>监督学习、无监督学习或强化学习</strong>的范畴。</p>
+<p>以下是其关键定位和特点：</p>
+<hr>
+<h2 id="1-神经网络的定位"><a href="#1-神经网络的定位" class="headerlink" title="1. 神经网络的定位"></a>1. 神经网络的定位</h2><ul>
+<li><p><strong>机器学习的分支</strong>：神经网络是机器学习的核心模型类型之一，与以下模型并列：</p>
+<ul>
+<li>传统统计模型（如线性回归）</li>
+<li>树模型（如决策树、随机森林）</li>
+<li>核方法（如SVM）</li>
+<li>聚类算法（如K-Means）</li>
+</ul>
+</li>
+<li><p><strong>深度学习的核心</strong>：<br>当神经网络具有<strong>多层隐藏层</strong>时（通常≥3层），被称为<strong>深度学习（Deep Learning）</strong>，属于机器学习的子领域。</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-神经网络的关键特性"><a href="#2-神经网络的关键特性" class="headerlink" title="2. 神经网络的关键特性"></a>2. 神经网络的关键特性</h2><h3 id="（1）结构特点"><a href="#（1）结构特点" class="headerlink" title="（1）结构特点"></a>（1）结构特点</h3><ul>
+<li>由<strong>神经元层</strong>（输入层、隐藏层、输出层）组成。</li>
+<li>通过<strong>权重连接</strong>模拟生物神经元的信号传递。</li>
+<li>示例结构：<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">输入层 → 隐藏层1（激活函数：ReLU）→ 隐藏层2 → 输出层（Softmax）<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="（2）学习能力"><a href="#（2）学习能力" class="headerlink" title="（2）学习能力"></a>（2）学习能力</h3><ul>
+<li><strong>自动特征提取</strong>：无需人工设计特征，可从原始数据中学习高阶表征。</li>
+<li><strong>端到端学习</strong>：直接从输入映射到输出（如：图像像素→分类结果）。</li>
+<li><strong>非线性建模</strong>：通过激活函数（如Sigmoid、ReLU）处理复杂关系。</li>
+</ul>
+<h3 id="（3）应用场景"><a href="#（3）应用场景" class="headerlink" title="（3）应用场景"></a>（3）应用场景</h3><table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>典型应用</th>
+<th>网络类型示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>分类</strong></td>
+<td>图像识别、文本分类</td>
+<td>CNN、Transformer</td>
+</tr>
+<tr>
+<td><strong>回归</strong></td>
+<td>房价预测、股票价格估计</td>
+<td>全连接网络（MLP）</td>
+</tr>
+<tr>
+<td><strong>生成任务</strong></td>
+<td>图像生成、文本创作</td>
+<td>GAN、VAE、RNN&#x2F;LSTM</td>
+</tr>
+<tr>
+<td><strong>强化学习</strong></td>
+<td>游戏AI（如AlphaGo）、机器人控制</td>
+<td>DQN（深度Q网络）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-神经网络-vs-传统机器学习模型"><a href="#3-神经网络-vs-传统机器学习模型" class="headerlink" title="3. 神经网络 vs 传统机器学习模型"></a>3. 神经网络 vs 传统机器学习模型</h2><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>神经网络</th>
+<th>传统机器学习模型（如SVM、决策树）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据需求</strong></td>
+<td>需要大量数据，数据少时易过拟合</td>
+<td>小数据集表现更好</td>
+</tr>
+<tr>
+<td><strong>特征工程</strong></td>
+<td>自动学习特征，减少人工干预</td>
+<td>依赖人工特征工程</td>
+</tr>
+<tr>
+<td><strong>可解释性</strong></td>
+<td>黑箱模型，解释性差</td>
+<td>部分模型可解释性强（如决策树）</td>
+</tr>
+<tr>
+<td><strong>计算资源</strong></td>
+<td>需要GPU加速训练</td>
+<td>CPU即可运行</td>
+</tr>
+<tr>
+<td><strong>适用任务</strong></td>
+<td>图像、语音、NLP等复杂高维数据</td>
+<td>结构化数据（表格数据）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="4-神经网络的典型变体"><a href="#4-神经网络的典型变体" class="headerlink" title="4. 神经网络的典型变体"></a>4. 神经网络的典型变体</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>全连接网络（MLP）</strong></td>
+<td>基础神经网络，每层神经元全部连接</td>
+<td>简单分类&#x2F;回归任务</td>
+</tr>
+<tr>
+<td><strong>卷积网络（CNN）</strong></td>
+<td>通过卷积核提取空间特征</td>
+<td>图像处理、视频分析</td>
+</tr>
+<tr>
+<td><strong>循环网络（RNN）</strong></td>
+<td>处理序列数据，具有时间记忆能力</td>
+<td>文本生成、语音识别</td>
+</tr>
+<tr>
+<td><strong>Transformer</strong></td>
+<td>基于自注意力机制，并行处理长序列</td>
+<td>NLP（如BERT、GPT）</td>
+</tr>
+<tr>
+<td><strong>图神经网络（GNN）</strong></td>
+<td>处理图结构数据（如社交网络、分子结构）</td>
+<td>推荐系统、化学分析</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="5-关键结论"><a href="#5-关键结论" class="headerlink" title="5. 关键结论"></a>5. 关键结论</h2><ul>
+<li>✅ 神经网络是机器学习的核心模型类别之一。</li>
+<li>✅ 深度学习是神经网络的扩展（多层结构+大规模数据）。</li>
+<li>✅ <strong>适用条件</strong>：优先选择神经网络当数据量大、任务复杂（如非结构化数据）且算力充足时。</li>
+<li>⚠️ <strong>局限性</strong>：数据少或需要强解释性的场景下，传统模型可能更优。</li>
+</ul>
+<h1 id="MLP-vs-CNN：分类任务中的选择"><a href="#MLP-vs-CNN：分类任务中的选择" class="headerlink" title="MLP vs CNN：分类任务中的选择"></a>MLP vs CNN：分类任务中的选择</h1><h2 id="核心结论"><a href="#核心结论" class="headerlink" title="核心结论"></a>核心结论</h2><ul>
+<li><strong>MLP（全连接网络）</strong>：适合<strong>结构化数据</strong>（如表格数据）的分类，但对图像等高维非结构化数据效率较低。</li>
+<li><strong>CNN（卷积神经网络）</strong>：专为<strong>空间数据</strong>（如图像、视频）设计，在图像分类中表现更优。</li>
+</ul>
+<hr>
+<h2 id="1-MLP（全连接网络）的特点"><a href="#1-MLP（全连接网络）的特点" class="headerlink" title="1. MLP（全连接网络）的特点"></a>1. MLP（全连接网络）的特点</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li><strong>简单通用</strong>：可处理任意维度的输入（需展平为一维向量）。</li>
+<li><strong>结构化数据友好</strong>：适合特征之间无空间关联的数据（如用户年龄、收入等表格数据）。</li>
+<li><strong>计算成本较低</strong>：对低维数据训练速度较快。</li>
+</ul>
+<h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3><ul>
+<li><strong>图像处理缺陷</strong>：<ul>
+<li>需将图像展平破坏空间结构（如将28×28的MNIST图像变为784维向量）。</li>
+<li>参数量爆炸（如处理1000×1000像素的RGB图像，输入层即需3百万参数）。</li>
+<li>无法有效捕捉局部特征（如边缘、纹理）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>手写数字分类（MNIST，简单图像任务）</li>
+<li>客户流失预测（结构化数据）</li>
+<li>二分类问题（如垃圾邮件检测）</li>
+</ul>
+<hr>
+<h2 id="2-CNN（卷积神经网络）的特点"><a href="#2-CNN（卷积神经网络）的特点" class="headerlink" title="2. CNN（卷积神经网络）的特点"></a>2. CNN（卷积神经网络）的特点</h2><h3 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h3><ul>
+<li><strong>空间特征提取</strong>：<ul>
+<li>卷积核自动学习局部特征（如边缘、形状）。</li>
+<li>通过池化层实现平移不变性（物体位置变化不影响分类）。</li>
+</ul>
+</li>
+<li><strong>参数共享</strong>：大幅减少参数量（同一卷积核扫描整个图像）。</li>
+<li><strong>层次化特征学习</strong>：<ul>
+<li>浅层学习基础特征（边缘、颜色）</li>
+<li>深层学习抽象特征（物体部件、整体）</li>
+</ul>
+</li>
+</ul>
+<h3 id="劣势-1"><a href="#劣势-1" class="headerlink" title="劣势"></a>劣势</h3><ul>
+<li><strong>结构化数据不适用</strong>：对无空间关联的数据优势消失。</li>
+<li><strong>计算成本较高</strong>：需要GPU加速训练深层网络。</li>
+</ul>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>图像分类（ImageNet、CIFAR-10）</li>
+<li>医学影像分析（X光片分类）</li>
+<li>视频动作识别</li>
+<li>自然语言处理（通过1D卷积处理文本序列）</li>
+</ul>
+<hr>
+<h2 id="3-实验对比（以MNIST手写数字分类为例）"><a href="#3-实验对比（以MNIST手写数字分类为例）" class="headerlink" title="3. 实验对比（以MNIST手写数字分类为例）"></a>3. 实验对比（以MNIST手写数字分类为例）</h2><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>MLP</th>
+<th>CNN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>准确率</td>
+<td>~98%</td>
+<td>~99%+</td>
+</tr>
+<tr>
+<td>参数量</td>
+<td>约10万（784-128-10）</td>
+<td>约5万（卷积+全连接）</td>
+</tr>
+<tr>
+<td>训练时间（CPU）</td>
+<td>较快</td>
+<td>较慢</td>
+</tr>
+<tr>
+<td>特征可视化</td>
+<td>难以解释</td>
+<td>可可视化卷积核</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>说明</strong>：即使是简单图像任务，CNN在准确率和参数量上仍占优。</p>
+</blockquote>
+<hr>
+<h2 id="4-如何选择？"><a href="#4-如何选择？" class="headerlink" title="4. 如何选择？"></a>4. 如何选择？</h2><h3 id="选择MLP的情况"><a href="#选择MLP的情况" class="headerlink" title="选择MLP的情况"></a>选择MLP的情况</h3><ul>
+<li>输入数据为<strong>结构化特征</strong>（如Excel表格数据）</li>
+<li>图像分辨率极低（如28×28）且算力受限</li>
+<li>需要快速实现原型验证</li>
+</ul>
+<h3 id="选择CNN的情况"><a href="#选择CNN的情况" class="headerlink" title="选择CNN的情况"></a>选择CNN的情况</h3><ul>
+<li>输入数据具有<strong>空间结构</strong>（图像、视频帧、频谱图）</li>
+<li>任务需要识别局部模式（如物体、纹理）</li>
+<li>追求更高分类精度</li>
+</ul>
+<hr>
+<h2 id="5-混合使用案例"><a href="#5-混合使用案例" class="headerlink" title="5. 混合使用案例"></a>5. 混合使用案例</h2><p>实际应用中常组合两种网络：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 示例：CNN提取特征 + MLP分类</span><br>model = Sequential([<br>    Conv2D(<span class="hljs-number">32</span>, (<span class="hljs-number">3</span>,<span class="hljs-number">3</span>), activation=<span class="hljs-string">&#x27;relu&#x27;</span>, input_shape=(<span class="hljs-number">64</span>,<span class="hljs-number">64</span>,<span class="hljs-number">3</span>)),  <span class="hljs-comment"># CNN部分</span><br>    MaxPooling2D(),<br>    Flatten(),                      <span class="hljs-comment"># 展平为向量</span><br>    Dense(<span class="hljs-number">128</span>, activation=<span class="hljs-string">&#x27;relu&#x27;</span>),  <span class="hljs-comment"># MLP部分</span><br>    Dense(<span class="hljs-number">10</span>, activation=<span class="hljs-string">&#x27;softmax&#x27;</span>)<br>])<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>图像&#x2F;视频分类：优先选择CNN（如ResNet、EfficientNet）</p>
+<p>表格数据分类：优先MLP或传统模型（随机森林&#x2F;XGBoost）</p>
+<p>简单任务快速验证：可先用MLP作为基线模型</p>
+<h3 id="附：经典网络架构参考"><a href="#附：经典网络架构参考" class="headerlink" title="附：经典网络架构参考"></a>附：经典网络架构参考</h3><ul>
+<li><strong>MLP</strong>：LeNet-5（原始版本含全连接主导）</li>
+<li><strong>CNN</strong>：AlexNet、VGG、ResNet</li>
+</ul>
 <h1 id="杂七杂八"><a href="#杂七杂八" class="headerlink" title="杂七杂八"></a>杂七杂八</h1><h2 id="Linux的系统盘和数据盘"><a href="#Linux的系统盘和数据盘" class="headerlink" title="Linux的系统盘和数据盘"></a>Linux的系统盘和数据盘</h2><p>由于博主的电脑配置太辣鸡，所以选择在autodl租用显卡进行相关学习。公共资源需要靠抢，所以常常需要复制镜像，每次都随机抢不同的显卡……</p>
 <ul>
 <li>镜像保存了Linux除了数据盘以外的所有数据；<ul>
@@ -371,7 +689,7 @@
 <h2 id="安装Miniconda"><a href="#安装Miniconda" class="headerlink" title="安装Miniconda"></a>安装Miniconda</h2><p>Miniconda 是一个轻量级的 Conda 发行版，主要用于管理 Python 环境和软件包。简而言之，Miniconda 的作用是管理 Python 版本和依赖，比如你电脑中运行了多个项目，这些项目需要不同的 Python 版本和库，就可以用 Miniconda 创建独立的虚拟环境，避免相互干扰。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39787913/article/details/145529639">Linux 系统中安装和部署 Miniconda 的详细教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41340996/article/details/124326865">检查pytorch是否安装成功、查看torch和cuda的版本</a></p>
-<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><p>PyTorch：一个开源的深度学习框架，支持GPU加速计算和动态计算图</p>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h2 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h2><p>PyTorch：一个开源的深度学习框架，支持GPU加速计算和动态计算图</p>
 <p>核心组件：</p>
 <ul>
 <li>torch.Tensor：支持梯度追踪的多维数组。</li>

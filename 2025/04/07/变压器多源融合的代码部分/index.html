@@ -1,0 +1,875 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon_cat.png">
+  <link rel="icon" href="/img/icon_cat.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yunru Chen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="夏令营参营项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变压器多源融合的代码部分">
+<meta property="og:url" content="http://zoechen04616.github.io/2025/04/07/%E5%8F%98%E5%8E%8B%E5%99%A8%E5%A4%9A%E6%BA%90%E8%9E%8D%E5%90%88%E7%9A%84%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="夏令营参营项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-07T08:58:51.000Z">
+<meta property="article:modified_time" content="2025-04-07T17:11:38.779Z">
+<meta property="article:author" content="Yunru Chen">
+<meta property="article:tag" content="电气工程及其自动化专业">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>变压器多源融合的代码部分 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.css?config=TeX-MML-AM_CHTML.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zoechen04616.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":false,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":21845181,"cnzz":null,"leancloud":{"app_id":"Zq01YuoCcS34rK55Lminokne-gzGzoHsz","app_key":"Ua2GYZwL65Ms3X2yTxREFwuk","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('//js.users.51.la/21845181.js');
+      }
+    </script>
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>My Blogs</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://localhost:4000/admin/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>CodeCloud</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E7%99%BD%E5%A4%A9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="变压器多源融合的代码部分"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-07 16:58" pubdate>
+          2025年4月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">变压器多源融合的代码部分</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2025年4月8日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>夏令营参营项目</p>
+<span id="more"></span>
+<h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h2><p>有了一个神经元，把多个这样的神经元堆叠在一起就构成了一层神经层，而多个神经层沿着纵向继续堆叠下去，就形成了深度神经网络。所谓的“深”其实就是表达神经网络的层数的规模和每层的复杂程度。</p>
+<p>不同的神经网络结构就是如何设计这些神经元的运算、连接方式，不同神经层的安排，以及数据流向等等，以达到处理各种结构数据的目的。</p>
+<h2 id="深度神经网络DNN——MLP"><a href="#深度神经网络DNN——MLP" class="headerlink" title="深度神经网络DNN——MLP"></a>深度神经网络DNN——MLP</h2><p>一个最基本、最典型的DNN就是多层感知机（MLP）。</p>
+<ul>
+<li>基本结构： 多层感知机包含一个<code>输入层</code>和一个<code>输出层</code>，中间则是<code>多个隐藏层</code>，每一层由一系列神经元组成。</li>
+<li>用途： 尽管结构简单，多层感知机还是可以学习输入数据和输出数据之间的复杂关系，用于<code>分类</code>、<code>回归</code>等机器学习任务。</li>
+<li>局限： 它在处理高维数据（如图像）或序列数据（如时间序列数据、文本等）时，相较于专门的设计的网络结构，在效率和效果上都有很大的局限。</li>
+</ul>
+<h2 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h2><p>卷积神经网络是专门被设计为用来处理“网格状”结构数据的，比如图像（2D像素网格）和时序数据（时间网格）。</p>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p>一个典型的CNN由卷积层、池化层和全连接层组成。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29366638">参考介绍</a></p>
+<h4 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h4><p>卷积层是CNN最核心，也是让它区别于其他NNs的地方。</p>
+<p>以图像为例，其数据是2维网格状结构，卷积计算通过卷积核（kernels或filters）在2维平面上遍历来完成。</p>
+<p>卷积核中的数值就是神经网络的权重，也就是要学习的参数，将权重与对应输入位置的值（如果是输入层就是像素值，如果是中间层就是中间层神经元的激活值）相乘，再与偏置相加，经过激活函数，便得到了对应的输出。</p>
+<ul>
+<li>相比于传统的MLP，不同之处在于：</li>
+</ul>
+<p><strong>局部连接</strong>：卷积操作中相邻层的神经元是局部连接的，下一层神经元的值只取决于卷积核覆盖的窗口上的值；</p>
+<p><strong>权重共享</strong>：在一个卷积层中，使用同一个卷积核对不同区域的数据进行处理。</p>
+<p>这两个主要差别使得卷积网络具有<strong>更少的参数数量</strong>。同时因为局部连接性，CNN能有效提取图像数据中的边缘、角点等局部特征，而随着层级的深入，学到的特征则进一步反应图像的全局模式，这种逐层建立<strong>从低级到高级</strong>的特征表示使得CNN在计算机视觉任务中表现非常好。</p>
+<h4 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h4><p>池化层是紧跟在卷积层之后的，它是一种<strong>降采样</strong>操作，可有效降低数据维度，进而降低模型参数量；同时保证特征的空间不变性。</p>
+<ul>
+<li>常见的池化操作有最大池化，平均池化。<ul>
+<li>最大池化，即选取窗口中的最大值最为输出。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>池化操作是无参数化操作。</li>
+</ul>
+<h4 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h4><p>全连接层是CNN最后的部分，经过多层的卷积+池化层，输入数据（图像）被处理为特征图（feature maps），特征图需要被flatten（展开）为一维向量，以输入给全连接层完成接下来的具体任务（如分类）。</p>
+<h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><p>现在我们用到的GPT等最强的AI工具都是基于大语言模型的（LLM），比如GPT-4、Llama等，这些大语言模型内部的基本结构就是Transformer。</p>
+<p>Transformer擅长自然语言处理，在它出现之前，RNNs，LTSM等网络模型是NLP领域的常用深度学习模型。</p>
+<p>Transformer中的一个关键技术是<strong>自注意力机制</strong>，它能够有效捕捉序列信息中长距离依赖关系，相比于以往的RNNs，在处理<strong>长序列</strong>时的表现更好。</p>
+<p>自注意力机制的另一个特点是<strong>并行计算</strong>，因此Transformer结构让模型的计算效率更高，加速训练和推理速度。</p>
+<p>Transformer最开始应用于NLP领域的机器翻译任务，但是它的通用性很好，除了NLP领域的其他任务，经过变体，还可以用于视觉领域，如ViT（Vision Transformer）。</p>
+<p>一些学习参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">用最直观的方式可视化讲解Transformer的原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://bbycroft.net/llm">可视化大模型工作原理</a></li>
+</ul>
+<h2 id="自编码器AE"><a href="#自编码器AE" class="headerlink" title="自编码器AE"></a>自编码器AE</h2><ul>
+<li>基本结构: <br>自编码器是一种用于无监督学习的神经网络结构，包括编码器（Encoder）和解码器（Decoder）两个部分。目标是通过网络学习数据的压缩表示，然后再重建数据。</li>
+<li>应用场景: <br>降维，数据去噪，特征提取等。</li>
+<li>AE变体：<br>自编码器有很多形式的变体，比如变分自编码器（VAE）是自编码器的一种生成式变体，它不仅学习数据表示的编码，还学习编码的分布，使其能生成新的、类似于训练数据的实例。</li>
+<li><a target="_blank" rel="noopener" href="https://www.datacamp.com/tutorial/introduction-to-autoencoders">学习网站</a></li>
+</ul>
+<h2 id="生成对抗网络GAN"><a href="#生成对抗网络GAN" class="headerlink" title="生成对抗网络GAN"></a>生成对抗网络GAN</h2><p>生成对抗网络（Generative Adversarial Networks，GANs）也是引起一番浪潮的深度学习模型。GAN 是一种生成模型，通过一种“对抗”的结构学习数据模式，进而生成全新的合成数据。</p>
+<ul>
+<li>基本结构:<br>GAN有两个主要部分组成：生成器（Generator）和判别器（Discriminator），这两个网络在学习过程中相互对抗，从而提高各自的性能。生成器的任务是创建数据；判别器的任务是区分生成器产生的数据和真实数据。一个类比，相当于一个人生产假币，而另一个人负责鉴别假币，他们二人在不断的“学习”过程中提高各自的能力，生成器学习如何产生越来越逼真的数据，而判别器学习如何更好地区分真伪。</li>
+<li>应用场景:<br>生成对抗网络的应用非常广泛，比如图像领域用于生成风格化照片、人脸合成等；也可用于数据增强领域，对于数据有限的情况，通过生成新的数据来扩充数据集，比如医学影像；艺术创作领域，音乐合成，以及帮助艺术家创作绘画作品等。</li>
+</ul>
+<h2 id="递归神经网络RNN"><a href="#递归神经网络RNN" class="headerlink" title="递归神经网络RNN"></a>递归神经网络RNN</h2><p>递归神经网络（Recurrent Neural Network，RNN）是一种专门用来来处理序列数据的神经网络，它在nlp、时间序列分析等领域中非常有效。</p>
+<ul>
+<li>基本结构:<br>RNN基本思想是利用序列的时间动态性，通过维护一个隐藏状态，也就是被称为“记忆”的机制，使得新型可以在不同时间步之间进行传递，从而捕获目前为止的所有数据的信息。RNN的基本结构包括输入层、隐藏层和输出层。核心是隐藏层，每个step的隐藏层都接收当前输入和前一时间步的隐藏层输出。</li>
+<li>RNN变体:<br>为了客服计算效率和长距离依赖关系等问题，RNN发展出来很多变体，如长短期记忆网络（LSTM）、门控循环单元（GRU）等。</li>
+<li>应用场景:<br>RNN应用在NLP领域较多，用于机器翻译、文本生成等，其他领域还包括时序相关的数据分析（如股票价格预测、天气预测）、视频分析以及音乐生成等。</li>
+</ul>
+<h1 id="本项目为什么要选择CNN"><a href="#本项目为什么要选择CNN" class="headerlink" title="本项目为什么要选择CNN"></a>本项目为什么要选择CNN</h1><p>为了对变压器进行实时的状态监测，需要采集不同类型的传感器数据。传感器数据包含了噪声场、温度场、磁场三种物理场，具有不同的量纲和时间序列的分布模式。</p>
+<ul>
+<li><p><strong>时空特性</strong>：每个场的数据在空间（不同测量点）和时间（时间序列）上均有分布。不同时间点的数据可能反映设备状态的动态变化（如故障逐渐恶化）。<br>例如：</p>
+<ul>
+<li>正常运行时，声压能量主要集中在低频区域，100 Hz 的幅值最大。随着过载程度增加，高频区域的幅值逐渐增大。在较高负载条件下，高频段幅值远高于正常运行状态。 </li>
+<li>绕组松动程度越大，频率幅值的变化也越大，且松动对绕组附近测点的影响大于铁心附近测点的影响。</li>
+<li>温度上升速率随绕组松动程度的加剧而加快；且绕组温度升高速度快于铁心温度升高速度；同时，靠近绕组变形相区域对温度变化更敏感。</li>
+</ul>
+</li>
+<li><p>磁场和噪声场测量数据属于短期波动数据，而温度变化相对波动时间较长。</p>
+</li>
+<li><p><strong>局部相关性</strong>：同一物理场的相邻测量点之间可能存在空间相关性（如温度扩散、磁场梯度）。</p>
+</li>
+</ul>
+<h3 id="CNN的优势"><a href="#CNN的优势" class="headerlink" title="CNN的优势"></a>CNN的优势</h3><h4 id="空间特征提取"><a href="#空间特征提取" class="headerlink" title="空间特征提取"></a>空间特征提取</h4><ul>
+<li><p>局部感知：卷积核在滑动窗口内提取局部空间模式（如温度场的梯度、噪声场的传播方向）。</p>
+</li>
+<li><p>参数共享：同一卷积核遍历所有位置，减少参数量，避免过拟合。</p>
+</li>
+<li><p>平移不变性：无论异常出现在哪个位置，相同卷积核均可检测到。</p>
+</li>
+</ul>
+<h4 id="多源数据融合"><a href="#多源数据融合" class="headerlink" title="多源数据融合"></a>多源数据融合</h4><ul>
+<li><p>通道维度融合：将不同物理场（噪声、温度、磁场）视为多通道输入（类似图像的RGB通道）。</p>
+</li>
+<li><p>跨模态关联：深层卷积核可自动学习不同物理场之间的关联（如磁场异常伴随特定噪声模式）。</p>
+</li>
+</ul>
+<h3 id="MLP的局限性"><a href="#MLP的局限性" class="headerlink" title="MLP的局限性"></a>MLP的局限性</h3><p>MLP（全连接神经网络）通过全连接层处理扁平化的数据。</p>
+<p>存在问题：</p>
+<ul>
+<li><p>空间信息丢失：需将多维数据展平为向量，破坏空间结构（如传感器位置关系）。</p>
+</li>
+<li><p>参数冗余：全连接层对每个输入特征独立加权，难以捕捉局部空间模式。</p>
+</li>
+<li><p>过拟合风险：面对高维时空数据（如多个传感器×时间步），参数过多易导致过拟合。</p>
+</li>
+<li><p>多源融合困难：需手动设计不同物理场的融合策略（如拼接、加权），难以自动学习跨模态关联。</p>
+</li>
+</ul>
+<p>例如：<br>若温度场的传感器A和相邻传感器B的值同时升高，可能指示局部过热。MLP需依赖大量数据学习这种空间模式，而CNN可通过卷积核自动提取。</p>
+<h1 id="一些流程处理的设计原因"><a href="#一些流程处理的设计原因" class="headerlink" title="一些流程处理的设计原因"></a>一些流程处理的设计原因</h1><h3 id="统计特征与滑动窗口"><a href="#统计特征与滑动窗口" class="headerlink" title="统计特征与滑动窗口"></a>统计特征与滑动窗口</h3><ul>
+<li><p>优点：通过均值、标准差、偏度、峰度等统计量，能够初步描述数据分布特性，结合最值位置可捕捉异常波动的时间和幅度信息。滑动窗口技术有效提取局部时序模式，适用于非平稳信号（如突变压器故障）。</p>
+</li>
+<li><p>合理性：符合时序数据处理的常规方法，适合捕捉局部动态变化。</p>
+</li>
+</ul>
+<h3 id="数据去重与特征筛选"><a href="#数据去重与特征筛选" class="headerlink" title="数据去重与特征筛选"></a>数据去重与特征筛选</h3><ul>
+<li><p>优点：利用余弦相似度清除冗余窗口数据，减少计算负担，避免模型被重复信息干扰。方向相似度和模大小的计算增强了特征区分度。</p>
+</li>
+<li><p>合理性：适合处理长时间稳定运行状态下的重复数据，但需注意保留关键异常片段。</p>
+</li>
+<li><p>未来的改进建议：<br><strong>动态调整去重策略</strong>：</p>
+<ul>
+<li>结合时间戳信息，保留相邻窗口中的相似但连续数据（避免删除连续异常片段）。</li>
+<li>引入异常检测算法（如Isolation Forest）辅助判断是否删除窗口。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Bi-LSTM时序建模"><a href="#Bi-LSTM时序建模" class="headerlink" title="Bi-LSTM时序建模"></a>Bi-LSTM时序建模</h3><ul>
+<li><p>优点：双向LSTM同时考虑前向和后向时间依赖，弥补滑动窗口切割导致的跨窗口信息丢失，适合捕捉故障发展的渐进过程。</p>
+</li>
+<li><p>合理性：Bi-LSTM在时序建模中表现优异，尤其在长程依赖场景下。</p>
+</li>
+</ul>
+<h4 id="未来的改进建议："><a href="#未来的改进建议：" class="headerlink" title="未来的改进建议："></a>未来的改进建议：</h4><ul>
+<li><p>重叠滑动窗口：设置窗口重叠率（如50%），确保连续窗口间有部分数据重叠，减少切割损失。</p>
+</li>
+<li><p>层级时序建模：</p>
+<ul>
+<li>第一层Bi-LSTM处理原始时序数据，输出高层时序特征。</li>
+<li>第二层滑动窗口提取局部特征，再输入CNN。</li>
+</ul>
+</li>
+</ul>
+<h3 id="三通道CNN与注意力机制"><a href="#三通道CNN与注意力机制" class="headerlink" title="三通道CNN与注意力机制"></a>三通道CNN与注意力机制</h3><p>CBAM通过通道注意力和空间注意力机制，能够自适应地增强重要特征、抑制冗余信息，其设计初衷即是为了优化卷积层输出的特征图。</p>
+<ul>
+<li>优点：独立处理不同物理场数据，保留各场特异性；注意力机制动态赋权关键特征，增强模型对故障敏感区域的关注。<br><strong>多通道联合应用CBAM（跨场融合）</strong></li>
+<li>合理性：符合多源异构数据的处理需求，避免早期融合时的信息混淆。</li>
+<li>跨通道注意力融合：在卷积后拼接各通道特征图，应用CBAM。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E6%8A%80%E8%83%BD/" class="category-chain-item">计算机基础技能</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%94%B5%E6%B0%94%E5%B7%A5%E7%A8%8B%E5%8F%8A%E5%85%B6%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%93%E4%B8%9A/" class="print-no-link">#电气工程及其自动化专业</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>变压器多源融合的代码部分</div>
+      <div>http://zoechen04616.github.io/2025/04/07/变压器多源融合的代码部分/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yunru Chen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/05/%E5%9F%BA%E4%BA%8E%E5%98%89%E7%AB%8B%E5%88%9BEDA%E7%9A%84%E7%94%B5%E8%B7%AF%E5%9B%BE%E8%AE%BE%E8%AE%A1/" title="基于嘉立创EDA的电路图设计">
+                        <span class="hidden-mobile">基于嘉立创EDA的电路图设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+<script src="/js/mathjax-config.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
